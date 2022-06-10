@@ -201,7 +201,7 @@
   <xsl:template match="*" mode="serialize" priority="1">
     <span class="name elt">
       <xsl:text>&lt;</xsl:text>
-      <xsl:value-of select="local-name()"/>
+      <xsl:value-of select="name()"/>
     </span>
     <xsl:apply-templates select="." mode="xmlns"/>
     <xsl:apply-templates select="@*" mode="#current"/>
@@ -214,7 +214,7 @@
         <xsl:apply-templates mode="#current"/>
         <span class="name elt">
           <xsl:text>&lt;/</xsl:text>
-          <xsl:value-of select="local-name()"/>
+          <xsl:value-of select="name()"/>
           <xsl:text>></xsl:text>
         </span>
       </xsl:otherwise>
