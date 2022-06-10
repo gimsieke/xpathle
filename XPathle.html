@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>XPathle</title>
+      <meta charset="utf-8"/>
+     <script src="saxon-js/SaxonJS2.rt.js"></script>
+<!--      <script type="text/javascript" src="SaxonJS/SaxonJS.min.js"></script>-->
+      <script>
+          window.onload = function() {
+          SaxonJS.transform({
+            stylesheetLocation: "xpathle.sef.json",
+            initialTemplate: "main"
+          }, "async");
+          }
+      </script>
+     <link type="text/css" rel="stylesheet" href="xpathle.css"/>
+   </head>
+  <body>
+    <div id="header">
+      <h1 id="title"><span class="dFar">X</span><span class="d10">P</span><span class="d8">a</span><span 
+        class="d6">t</span><span class="d4">h</span><span class="d2">l</span><span class="d0">e</span></h1>
+    </div>
+    <details id="help">
+        <summary>How to play</summary>
+        <p>Select one of the examples. The corresponding XML file will be rendered. Each XML file
+        is associated with a secret XPath expression that selects some nodes (or attributes).
+        You need to enter an XPath expression such as <code>/*</code> in order to make a first guess.</p>
+        <p>For selecting namespaced elements with a prefix, such as <code>xsl:for-each</code> in the XSLT example,
+          you can enter something like <code>//Q{http://www.w3.org/1999/XSL/Transform}for-each</code>
+        or <code>//*:for-each</code>. Elements without a prefix can be selected without namespace if they
+          are in the same namespace as the top-level element.</p>
+        <p>You cannot select <code>//namespace-node()</code> (well, you can, but they won’t be displayed).
+        You cannot select processing instructions or comments that are outside the top-level element, either.
+        You can select elements, attributes, text nodes, comments, and processing instructions.</p>
+      <p>As a result of evaluating your guess, the number of selected items will be displayed so you can
+      see whether at least the count of selected items matches.</p>
+      <p>In order to see how well your guess-selected items match, the items will be highlighted in the rendered
+      XML (you might need to click into the rendering area and scroll down or sideways). The match quality
+      will be signalled by color code and by tool tip. The tool tip contains both the hierarchical XPath to
+      the item and the distance to the closest target item.</p>
+      <p>Performance: The distance calculation scales with the product of secretly selected items and the
+      items you guess. Therefore it can take a couple of seconds if these counts are around 30 or higher, 
+      depending on your computer. All calculations will be carried out by XSLT 3.0 in the browser (see the
+      links at the bottom of the page).</p>
+      <p>The distance metric works as follows for a given pair of items:</p>
+      <ul>
+        <li>Find the common ancestor element of both items</li>
+        <li>If one item is ancestor of the other, the element distance is the number of steps you need to climb up on
+        the ancestor axis</li>
+        <li>If the </li>
+        <li>The distance is the number of steps up to the common ancestor plus the number of steps down </li>
+      </ul>
+      
+      </details>
+    <div id="controls"></div>
+    <div id="controls2"></div>
+    <div id="rendition"></div>
+    <div id="footer">
+      <p>XML+XSLT in the browser using <a href="http://www.saxonica.com/saxon-js/index.xml">SaxonJS</a>, from <a
+          href="http://www.saxonica.com">Saxonica</a>. View the <a href="xpathle.xsl">XSLT source</a> and the <a
+          href="xpathle-lib.xsl">XPathle XSLT library</a> that can also run on the command line.</p>
+    </div>
+    <div id="config"></div>
+  </body>
+</html>
