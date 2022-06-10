@@ -44,6 +44,7 @@ td.distanceFar { color: white; font-weight: bold; }
 
 .grey { background-color: #eee; }
 .white { background-color: white; }
+h3 + ul { margin-top: 0; }
 th { text-align: left; font-weight: normal; }
 td { font-weight: bold; }
 body { font-family: sans-serif; margin-left:2em; }

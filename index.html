@@ -43,13 +43,28 @@
       items you guess. Therefore it can take a couple of seconds if these counts are around 30 or higher, 
       depending on your computer. All calculations will be carried out by XSLT 3.0 in the browser (see the
       links at the bottom of the page).</p>
+      <h3>Distance metric</h3>
       <p>The distance metric works as follows for a given pair of items:</p>
       <ul>
         <li>Find the common ancestor element of both items</li>
         <li>If one item is ancestor of the other, the element distance is the number of steps you need to climb up on
         the ancestor axis</li>
-        <li>If the </li>
-        <li>The distance is the number of steps up to the common ancestor plus the number of steps down </li>
+        <li>If an item is an attribute, text node, comment, or PI, calculate the element distance for its parent
+        first and add 1 to the calculated distance later</li>
+        <li>The distance is the number of steps up to the common ancestor plus the number of steps down to the
+        other element.</li>
+        <li>When the nodes below the common ancestor are siblings, count the number of siblings that you
+        need to visit until you reach the other node.</li>
+        <li>Then don’t take the two steps to the common ancestor and down to the other node, but take the
+        sibling path instead.</li>
+      </ul>
+      <h3>To Do</h3>
+      <ul>
+        <li>Daily challenges</li>
+        <li>End the game when a maximum number of attempts has been reached. This number can already be defined
+        for each URI / secret XPath tuple, but the application doesn’t stop when the max. number has been reached.</li>
+        <li>Obfuscate the configuration and the current attempt number better. Or leave it as weakly secure as it is.</li>
+        <li>Let users resume the game by storing session data in the Browser.</li>
       </ul>
       
       </details>
