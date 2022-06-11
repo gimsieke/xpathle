@@ -45,7 +45,7 @@
     <xsl:variable name="conf" select="my:get-conf()"/>
     <xsl:result-document href="#controls">
       <h2>Examples</h2>
-      <xsl:sequence select="map:keys($conf?examples) ! my:render-conf-item(., $conf?examples(.), 'example')"/>
+      <xsl:sequence select="map:keys($conf?example) ! my:render-conf-item(., $conf?example(.), 'example')"/>
       <xsl:variable name="current-date" as="xs:string" 
         select="current-date() => string() => replace('^(\d{4}-\d\d-\d\d).+$', '$1')"/>
       <xsl:variable name="daily" as="map(*)?" select="$conf?daily($current-date)"/>
@@ -63,8 +63,7 @@
     <xsl:variable name="type" as="xs:string" select="@name"/>
     <xsl:result-document href="#controls2" method="ixsl:replace-content">
       <p><label for="doc-uri">Document URI:</label>  <input id="doc-uri" type="text" name="doc-uri" 
-        autocomplete="off" size="90" autocapitalize="none" value="{$conf($type)($name)?url}"
-       >
+        autocomplete="off" size="90" autocapitalize="none" value="{$conf($type)($name)?url}">
         <xsl:if test="$conf($type)($name)?cache_url">
           <xsl:attribute name="data-cache-url" select="$conf($type)($name)?cache_url"/>
         </xsl:if>
