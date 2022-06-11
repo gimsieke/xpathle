@@ -76,8 +76,8 @@
   </xsl:template>
   
   <xsl:template name="test">
-<!--    <xsl:message select="'DDDDDDDD ', tr:node-distance(((//*:li)[position() mod 3 =0])[1], //*:header/*:ul[1])"></xsl:message>-->
-    <xsl:message select="'EEEEEEEE ', tr:node-distance(//*:define[@name = 'a.name'], //*:define[@name = 'a.name']/@name)"></xsl:message>
+    <xsl:message select="'DDDDDDDD ', tr:node-distance(//*:param[@name='publisher-prefix-for-style-mapping']/@name, //*:param[@name='rule-category-span-class']/@value)"></xsl:message>
+    <!--<xsl:message select="'EEEEEEEE ', tr:node-distance(//*:define[@name = 'a.name']/*:attribute/@name, //*:define[@name = 'a.name']/*:attribute/@name)"></xsl:message>-->
   </xsl:template>
   
   <xsl:template name="distance-to-closest-secret-item" as="xs:integer?">
@@ -307,7 +307,7 @@
       <xsl:when test="$element-distance = 0 
                       and ($node1/self::attribute() or $node2/self::attribute())">
         <!-- one attribute, one text, comment, or PI node on the same element -->
-        <xsl:sequence select="1"/>
+        <xsl:sequence select="1 + count($node1[not(self::attribute())] | $node2[not(self::attribute())])"/>
       </xsl:when>
       <xsl:when test="$element-distance = 0">
         <!-- the same element, but maybe another node as child -->
@@ -328,8 +328,7 @@
                                     intermediate item to the other node, and subtract 2 for not going to the common
                                     ancestor from the penultimate ancestors :)
                                     + count($intermediate-siblings/generate-id())
-                                    + count(($node1 | $node2)[not(self::*)])
-                                    + count($node1/self::attribute()) + count($node2/self::attribute())"/>
+                                    + count(($node1 | $node2)[not(self::*)](: this includes attributes :))"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>

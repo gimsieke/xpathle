@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <meta>
+        <filters directoryPatterns="" filePatterns="\Qxpathle.xpr\E" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="xpathle.xpr">
+        <folder path="../../../../DIN/xproc-frontend/natprofil/sts4i-tools/assemble-schematron/"/>
+    </projectTree>
+</project>
