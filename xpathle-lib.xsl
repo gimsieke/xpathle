@@ -179,9 +179,9 @@
         <xsl:when test="generate-id() = $highlight-items ! generate-id(.)">
           <xsl:attribute name="class" select="string-join(('guess', tr:distance-class($distance)), ' ')"/>
         </xsl:when>
-<!--      intersect doesn’t seem to work correctly with attributes in SaxonJS (tested on v1.2 and v2.4),
-          therefore reverting to comparing generated IDs, which works
-          <xsl:when test="exists(. intersect ($selected-by-guess-path except $highlight-items))">
+      <!-- intersect doesn’t seem to work correctly with attributes in SaxonJS (tested on v1.2 and v2.4),
+           therefore reverting to comparing generated IDs, which works. -->
+        <!--<xsl:when test="exists(. intersect ($selected-by-guess-path except $highlight-items))">
           <xsl:attribute name="class" select="'white hidden'"/>
         </xsl:when>
         <xsl:when test="exists(. intersect $highlight-items)">
