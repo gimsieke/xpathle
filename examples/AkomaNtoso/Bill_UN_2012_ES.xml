@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.akomantoso.org/2.0 ./akomantoso20.xsd" xmlns="http://www.akomantoso.org/2.0">
+	<!-- Task funded by UN/DESA. Analysis and markup performed by Monica Palmirani, CIRSFID, University of Bologna -->
+	<!-- Draft resolution UN-->
+	<bill>
+		<meta>
+			<identification source="#somebody">
+				<FRBRWork>
+					<FRBRthis value="/un/resolution/2012-02-22/E/CN.7/2012/L.2/main"/>
+					<FRBRuri value="/un/resolution/2012-02-22/E/CN.7/2012/L.2"/>
+					<FRBRdate date="2012-02-22" name="generation"/>
+					<FRBRauthor href="#cnd" as="#author"/>
+					<FRBRcountry value="un"/>
+				</FRBRWork>
+				<FRBRExpression>
+					<FRBRthis value="/un/resolution/2012-02-22/E/CN.7/2012/L.2/esp@/main"/>
+					<FRBRuri value="/un/resolution/2012-02-22/E/CN.7/2012/L.2/esp@"/>
+					<FRBRalias value=" /un/resolution/2012-02-22/V.12-51096 (S)"/>
+					<FRBRdate date="2012-02-22" name="markup"/>
+					<FRBRauthor href="#cnd" as="#editor"/>
+					<FRBRlanguage language="esp"/>
+					<FRBRtranslation href="/un/resolution/2012-02-22/E/CN.7/2012/L.2/eng@" fromLanguage="eng" by="#un"/>
+				</FRBRExpression>
+				<FRBRManifestation>
+					<FRBRthis value="/un/resolution/2012-02-22/E/CN.7/2012/L.2/esp@/main.xml"/>
+					<FRBRuri value="/un/resolution/2012-02-22/E/CN.7/2012/L.2/esp@.akn"/>
+					<FRBRdate date="2012-03-02" name="publication"/>
+					<FRBRauthor href="#somebody" as="#editor"/>
+				</FRBRManifestation>
+			</identification>
+			<publication date="2012-02-22" name="public" showAs="Journal" number="3"/>
+			<lifecycle source="#somebody">
+				<eventRef id="e1" date="2012-02-22" source="#ro1" type="generation"/>
+			</lifecycle>
+			<references source="#somebody">
+				<original id="ro1" href="/un/resolution/2012-02-22/E/CN.7/2012/L.2/esp@/main" showAs="original"/>
+				<TLCPerson id="somebody" href="/ontology/person/un/somebody" showAs="somebody"/>
+				<TLCOrganization id="esc" href="/ontology/organizations/un/economicSocialCouncil" showAs="Economic and Social Council"/>
+				<TLCOrganization id="un" href="/ontology/organizations/un/unitedNations" showAs="United Nations"/>
+				<TLCOrganization id="cnd" href="/ontology/organizations/un/commissionNarcoticDrugs" showAs="Commission on Narcotic Drugs"/>
+				<TLCRole id="author" href="/ontology/roles/un/author" showAs="Author of Document"/>
+				<TLCRole id="editor" href="/ontology/roles/un/editor" showAs="Editor of Document"/>
+				<TLCConcept id="limited" href="/ontology/concepts/un/limited" showAs="Limited"/>
+				<TLCConcept id="originalLanguage" href="/ontology/concepts/un/originalLanguage" showAs="Original Language"/>
+				<TLCConcept id="currentLanguage" href="/ontology/concepts/un/currentLanguage" showAs="Current Language"/>
+			</references>
+		</meta>
+		<preface>
+			<p>
+				<docNumber>E/CN.7/2012/L.2</docNumber>
+			</p>
+			<p>
+				<docIntroducer>Naciones Unidas</docIntroducer>
+				<docIntroducer refersTo="#esc">Consejo Económico y Social</docIntroducer>
+			</p>
+			<p>
+				<docStatus refersTo="#limited">Distr. limitada</docStatus>
+			</p>
+			<p>
+				<docDate date="2012-02-22">22 de febrero de 2012</docDate>
+			</p>
+			<p>
+				<span id="spn1" refersTo="#currentLanguage">Español </span>
+				<span id="spn2" refersTo="#originalLanguage">Original: inglés</span>
+			</p>
+			<p>
+				<docketNumber> V.12-51099 (S)</docketNumber>
+			</p>
+			<p>
+				<docIntroducer>Comisión de Estupefacientes</docIntroducer>
+			</p>
+			<p>
+				<session>55º período de sesiones</session>
+			</p>
+			<p>Viena, 12 a 16 de marzo de 2012</p>
+			<p>
+				<ref id="ref1" href="/un/resolution/E/CN.7/2012/1#itm4">Tema 4 del programa provisional</ref>
+				<authorialNote id="aut1" marker="*" placement="bottom">
+					<p>
+						<ref id="ref2" href="/un/resolution/E/CN.7/2012/1">E/CN.7/2012/1</ref>.</p>
+				</authorialNote>
+			</p>
+			<p>
+				<docType>Aplicación de los tratados de fiscalización internacional de drogas</docType>
+			</p>
+			<p>
+				<docTitle>Promoción de la cooperación internacional en la lucha contra las
+nuevas sustancias psicoactivas</docTitle>
+				<docProponent>Australia, Japón y Reino Unido de Gran Bretaña e Irlanda del Norte: proyecto
+de resolución</docProponent>
+			</p>
+		</preface>
+		<preamble>
+			<p>
+				<i>La Comisión de Estupefacientes,</i>
+			</p>
+			<p>
+				<i>Preocupada</i> por el hecho de que las nuevas sustancias psicoactivas se estén
+comercializando cada vez más como alternativas legales a las drogas sometidas a
+fiscalización internacional, y de que esas sustancias pueden plantear riesgos para la
+salud y la seguridad públicas,</p>
+			<p>
+				<i>Reconociendo</i> la naturaleza dinámica y el acelerado ritmo de ese mercado y el
+papel cada vez mayor que desempeña Internet en el comercio de nuevas sustancias
+psicoactivas,</p>
+			<p>
+				<i>Profundamente</i> preocupada por los informes acerca de una utilización
+y comercio mayores y emergentes de nuevas sustancias psicoactivas
+como los cannabinoides sintéticos, la 4-metil-metcatinona (mefedrona),
+la metilendioxipirovalerona (MDPV), y otras catinonas y fenetelaminas, que tienen
+efectos similares a los de las drogas sometidas a fiscalización internacional,</p>
+			<p>
+				<i>Preocupada</i> acerca de las posibles oportunidades al alcance de grupos
+delictivos organizados transnacionales de explotar el mercado de esas sustancias,
+que entrañan un riesgo desconocido para la salud de los consumidores,</p>
+		</preamble>
+		<body>
+			<list id="list1">
+				<point id="itm1">
+					<num>1.</num>
+					<content>
+						<p>
+							<i>Alienta</i> a los Estados Miembros a que vigilen las tendencias emergentes
+en la composición, producción y distribución de nuevas sustancias psicoactivas,
+incluso utilizando Internet, así como el consumo creciente de esas sustancias dentro
+de sus propias fronteras nacionales;</p>
+					</content>
+				</point>
+				<point id="itm2">
+					<num>2.</num>
+					<content>
+						<p>
+							<i>Insta</i> a los Estados Miembros a que compartan esa información, en
+particular con respecto a las pautas de consumo y problemas conexos, los riesgos
+para la salud pública, los datos forenses y la regulación de nuevas sustancias
+psicoactivas, con otros Estados Miembros y la Oficina de las Naciones Unidas
+contra la Droga y el Delito;</p>
+					</content>
+				</point>
+				<point id="itm3">
+					<num>3.</num>
+					<content>
+						<p>
+							<i>Alienta</i> a los Estados Miembros a que, sobre la base de la información
+relativa a las pautas del consumo y los riesgos para la salud pública de las nuevas
+sustancias psicoactivas, adopten medidas apropiadas destinadas a reducir la
+demanda y los riesgos relacionados con el consumo de esas sustancias, a fin de
+minimizar los riesgos para la salud pública;<omissis/>
+						</p>
+					</content>
+				</point>
+				<point id="itm8">
+					<num>8.</num>
+					<content>
+						<p>
+							<i>Solicita</i> a la Oficina de las Naciones Unidas contra la Droga y el Delito
+que siga trabajando con la Organización Mundial de la Salud, con arreglo a lo
+dispuesto en el artículo 3 de la Convención Única de 1961 <authorialNote id="auth2" marker="1" placement="bottom">
+								<p>
+									<ref id="ref3" href="/un/treaty/7515/520">Naciones Unidas, Treaty Series. vol. 520, núm. 7515</ref>.
+							</p>
+							</authorialNote>, sobre Estupefacientes
+enmendada por el Protocolo de 1972<authorialNote id="auth3" marker="2" placement="bottom">
+								<p>
+									<ref id="ref4" href="/un/treaty/1451/976">Ibid, vol. 976, núm.14151</ref>.
+							</p>
+							</authorialNote>, y en el artículo 2 del Convenio sobre
+Sustancias Sicotrópicas de 1971 <authorialNote id="auth4" marker="3" placement="bottom">
+								<p>
+									<ref id="ref5" href="/un/treaty/14856/1019">Ibid, vol. 1019, núm. 14956</ref>.
+							</p>
+							</authorialNote>
+	 hacia la reanudación del examen de sustancias
+para su posible inclusión en las listas por parte de la Comisión;</p>
+					</content>
+				</point>
+			</list>
+		</body>
+	</bill>
+</akomaNtoso>
