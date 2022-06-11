@@ -45,12 +45,21 @@
     <xsl:variable name="conf" select="my:get-conf()"/>
     <xsl:result-document href="#controls">
       <h2>Examples</h2>
-      <xsl:sequence select="map:keys($conf?example) ! my:render-conf-item(., $conf?example(.), 'example')"/>
+      <xsl:sequence select="sort(map:keys($conf?example), 'http://saxon.sf.net/collation?ignore-case=yes', 
+                                 function($key) { $conf?example($key)?description })
+                            ! my:render-conf-item(., $conf?example(.), 'example')"/>
       <xsl:variable name="current-date" as="xs:string" 
         select="current-date() => string() => replace('^(\d{4}-\d\d-\d\d).+$', '$1')"/>
       <xsl:variable name="daily" as="map(*)?" select="$conf?daily($current-date)"/>
       <xsl:if test="exists($daily)">
         <h2>Daily</h2>
+        <xsl:variable name="archive" as="xs:string*" select="sort(map:keys($conf?daily)[xs:date(.) lt current-date()])"/>
+        <xsl:if test="exists($archive)">
+          <details>
+            <summary>Archive</summary>
+            <xsl:sequence select="$archive ! my:render-conf-item(., $conf?daily(.), 'daily')"/>
+          </details>
+        </xsl:if>
         <xsl:sequence select="my:render-conf-item($current-date, $daily, 'daily')"/>        
       </xsl:if>
 
