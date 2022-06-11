@@ -77,7 +77,7 @@
   
   <xsl:template name="test">
 <!--    <xsl:message select="'DDDDDDDD ', tr:node-distance(((//*:li)[position() mod 3 =0])[1], //*:header/*:ul[1])"></xsl:message>-->
-    <xsl:message select="'EEEEEEEE ', tr:node-distance(//*:for-each[@select='mediaquery_selector'], //*:template[@match='mediarule']/@mode)"></xsl:message>
+    <xsl:message select="'EEEEEEEE ', tr:node-distance(//*:define[@name = 'a.name'], //*:define[@name = 'a.name']/@name)"></xsl:message>
   </xsl:template>
   
   <xsl:template name="distance-to-closest-secret-item" as="xs:integer?">
@@ -307,7 +307,7 @@
       <xsl:when test="$element-distance = 0 
                       and ($node1/self::attribute() or $node2/self::attribute())">
         <!-- one attribute, one text, comment, or PI node on the same element -->
-        <xsl:sequence select="2"/>
+        <xsl:sequence select="1"/>
       </xsl:when>
       <xsl:when test="$element-distance = 0">
         <!-- the same element, but maybe another node as child -->

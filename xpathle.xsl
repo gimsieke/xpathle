@@ -33,7 +33,8 @@
   <xsl:function name="my:render-conf-item" as="item()*">
     <xsl:param name="name" as="xs:string"/>
     <xsl:param name="map" as="map(*)"/>
-    <p><button name="example" value="{$name}" class="load"><xsl:value-of select="$map?description"/></button></p>
+    <xsl:param name="type" as="xs:string"/>
+    <p><button name="{$type}" value="{$name}" class="load"><xsl:value-of select="$map?description"/></button></p>
   </xsl:function>
   
   <xsl:function name="my:get-conf" as="map(*)">
@@ -44,25 +45,33 @@
     <xsl:variable name="conf" select="my:get-conf()"/>
     <xsl:result-document href="#controls">
       <h2>Examples</h2>
-      <xsl:sequence select="map:keys($conf?examples) ! my:render-conf-item(., $conf?examples(.))"/>
-<!--      <h2>Daily</h2>-->
+      <xsl:sequence select="map:keys($conf?examples) ! my:render-conf-item(., $conf?examples(.), 'example')"/>
+      <xsl:variable name="current-date" as="xs:string" 
+        select="current-date() => string() => replace('^(\d{4}-\d\d-\d\d).+$', '$1')"/>
+      <xsl:variable name="daily" as="map(*)?" select="$conf?daily($current-date)"/>
+      <xsl:if test="exists($daily)">
+        <h2>Daily</h2>
+        <xsl:sequence select="my:render-conf-item($current-date, $daily, 'daily')"/>        
+      </xsl:if>
+
     </xsl:result-document>
   </xsl:template>
   
-  <xsl:template mode="ixsl:onclick" match="button[@name='example']">
+  <xsl:template mode="ixsl:onclick" match="button[@name=('example', 'daily')]">
     <xsl:variable name="conf" as="map(*)" select="my:get-conf()"/>
-    <xsl:variable name="example-name" as="xs:string" select="ixsl:get(., 'value')"/>
+    <xsl:variable name="name" as="xs:string" select="ixsl:get(., 'value')"/>
+    <xsl:variable name="type" as="xs:string" select="@name"/>
     <xsl:result-document href="#controls2" method="ixsl:replace-content">
       <p><label for="doc-uri">Document URI:</label>  <input id="doc-uri" type="text" name="doc-uri" 
-        autocomplete="off" size="90" autocapitalize="none" value="{$conf?examples($example-name)?url}"
+        autocomplete="off" size="90" autocapitalize="none" value="{$conf($type)($name)?url}"
        >
-        <xsl:if test="$conf?examples($example-name)?cache_url">
-          <xsl:attribute name="data-cache-url" select="$conf?examples($example-name)?cache_url"/>
+        <xsl:if test="$conf($type)($name)?cache_url">
+          <xsl:attribute name="data-cache-url" select="$conf($type)($name)?cache_url"/>
         </xsl:if>
       </input></p>
     <p><label for="guesspath">Guess an XPath expression:</label>  <input id="guesspath" type="text" 
       name="guesspath" autocomplete="off" size="40" autocapitalize="none" value="()"/>  <button 
-        id="submit-guess" value="{$example-name}">Submit</button></p>
+        id="submit-guess" value="{$type}/{$name}">Submit</button></p>
     </xsl:result-document>
     <xsl:if test="exists(id('iteration', ixsl:page()))">
       <xsl:result-document href="#iteration" method="ixsl:replace-content"></xsl:result-document>
@@ -76,14 +85,16 @@
     <xsl:variable name="doc-uri" as="xs:string" 
       select="(id('doc-uri',ixsl:page())/@data-cache-url, ixsl:get(id('doc-uri',ixsl:page()), 'value'))[1]"/>
     <xsl:variable name="conf" as="map(*)" select="my:get-conf()"/>
-    <xsl:variable name="name" as="xs:string" select="ixsl:get(id('submit-guess'), 'value')"/>
+    <xsl:variable name="type-and-name" as="xs:string" select="ixsl:get(id('submit-guess'), 'value')"/>
+    <xsl:variable name="type" as="xs:string" select="substring-before($type-and-name, '/')"/>
+    <xsl:variable name="name" as="xs:string" select="substring-after($type-and-name, '/')"/>
     <xsl:variable name="iteration" as="xs:integer" 
       select="(id('iteration',ixsl:page())[. castable as xs:integer] ! xs:integer(.), -1)[1]"/>
     <ixsl:schedule-action document="{$doc-uri}">
       <xsl:call-template name="process">
-        <xsl:with-param name="secret-path" select="$conf?examples($name)?secret" as="xs:string" tunnel="yes"/>
+        <xsl:with-param name="secret-path" select="$conf($type)($name)?secret" as="xs:string" tunnel="yes"/>
         <xsl:with-param name="guess-path" select="ixsl:get(id('guesspath',ixsl:page()), 'value')" as="xs:string?" tunnel="yes"/>
-        <xsl:with-param name="tries" select="$conf?examples($name)?tries ! xs:integer(.)" tunnel="yes" as="xs:integer"/>
+        <xsl:with-param name="tries" select="$conf($type)($name)?tries ! xs:integer(.)" tunnel="yes" as="xs:integer"/>
         <xsl:with-param name="href" select="$doc-uri"/>
         <xsl:with-param name="iteration" as="xs:integer" select="$iteration" tunnel="yes"/>
       </xsl:call-template>

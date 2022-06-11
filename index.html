@@ -1,21 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-   <head>
-      <title>XPathle</title>
-      <meta charset="utf-8"/>
-     <script src="saxon-js/SaxonJS2.rt.js"></script>
-<!--      <script type="text/javascript" src="SaxonJS/SaxonJS.min.js"></script>-->
-      <script>
-          window.onload = function() {
-          SaxonJS.transform({
-            stylesheetLocation: "xpathle.sef.json",
-            initialTemplate: "main"
-          }, "async");
-          }
-      </script>
-     <link type="text/css" rel="stylesheet" href="xpathle.css"/>
-   </head>
+  <head>
+    <title>XPathle</title>
+    <meta charset="utf-8" />
+    <script src="saxon-js/SaxonJS2.rt.js"></script>
+    <script>
+      window.onload = function () {
+        SaxonJS.transform({
+          stylesheetLocation: "xpathle.sef.json",
+          initialTemplate: "main"
+        },
+        "async");
+      }</script>
+    <link type="text/css" rel="stylesheet" href="xpathle.css" />
+  </head>
   <body>
     <div id="header">
       <h1 id="title"><span class="dFar">X</span><span class="d10">P</span><span class="d8">a</span><span 
