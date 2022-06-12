@@ -76,8 +76,15 @@
   </xsl:template>
   
   <xsl:template name="test">
-    <xsl:message select="'DDDDDDDD ', tr:node-distance(//*:param[@name='publisher-prefix-for-style-mapping']/@name, //*:param[@name='rule-category-span-class']/@value)"></xsl:message>
-    <!--<xsl:message select="'EEEEEEEE ', tr:node-distance(//*:define[@name = 'a.name']/*:attribute/@name, //*:define[@name = 'a.name']/*:attribute/@name)"></xsl:message>-->
+    <xsl:if test="namespace-uri(/*) = 'http://transpect.io'">
+      <xsl:message select="'DDDDDDDD ', tr:node-distance(//*:param[@name='publisher-prefix-for-style-mapping']/@name, //*:param[@name='rule-category-span-class']/@value)"/>
+    </xsl:if>
+    <xsl:if test="namespace-uri(/*) = 'http://relaxng.org/ns/structure/1.0'">
+      <xsl:message select="'EEEEEEEE ', tr:node-distance(//*:define[@name = 'a.name']/*:attribute/@name, //*:define[@name = 'a.name']/*:attribute)"/>
+    </xsl:if>      
+    <xsl:if test="namespace-uri(/*) = 'http://www.akomantoso.org/2.0'">
+      <xsl:message select="'FFFFFFFF ', tr:node-distance((//*:point)[1]/@id, (//*:point)[1]/text()[1])"/>
+    </xsl:if>
   </xsl:template>
   
   <xsl:template name="distance-to-closest-secret-item" as="xs:integer?">
@@ -278,6 +285,18 @@
     <xsl:variable name="element-distance" as="xs:integer"
       select="count($node1/ancestor-or-self::* intersect $common-ancestor/descendant::*)
               + count($node2/ancestor-or-self::* intersect $common-ancestor/descendant::*)"/>
+     <xsl:variable name="same-axis" as="xs:boolean" 
+      select="exists(
+                      $node1/ancestor::* intersect $node2/ancestor-or-self::*[1]
+                      union
+                      $node2/ancestor::* intersect $node1/ancestor-or-self::*[1]
+                    )"/>
+    <!--<xsl:message select="$node1/ancestor::* ! generate-id(.), ' :: ', generate-id($node2/ancestor-or-self::*[1])"></xsl:message>
+    <xsl:message select="$node2/ancestor::* ! generate-id(.), ' :: ', generate-id($node1/ancestor-or-self::*[1])"></xsl:message>
+    <xsl:variable name="same-axis" as="xs:boolean" 
+      select="$node1/ancestor::* ! generate-id(.) = generate-id($node2/ancestor-or-self::*[1])
+              or
+              $node2/ancestor::* ! generate-id(.) = generate-id($node1/ancestor-or-self::*[1])"/>-->
     <xsl:variable name="potential-sibling1" as="node()?" select="$node1/ancestor-or-self::node()[.. is $common-ancestor]"/>
     <xsl:variable name="potential-sibling2" as="node()?" select="$node2/ancestor-or-self::node()[.. is $common-ancestor]"/>
     <xsl:variable name="intermediate-siblings" as="node()*" 
@@ -307,30 +326,23 @@
       <xsl:when test="$element-distance = 0 
                       and ($node1/self::attribute() or $node2/self::attribute())">
         <!-- one attribute, one text, comment, or PI node on the same element -->
-        <xsl:sequence select="1 + count($node1[not(self::attribute())] | $node2[not(self::attribute())])"/>
+        <xsl:sequence select="1 + count($node1[not(self::attribute())][not(self::*)]
+                                        union 
+                                        $node2[not(self::attribute())][not(self::*)])"/>
       </xsl:when>
       <xsl:when test="$element-distance = 0">
         <!-- the same element, but maybe another node as child -->
         <xsl:sequence select="count(($node1 | $node2)[not(self::*)])"/>
       </xsl:when>
       <xsl:when test="$element-distance ge 1">
-        <xsl:choose>
-          <xsl:when test="exists(
-                            $node1/ancestor-or-self::* intersect $node2
-                            union
-                            $node2/ancestor-or-self::* intersect $node1
-                          )">
-            <xsl:sequence select="$element-distance + count(($node1 | $node2)[not(self::*)])"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:sequence select="$element-distance - 1 (: instead of going up to the common ancestor and down again,
-                                    we count the intermediate nodes, add them, add one for jumping from the last
-                                    intermediate item to the other node, and subtract 2 for not going to the common
-                                    ancestor from the penultimate ancestors :)
-                                    + count($intermediate-siblings/generate-id())
-                                    + count(($node1 | $node2)[not(self::*)](: this includes attributes :))"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:sequence select="$element-distance - (if ($same-axis) then 0 else 1) 
+                                (: instead of going up to the common ancestor and down again,
+                                we count the intermediate nodes, add them, add one for jumping from the last
+                                intermediate item to the other node, and subtract 2 for not going to the common
+                                ancestor from the penultimate ancestors :)
+                                + count($intermediate-siblings/generate-id())
+                                + count(($node1 | $node2)[not(self::*)](:[not(self::attribute())])
+                                + count($node1[self::attribute()]) + count($node2[self::attribute()]:))"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message error-code="XPathle02" terminate="yes" select="'This case should not happen. Element distance: ',
