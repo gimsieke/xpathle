@@ -42,6 +42,7 @@ td.distanceFar { color: white; font-weight: bold; }
 .d10 { color: #f06038; }
 .dFar { color: #f05839; }
 
+.error { color: #700; border: 2px solid red; padding: 0.2em; }
 .grey { background-color: #eee; }
 .white { background-color: white; }
 h3 + ul { margin-top: 0; }
