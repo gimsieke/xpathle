@@ -67,10 +67,14 @@
           <!-- the error may be deferred, for example, if $guess-path = 'false()' -->
           <xsl:apply-templates select="/" mode="serialize"/>
           <xsl:catch>
-            <p class="error">
-              <xsl:attribute name="id" select="'xpathle_error3'"/> There was an error (code <xsl:value-of
-                select="$err:code"/>) evaluating the expression <code><xsl:value-of select="$guess-path"/></code>:
-                <xsl:value-of select="$err:description"/></p>
+            <xsl:apply-templates select="/" mode="serialize">
+              <xsl:with-param name="error-para" as="element(html:p)" tunnel="yes">
+                <p class="error">
+                  <xsl:attribute name="id" select="'xpathle_error3'"/> There was an error (code <xsl:value-of
+                    select="$err:code"/>) evaluating the expression <code><xsl:value-of select="$guess-path"/></code>:
+                    <xsl:value-of select="$err:description"/></p>    
+              </xsl:with-param>
+            </xsl:apply-templates>
           </xsl:catch>
         </xsl:try>
       </div>
@@ -110,14 +114,18 @@
   <xsl:template name="distance-to-closest-secret-item" as="xs:integer?">
     <xsl:param name="selected-by-guess-path" as="item()*" tunnel="yes"/>
     <xsl:param name="selected-by-secret-path" as="item()*" tunnel="yes"/>
-    <xsl:if test="generate-id() = $selected-by-guess-path ! generate-id(.)">
-      <xsl:sequence select="xs:integer(min($selected-by-secret-path ! tr:node-distance(., current())))"/>
+    <xsl:if test="every $g in $selected-by-guess-path satisfies ($g instance of node())">
+      <xsl:if test="generate-id() = $selected-by-guess-path ! generate-id(.)">
+        <xsl:sequence select="xs:integer(min($selected-by-secret-path ! tr:node-distance(., current())))"/>
+      </xsl:if>  
     </xsl:if>
   </xsl:template>
   
   <xsl:function name="tr:result-is-error" as="xs:boolean">
     <xsl:param name="result" as="item()*"/>
-    <xsl:sequence select="exists($result/self::html:p[@id = 'xpathle_error'][@class = 'error'])"/>
+    <xsl:try select="exists($result/self::html:p[@id = 'xpathle_error'][@class = 'error'])">
+      <xsl:catch select="true()"/>
+    </xsl:try>
   </xsl:function>
   
   <xsl:template match="/" mode="serialize" priority="3">
@@ -129,7 +137,10 @@
     <xsl:param name="solved" as="xs:boolean" tunnel="yes"/>
     <xsl:param name="iteration" as="xs:integer" tunnel="yes" select="0"/>
     <xsl:param name="tries" as="xs:integer" tunnel="yes" select="6"/>
-    <xsl:variable name="guess-count" as="xs:integer" select="count($selected-by-guess-path[not(tr:result-is-error(.))])"/>
+    <xsl:param name="error-para" as="element(html:p)?" tunnel="yes"/>
+    <xsl:variable name="guess-count" as="xs:integer" 
+      select="if (exists($error-para)) then 0
+              else count($selected-by-guess-path[not(tr:result-is-error(.))])"/>
     <xsl:variable name="secret-count" as="xs:integer" select="count($selected-by-secret-path)"/>
     <xsl:if test="$secret-count = 0">
       <xsl:message terminate="yes" error-code="XPathle01">The secret XPath expression <xsl:value-of select="$secret-path"/> does not select anything.</xsl:message>
@@ -144,9 +155,17 @@
     </xsl:if>
     <xsl:try>
       <!-- the error may be deferred, for example, if $guess-path = 'false()' -->
-      <xsl:if test="tr:result-is-error($selected-by-guess-path)">
-        <xsl:sequence select="$selected-by-guess-path"/>
-      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="some $g in $selected-by-guess-path satisfies (not($g instance of node()))
+                        or (exists($error-para) and not($error-para instance of node()))">
+          <p class="warning">
+          <xsl:attribute name="id" select="'xpathle_error3'"/> Warning (code XPathle03): <code><xsl:value-of
+            select="$selected-by-guess-path[not(. instance of node())], $error-para"/></code> is not a node from the document.</p>
+        </xsl:when>
+        <xsl:when test="exists($error-para)">
+          <xsl:sequence select="$error-para"/>
+        </xsl:when>
+      </xsl:choose>
       <xsl:catch>
         <p class="error">
           <xsl:attribute name="id" select="'xpathle_error2'"/> There was an error (code <xsl:value-of select="$err:code"
@@ -154,6 +173,7 @@
             select="$err:description"/></p>
       </xsl:catch>
     </xsl:try>
+    <xsl:sequence select="$error-para"/>
     <p>Attempts so far: <span id="iteration"><xsl:value-of select="$iteration + 1"/></span> of <xsl:value-of select="$tries"/></p>
     <div id="counts">
       <xsl:choose>
@@ -221,6 +241,9 @@
     </xsl:variable>
     <span title="{string-join(($path, 'Distance:'[exists($distance)], $distance), ' ')}">
       <xsl:choose>
+        <xsl:when test="some $g in $selected-by-guess-path satisfies (not($g instance of node()))">
+          <!-- the guess was 'false()', for example -->
+        </xsl:when>
         <xsl:when test="generate-id() = ($selected-by-guess-path except $highlight-items) ! generate-id(.)">
           <xsl:attribute name="class" select="'white hidden'"/>
         </xsl:when>
