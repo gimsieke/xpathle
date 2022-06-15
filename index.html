@@ -43,7 +43,7 @@
       depending on your computer. All calculations will be carried out by XSLT 3.0 in the browser (see the
       links at the bottom of the page).</p>
       <h3>Distance metric</h3>
-      <p>The distance metric works as follows for a given pair of items:</p>
+      <p>The distance “metric” (which is not a metric, see below) works as follows for a given pair of items:</p>
       <ul>
         <li>Find the common ancestor element of both items</li>
         <li>If one item is ancestor of the other, the element distance is the number of steps you need to climb up on
@@ -57,8 +57,14 @@
         <li>Then don’t take the two steps to the common ancestor and down to the other node, but take the
         sibling path instead.</li>
       </ul>
+      <p>The last requirement makes this a non-metric because it violates the triangle inequality. Suppose you have
+      a list with 5 items. If it weren’t for the last requirement, the distance between the first and the last item
+      would be 2: Go up one step to the list element, go down one step to the fifth item. Applying the last requirement,
+      you won’t go up because the first item is already the penultimate element on its <code>ancestor-or-self</code>
+      axis. Instead, you go sideways to the fifth item, and the distance then is 4.</p>
       <h3>To Do</h3>
       <ul>
+        <li>Add SVG that visualizes the metric computation for some examples.</li>
         <li>Obfuscate the configuration and the current attempt number better. Or leave it as weakly secure as it is.</li>
         <li>Let users resume the game by storing session data in the browser.</li>
       </ul>
