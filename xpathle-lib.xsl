@@ -154,15 +154,19 @@
             select="$err:description"/></p>
       </xsl:catch>
     </xsl:try>
-    <p>Attempts so far: <span id="iteration"><xsl:value-of select="$iteration + 1"/></span></p>
+    <p>Attempts so far: <span id="iteration"><xsl:value-of select="$iteration + 1"/></span> of <xsl:value-of select="$tries"/></p>
     <div id="counts">
       <xsl:choose>
         <xsl:when test="$solved">
           <h2>Congratulations!</h2>
           <p>You needed <xsl:value-of select="$iteration + 1"/> attempt<xsl:if test="$iteration ge 1">s</xsl:if> to solve this puzzle.</p>
-          <p id="winning">The items selected by <code><xsl:value-of select="$guess-path"/></code> are
+          <p id="winning" class="end">The items selected by <code><xsl:value-of select="$guess-path"/></code> are
             identical to the items selected by the secret XPath expression.</p>
           <p>The secret expression is: <code><xsl:value-of select="$secret-path"/></code>.</p>
+        </xsl:when>
+        <xsl:when test="$iteration + 1 = $tries">
+          <p id="losing" class="end">Unfortunately, you couldn’t solve the puzzle in <xsl:value-of select="$tries"/> attempt<xsl:if test="$iteration ge 1">s</xsl:if>.
+          Hopefully you learned a bit of XPath nevertheless.</p>
         </xsl:when>
       </xsl:choose>
       <table>

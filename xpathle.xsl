@@ -4,6 +4,7 @@
   xmlns:my="bogo:my"
   xmlns:fn="http://www.w3.org/2005/xpath-functions"
   xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT"
+  xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization"
   xmlns:saxon="http://saxon.sf.net/"
   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
@@ -34,7 +35,11 @@
     <xsl:param name="name" as="xs:string"/>
     <xsl:param name="map" as="map(*)"/>
     <xsl:param name="type" as="xs:string"/>
-    <p><button name="{$type}" value="{$name}" class="load"><xsl:value-of select="$map?description"/></button></p>
+    <p>
+      <xsl:if test="$type = 'daily'">
+        <xsl:value-of select="fn:format-date(xs:date($name), '[MNn] [D], [Y]')"/>: 
+      </xsl:if>
+      <button name="{$type}" value="{$name}" class="load"><xsl:value-of select="$map?description"/></button></p>
   </xsl:function>
   
   <xsl:function name="my:get-conf" as="map(*)">
@@ -51,16 +56,22 @@
       <xsl:variable name="current-date" as="xs:string" 
         select="current-date() => string() => replace('^(\d{4}-\d\d-\d\d).+$', '$1')"/>
       <xsl:variable name="daily" as="map(*)?" select="$conf?daily($current-date)"/>
-      <xsl:if test="exists($daily)">
+      <xsl:variable name="archive" as="xs:string*" select="sort(map:keys($conf?daily)[xs:date(.) lt current-date()])"/>
+      <xsl:if test="exists($daily) or exists($archive)">
         <h2>Daily</h2>
-        <xsl:variable name="archive" as="xs:string*" select="sort(map:keys($conf?daily)[xs:date(.) lt current-date()])"/>
         <xsl:if test="exists($archive)">
+          <xsl:if test="empty($daily)">
+            <p>Sorry, no daily challenge today. But you can send a suggestion to <a 
+              href="mailto:gerrit.imsieke@le-tex.de">Gerrit</a>. Or browse the archive.</p>
+          </xsl:if>
           <details>
             <summary>Archive</summary>
             <xsl:sequence select="$archive ! my:render-conf-item(., $conf?daily(.), 'daily')"/>
           </details>
         </xsl:if>
-        <xsl:sequence select="my:render-conf-item($current-date, $daily, 'daily')"/>        
+        <xsl:if test="exists($daily)">
+          <xsl:sequence select="my:render-conf-item($current-date, $daily, 'daily')"/>
+        </xsl:if>
       </xsl:if>
 
     </xsl:result-document>
@@ -77,7 +88,7 @@
           <xsl:attribute name="data-cache-url" select="$conf($type)($name)?cache_url"/>
         </xsl:if>
       </input></p>
-    <p><label for="guesspath">Guess an XPath expression:</label>  <input id="guesspath" type="text" 
+    <p id="guesspara"><label for="guesspath">Guess an XPath expression:</label>  <input id="guesspath" type="text" 
       name="guesspath" autocomplete="off" size="40" autocapitalize="none" value="()"/>  <button 
         id="submit-guess" value="{$type}/{$name}">Submit</button></p>
     </xsl:result-document>
@@ -111,11 +122,17 @@
 
   <xsl:template name="process">
     <xsl:param name="href"/>
-    <xsl:result-document href="#rendition" method="ixsl:replace-content">
+    <xsl:variable name="result" as="element(html:div)">
       <xsl:apply-templates select="doc($href)" mode="process-document-entrypoint">
         <xsl:with-param name="omit-html-scaffold" select="true()" as="xs:boolean" tunnel="yes"/>
       </xsl:apply-templates>
+    </xsl:variable>
+    <xsl:result-document href="#rendition" method="ixsl:replace-content">
+      <xsl:sequence select="$result"/>
     </xsl:result-document>
+    <xsl:if test="$result//html:p[@class = 'end']">
+      <xsl:result-document href="#guesspara" method="ixsl:replace-content"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="." mode="ixsl:onkeydown">

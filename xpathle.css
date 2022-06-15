@@ -8,7 +8,7 @@ div#code {
   scrollbar-width: auto;
   font-family: Consolas, monospace;
 }
-#footer { font-size: smaller; }
+#footer { font-size: smaller; margin-top: 3em; }
 .name.elt { color: #55e; }
 .name.att { color: #e95; }
 .val.att { color: #a66; }
