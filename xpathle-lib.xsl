@@ -122,7 +122,7 @@
       <xsl:choose>
         <xsl:when test="$solved">
           <h2>Congratulations!</h2>
-          <p>You needed <xsl:value-of select="$iteration + 1"/> attempt<xsl:if test="$iteration gt 1">s</xsl:if> to solve this puzzle.</p>
+          <p>You needed <xsl:value-of select="$iteration + 1"/> attempt<xsl:if test="$iteration ge 1">s</xsl:if> to solve this puzzle.</p>
           <p id="winning">The items selected by <code><xsl:value-of select="$guess-path"/></code> are
             identical to the items selected by the secret XPath expression.</p>
           <p>The secret expression is: <code><xsl:value-of select="$secret-path"/></code>.</p>
