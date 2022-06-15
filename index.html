@@ -61,7 +61,20 @@
       a list with 5 items. If it weren’t for the last requirement, the distance between the first and the last item
       would be 2: Go up one step to the list element, go down one step to the fifth item. Applying the last requirement,
       you won’t go up because the first item is already the penultimate element on its <code>ancestor-or-self</code>
-      axis. Instead, you go sideways to the fifth item, and the distance then is 4.</p>
+      axis. Instead, you go sideways to the fifth item, and the distance then is 4. The individual distances for
+      each list item to the list element equal 1, so the sum of both distances is 2. This violates the triangle
+      inequality that says that the sum of the distances to some third point is at least as large as the direct 
+      distance between two points.</p>
+      <p>This non-metric was chosen because it seemed counter-intuitive that, for example, the first and the last 
+        paragraph of a novel have a distance of 4: Go up to the common ancestor, which might be <code>body</code>, 
+      passing a <code>chapter</code> element, then go down through another <code>chapter</code> to the last paragraph
+      of the novel. On the other hand, using the number of intermediate nodes as a metric would make guessing a secretly 
+      selected item much easier: You take your first guess and go that many nodes back or forth, like in 
+        <code>let $guess := //p[10] return (//node()[$guess &lt;&lt; .])[24]</code> where your initial guess 
+      was <code>//p[10]</code>, the reported distance was 24 and you move 24 nodes forward in order to select
+        an item of the secret set.</p>
+      <p>The “metric” applied here seeks to strike the balance between being intuitive and being ambiguous enough
+      to avoid easy wins.</p>
       <h3>To Do</h3>
       <ul>
         <li>Add SVG that visualizes the metric computation for some examples.</li>

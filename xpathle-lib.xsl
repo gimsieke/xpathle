@@ -165,6 +165,9 @@
         <xsl:when test="exists($error-para)">
           <xsl:sequence select="$error-para"/>
         </xsl:when>
+        <xsl:when test="tr:result-is-error($selected-by-guess-path)">
+          <xsl:sequence select="$selected-by-guess-path"/>
+        </xsl:when>
       </xsl:choose>
       <xsl:catch>
         <p class="error">
