@@ -263,9 +263,6 @@
         </xsl:when>-->
         <xsl:otherwise>
           <xsl:attribute name="class" select="'white'"/>
-          <xsl:attribute name="data-highlight-count" select="count($highlight-items)"></xsl:attribute>
-          <xsl:attribute name="data-guess-count" select="count($selected-by-guess-path)"></xsl:attribute>
-          <xsl:attribute name="data-generate-ids" select="generate-id(), $highlight-items ! generate-id(.)" separator=" "/>
         </xsl:otherwise>
       </xsl:choose>
       <xsl:next-match/>
