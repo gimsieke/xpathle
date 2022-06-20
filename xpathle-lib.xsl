@@ -100,19 +100,26 @@
   </xsl:template>
   
   <xsl:template name="test">
-    <xsl:if test="namespace-uri(/*) = 'http://transpect.io'">
+    <xsl:choose>
+    <xsl:when test="namespace-uri(/*) = 'http://transpect.io'">
       <xsl:message select="'DDDDDDDD ', tr:node-distance(//*:param[@name='publisher-prefix-for-style-mapping']/@name, //*:param[@name='rule-category-span-class']/@value)"/>
-    </xsl:if>
-    <xsl:if test="namespace-uri(/*) = 'http://relaxng.org/ns/structure/1.0'">
+    </xsl:when>
+    <xsl:when test="namespace-uri(/*) = 'http://relaxng.org/ns/structure/1.0'">
       <xsl:message select="'EEEEEEEE ', tr:node-distance(//*:define[@name = 'a.name']/*:attribute/@name, //*:define[@name = 'a.name']/*:attribute)"/>
-    </xsl:if>      
-    <xsl:if test="namespace-uri(/*) = 'http://www.akomantoso.org/2.0'">
+    </xsl:when>      
+    <xsl:when test="namespace-uri(/*) = 'http://www.akomantoso.org/2.0'">
       <xsl:message select="'FFFFFFFF ', tr:node-distance((//*:point)[1]/@id, (//*:point)[1]/text()[1])"/>
-    </xsl:if>
-    <xsl:if test="namespace-uri(/*) = 'http://www.w3.org/1999/xhtml'">
-      <xsl:message select="'GGGGGGGG ', tr:node-distance((//text()[. = 'Styles are retained as '])[1]/following-sibling::*[1]/@href, 
-                                      //text()[starts-with(., '. Generation is')]/../preceding-sibling::*[3]/text())"/>
-    </xsl:if>
+    </xsl:when>
+    <xsl:when test="namespace-uri(/*) = 'http://www.w3.org/1999/xhtml' and /html:html/html:head/html:title = 'XPathle'">
+      <xsl:message select="'GGGGGGGG ', tr:node-distance((//html:details)[1]/html:p[1], 
+                                      (//html:details)[1]/@id)"/>
+    </xsl:when>
+    <xsl:when test="namespace-uri(/*) = 'http://www.w3.org/1999/xhtml' and not(/html:html/html:head/html:title = 'XPathle')">
+      <xsl:message select="'HHHHHHHH ', tr:node-distance((//text()[. = 'Styles are retained as '])[1], 
+                                      //text()[starts-with(., '. Generation is')])"/>
+    </xsl:when>
+      
+    </xsl:choose>
   </xsl:template>
   
   <xsl:template name="distance-to-closest-secret-item" as="xs:integer?">
@@ -368,10 +375,10 @@
               union
               $potential-sibling2/following-sibling::node()[empty(self::text()[not(normalize-space())])]
                                                            [. &lt;&lt; $potential-sibling1]"/>
-    <!--<xsl:message select="'ED: ', $element-distance, ' corr: ', 
+    <xsl:message select="'ED: ', $element-distance, ' corr: ', 
       if ($same-axis[exists($node1/self::* | $node2/self::*)]) then 0 else 1,
       ' inter: ', count($intermediate-siblings/generate-id()), count($intermediate-siblings),
-      ' non-elt: ', count(($node1 | $node2)[not(self::*)])"/>-->
+      ' non-elt: ', count(($node1 | $node2)[not(self::*)])"/>
     <xsl:choose>
       <xsl:when test="$identical">
         <xsl:sequence select="0"/>
@@ -390,9 +397,9 @@
                                         union 
                                         $node2[not(self::attribute())][not(self::*)])"/>
       </xsl:when>
-      <xsl:when test="exists($node1 intersect ($potential-sibling1 | $potential-sibling2))
+      <xsl:when test="$node1[empty(self::attribute())]/.. is $common-ancestor
                       and
-                      exists($node2 intersect ($potential-sibling1 | $potential-sibling2))">
+                      $node2[empty(self::attribute())]/.. is $common-ancestor">
         <xsl:sequence select="count($intermediate-siblings) + 1"/>
       </xsl:when>
       <xsl:otherwise>
@@ -402,8 +409,10 @@
                                 intermediate item to the other node, and subtract 2 for not going to the common
                                 ancestor from the penultimate ancestors :)
                                 + count($intermediate-siblings/generate-id())
-                                + count(($node1 | $node2)[not(self::*)](:[not(self::attribute())])
-                                + count($node1[self::attribute()]) + count($node2[self::attribute()]:))"/>
+                                + count(($node1 | $node2)[not(self::*)]
+                                (:[not(self::attribute())])
+                                + count($node1[self::attribute()]) + count($node2[self::attribute()]:)
+                                )"/>
       </xsl:otherwise>
       <!--<xsl:otherwise>
         <xsl:message error-code="XPathle02" terminate="yes" select="'This case should not happen. Element distance: ',
