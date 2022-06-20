@@ -38,7 +38,12 @@
       XML (you might need to click into the rendering area and scroll down or sideways). The match quality
       will be signalled by color code and by tool tip. The tool tip contains both the hierarchical XPath to
       the item and the distance to the closest target item.</p>
-      <p>Performance: The distance calculation scales with the product of secretly selected items and the
+      <p>The number of items highlighted is limited to <code>min((2 * count($secret-items), 20)</code>.
+      Otherwise you’d be able to select every node and quickly come up with an XPath expression that 
+      selects only the green ones. Only when your guess selects the same items as the secret expression,
+      the number of highlighted items won’t be limited any more.</p>
+      <h3>Performance</h3>
+      <p>The distance calculation scales with the product of secretly selected items and the
       items you guess. Therefore it can take a couple of seconds if these counts are around 30 or higher, 
       depending on your computer. All calculations will be carried out by XSLT 3.0 in the browser (see the
       links at the bottom of the page).</p>
