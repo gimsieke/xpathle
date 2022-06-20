@@ -310,7 +310,9 @@
     </span>
     <span class="val att">
       <xsl:text>="</xsl:text>
-      <xsl:value-of select="."/>
+      <xsl:value-of select=". => replace('&amp;', '&amp;amp;')
+                              => replace('&lt;', '&amp;lt;')
+                              => replace('&#x22;', '&amp;quot;')"/>
       <xsl:text>"</xsl:text>
     </span>
   </xsl:template>
@@ -326,7 +328,8 @@
   </xsl:template>
   
   <xsl:template match="text()" mode="serialize" priority="1">
-    <xsl:value-of select="."/>
+    <xsl:value-of select=". => replace('&amp;', '&amp;amp;')
+                            => replace('&lt;', '&amp;lt;')"/>
   </xsl:template>
 
   <xsl:template match="comment()" mode="serialize" priority="1">
