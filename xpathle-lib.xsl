@@ -378,10 +378,10 @@
               union
               $potential-sibling2/following-sibling::node()[empty(self::text()[not(normalize-space())])]
                                                            [. &lt;&lt; $potential-sibling1]"/>
-    <xsl:message select="'ED: ', $element-distance, ' corr: ', 
+    <!--<xsl:message select="'ED: ', $element-distance, ' corr: ', 
       if ($same-axis[exists($node1/self::* | $node2/self::*)]) then 0 else 1,
       ' inter: ', count($intermediate-siblings/generate-id()), count($intermediate-siblings),
-      ' non-elt: ', count(($node1 | $node2)[not(self::*)])"/>
+      ' non-elt: ', count(($node1 | $node2)[not(self::*)])"/>-->
     <xsl:choose>
       <xsl:when test="$identical">
         <xsl:sequence select="0"/>
