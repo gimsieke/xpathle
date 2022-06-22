@@ -755,6 +755,13 @@
         an item of the secret set.</p>
       <p>The “metric” applied here seeks to strike the balance between being intuitive and being ambiguous enough
       to avoid easy wins.</p>
+      <h3>Known Issues</h3>
+      <ul>
+        <li>The serialized XML lacks namespace declarations.</li>
+        <li>Multiline attribute values, as they may appear in XPath expressions in XSLT <code>@select</code> attributes,
+        are serialized as single lines. This is because XML parsers are required to turn newlines in attributes into 
+        plain spaces, which is a pity.</li>
+      </ul>
       <h3>To Do</h3>
       <ul>
         <li>Obfuscate the configuration and the current attempt number better. Or leave it as weakly secure as it is.</li>
