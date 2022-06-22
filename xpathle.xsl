@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:my="bogo:my"
+  xmlns:tr="http://transpect.io"
   xmlns:fn="http://www.w3.org/2005/xpath-functions"
   xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT"
   xmlns:html="http://www.w3.org/1999/xhtml"
@@ -31,7 +31,7 @@
     </ixsl:schedule-action>
   </xsl:template>
   
-  <xsl:function name="my:render-conf-item" as="item()*">
+  <xsl:function name="tr:render-conf-item" as="item()*">
     <xsl:param name="name" as="xs:string"/>
     <xsl:param name="map" as="map(*)"/>
     <xsl:param name="type" as="xs:string"/>
@@ -39,22 +39,26 @@
       <xsl:if test="$type = 'daily'">
         <xsl:value-of select="fn:format-date(xs:date($name), '[MNn] [D], [Y]')"/>: 
       </xsl:if>
-      <button name="{$type}" value="{$name}" class="load"><xsl:value-of select="$map?description"/></button></p>
+      <button name="{$type}" value="{$name}" class="load">
+        <xsl:if test="$type = 'daily' and $name = tr:YYYY-MM-DD()">
+          <xsl:attribute name="id" select="'daily'"/>
+        </xsl:if>
+        <xsl:value-of select="$map?description"/>
+      </button></p>
   </xsl:function>
   
-  <xsl:function name="my:get-conf" as="map(*)">
+  <xsl:function name="tr:get-conf" as="map(*)">
     <xsl:sequence select="parse-json(ixsl:call(ixsl:window(), 'atob', [replace(string(id('config', ixsl:page())), '\s+', '', 's')]))"/>
   </xsl:function>
   
   <xsl:template name="populate-controls">
-    <xsl:variable name="conf" select="my:get-conf()"/>
+    <xsl:variable name="conf" select="tr:get-conf()"/>
     <xsl:result-document href="#controls">
       <h2>Examples</h2>
       <xsl:sequence select="sort(map:keys($conf?example), 'http://saxon.sf.net/collation?ignore-case=yes', 
                                  function($key) { $conf?example($key)?description })
-                            ! my:render-conf-item(., $conf?example(.), 'example')"/>
-      <xsl:variable name="current-date" as="xs:string" 
-        select="current-date() => string() => replace('^(\d{4}-\d\d-\d\d).+$', '$1')"/>
+                            ! tr:render-conf-item(., $conf?example(.), 'example')"/>
+      <xsl:variable name="current-date" as="xs:string" select="tr:YYYY-MM-DD()"/>
       <xsl:variable name="daily" as="map(*)?" select="$conf?daily($current-date)"/>
       <xsl:variable name="archive" as="xs:string*" select="sort(map:keys($conf?daily)[xs:date(.) lt current-date()])"/>
       <xsl:if test="exists($daily) or exists($archive)">
@@ -66,19 +70,18 @@
           </xsl:if>
           <details>
             <summary>Archive</summary>
-            <xsl:sequence select="$archive ! my:render-conf-item(., $conf?daily(.), 'daily')"/>
+            <xsl:sequence select="$archive ! tr:render-conf-item(., $conf?daily(.), 'daily')"/>
           </details>
         </xsl:if>
         <xsl:if test="exists($daily)">
-          <xsl:sequence select="my:render-conf-item($current-date, $daily, 'daily')"/>
+          <xsl:sequence select="tr:render-conf-item($current-date, $daily, 'daily')"/>
         </xsl:if>
       </xsl:if>
-
     </xsl:result-document>
   </xsl:template>
-  
+
   <xsl:template mode="ixsl:onclick" match="button[@name=('example', 'daily')]">
-    <xsl:variable name="conf" as="map(*)" select="my:get-conf()"/>
+    <xsl:variable name="conf" as="map(*)" select="tr:get-conf()"/>
     <xsl:variable name="name" as="xs:string" select="ixsl:get(., 'value')"/>
     <xsl:variable name="type" as="xs:string" select="@name"/>
     <xsl:result-document href="#controls2" method="ixsl:replace-content">
@@ -103,7 +106,7 @@
   <xsl:template mode="ixsl:onclick" match="id('submit-guess')" name="guess">
     <xsl:variable name="doc-uri" as="xs:string" 
       select="(id('doc-uri',ixsl:page())/@data-cache-url, ixsl:get(id('doc-uri',ixsl:page()), 'value'))[1]"/>
-    <xsl:variable name="conf" as="map(*)" select="my:get-conf()"/>
+    <xsl:variable name="conf" as="map(*)" select="tr:get-conf()"/>
     <xsl:variable name="type-and-name" as="xs:string" select="ixsl:get(id('submit-guess'), 'value')"/>
     <xsl:variable name="type" as="xs:string" select="substring-before($type-and-name, '/')"/>
     <xsl:variable name="name" as="xs:string" select="substring-after($type-and-name, '/')"/>
@@ -116,6 +119,9 @@
         <xsl:with-param name="tries" select="$conf($type)($name)?tries ! xs:integer(.)" tunnel="yes" as="xs:integer"/>
         <xsl:with-param name="href" select="$doc-uri"/>
         <xsl:with-param name="iteration" as="xs:integer" select="$iteration" tunnel="yes"/>
+        <xsl:with-param name="is-daily" as="xs:boolean" tunnel="yes" 
+          select="tr:YYYY-MM-DD() = $name and $type = 'daily'"/>
+        <xsl:with-param name="description" as="xs:string" tunnel="yes" select="$conf($type)($name)?description"/>
       </xsl:call-template>
     </ixsl:schedule-action>
   </xsl:template>

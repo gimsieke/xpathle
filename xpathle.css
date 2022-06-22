@@ -52,3 +52,11 @@ td { font-weight: bold; }
 body { font-family: sans-serif; margin-left:2em; }
 code { background-color: #eee; }
 #config { display: none; }
+#share { 
+  background-color: #60d060;
+  font-size: 115%;
+  padding: 0.5em;
+  font-weight: bold; 
+  color: white;
+  border: none;
+}

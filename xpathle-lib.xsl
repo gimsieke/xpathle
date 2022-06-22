@@ -149,6 +149,8 @@
     <xsl:param name="iteration" as="xs:integer" tunnel="yes" select="0"/>
     <xsl:param name="tries" as="xs:integer" tunnel="yes" select="6"/>
     <xsl:param name="error-para" as="element(html:p)?" tunnel="yes"/>
+    <xsl:param name="is-daily" as="xs:boolean" tunnel="yes" select="false()"/>
+    <xsl:param name="description" as="xs:string" tunnel="yes" select="''"/>
     <xsl:variable name="guess-count" as="xs:integer" 
       select="if (exists($error-para)) then 0
               else count($selected-by-guess-path[not(tr:result-is-error(.))])"/>
@@ -190,13 +192,23 @@
     <xsl:sequence select="$error-para"/>
     <p>Attempts so far: <span id="iteration"><xsl:value-of select="$iteration + 1"/></span> of <xsl:value-of select="$tries"/></p>
     <div id="counts">
+      <xsl:variable name="attempts-string" as="xs:string" 
+        select="string($iteration + 1) || ' attempt' || (if ($iteration ge 1) then 's' else '')">
+      </xsl:variable>
       <xsl:choose>
         <xsl:when test="$solved">
           <h2>Congratulations!</h2>
-          <p>You needed <xsl:value-of select="$iteration + 1"/> attempt<xsl:if test="$iteration ge 1">s</xsl:if> to solve this puzzle.</p>
+          <p>You needed <xsl:value-of select="$attempts-string"/> to solve this puzzle.</p>
           <p id="winning" class="end">The items selected by <code><xsl:value-of select="$guess-path"/></code> are
             identical to the items selected by the secret XPath expression.</p>
           <p>The secret expression is: <code><xsl:value-of select="$secret-path"/></code>.</p>
+          <xsl:if test="$is-daily">
+            <xsl:variable name="clipboard-text" as="xs:string" 
+              select="'It took me ' || $attempts-string || ' to guess an #XPath expression that selected the correct items in #XPathle’s ' ||
+              tr:YYYY-MM-DD() || ' challenge, “' || replace($description, '''', '\\''') || '”\nhttps://gimsieke.github.io/xpathle/'"/>
+            <p><button id="share" onclick="navigator.clipboard.writeText('{$clipboard-text}')">Share</button>
+              (copy to clipboard)</p>
+          </xsl:if>
         </xsl:when>
         <xsl:when test="$iteration + 1 = $tries">
           <p id="losing" class="end">Unfortunately, you couldn’t solve the puzzle in <xsl:value-of select="$tries"/> attempt<xsl:if test="$iteration ge 1">s</xsl:if>.
@@ -422,6 +434,10 @@
           $element-distance"></xsl:message>
       </xsl:otherwise>-->
     </xsl:choose>
+  </xsl:function>
+
+  <xsl:function name="tr:YYYY-MM-DD" as="xs:string">
+    <xsl:sequence select="current-date() => string() => replace('^(\d{4}-\d\d-\d\d).+$', '$1')"/>
   </xsl:function>
 
 </xsl:stylesheet>
