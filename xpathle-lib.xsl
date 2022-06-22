@@ -213,6 +213,7 @@
         <xsl:when test="$iteration + 1 = $tries">
           <p id="losing" class="end">Unfortunately, you couldn’t solve the puzzle in <xsl:value-of select="$tries"/> attempt<xsl:if test="$iteration ge 1">s</xsl:if>.
           Hopefully you learned a bit of XPath nevertheless.</p>
+          <p>The secret expression is: <code><xsl:value-of select="$secret-path"/></code>.</p>
         </xsl:when>
       </xsl:choose>
       <table>
