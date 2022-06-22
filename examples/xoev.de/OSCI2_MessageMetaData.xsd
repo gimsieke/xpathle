@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:oscimeta="http://xoev.de/transport/osci-meta"
+  xmlns:wsa="http://www.w3.org/2005/08/addressing"
+  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+  xmlns:xoev-code="http://xoev.de/schemata/code/1_0" targetNamespace="http://xoev.de/transport/osci-meta" version="1.0"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:appinfo>
+      <standard>
+        <nameLang>XTA 2 - Interoperabilitätsstandard zur Einbindung von IT-Fachapplikationen in eine Infrastruktur für
+          Nachrichtenübermittlung</nameLang>
+        <nameKurz>XTA 2</nameKurz>
+        <nameTechnisch>xta2</nameTechnisch>
+        <kennung>urn:xoev-de:kosit:standard:xta2</kennung>
+        <beschreibung>XTA ist ein vom IT-Planungsrat empfohlener Interoperabilitätsstandard. XTA (XÖV Transport Adapter)
+          definiert einen Webservice für die Anbindung von IT-Fachapplikationen an eine technische Infrastruktur für
+          Nachrichtenübermittlung (Transportverfahren). Diese Webservice-Definition (genannt XTA-Webservice) ist für
+          alle Fachlichkeiten einsetzbar. Außerdem bietet XTA Definitionen für Struktur und Semantik von "Service
+          Profilen" an. Mittels eines instanziierten "XTA Service Profils" formuliert eine Fachlichkeit die durch sie
+          geforderten Service Qualitäten für die Nachrichten- und Datenübermittlung dieser Fachlichkeit.</beschreibung>
+      </standard>
+      <versionStandard>
+        <version>2.2</version>
+        <versionXOEVProfil>1.5.1</versionXOEVProfil>
+        <versionXOEVHandbuch>2.1</versionXOEVHandbuch>
+        <versionXGenerator>3.0.1</versionXGenerator>
+        <versionModellierungswerkzeug>18.0 SP6</versionModellierungswerkzeug>
+        <nameModellierungswerkzeug>MagicDraw</nameModellierungswerkzeug>
+      </versionStandard>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:import schemaLocation="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+  <xs:import schemaLocation="http://www.w3.org/2005/08/addressing/ws-addr.xsd"
+    namespace="http://www.w3.org/2005/08/addressing"/>
+  <xs:import schemaLocation="http://xoev.de/schemata/code/1_0/xoev-code.xsd"
+    namespace="http://xoev.de/schemata/code/1_0"/>
+  <xs:complexType name="DeliveryAttributesType">
+    <xs:annotation>
+      <xs:documentation>Struktur für Zeitstempel der Transportetappen, erforderliche Servicequalitäten und angeforderte
+        Quittungen.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Origin" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Zeitstempel für die Erzeugung der Nachricht durch den Autor und deren Übermittlung an den
+            Sender.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="InitialSend" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Zeitstempel für den Zeitpunkt des Versands der Nachricht vom Sender an den
+            Empfänger.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NotBefore" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Zeitpunkt des frühesten zulässigen Transport der Nachricht vom Sender an den Empfänger,
+            vorgegeben durch den Autor. Fall dieser Zeitpunkt bei der Bearbeitung durch den Sender bereits in der
+            Vergangenheit liegt, erfolgt der Versand sofort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ObsoleteAfter" minOccurs="0" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>Datum, ab dem die Nachricht obsolet ist, dieses kann durch Autor festgelegt
+            werden.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Delivery" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Zeitpunkt des Eingangs bei einem Empfänger.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="InitialFetch" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Zeitpunkt der Zustellung beim Leser durch Abruf aus einer MessageBox mit der Methode
+            getMessage oder durch Zustellung beim Leser mit der Methode deliverMessage.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Reception" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Empfangszeitpunkt (lokale Systemzeit) der Nachricht durch den Leser, gesetzt durch den
+            Empfänger bei erfolgreicher Abholung oder Zustellung.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ServiceQuality" minOccurs="0" type="oscimeta:NonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation>Verweis auf Servicequalitäten des Transportauftrags. Wenn vordefinierte ServiceProfile für
+            den entsprechenden Service gegeben sind (beispielsweise per offizieller Definition und Auslieferung durch
+            einen Fachstandard), ist das Element ServiceQuality durch den Autor zur Laufzeit bei Erteilung des
+            Transportauftrags mandatorisch zu verwenden. Es ist in das Element eine Referenz auf die entsprechende
+            ServiceProfil-Instanz einzutragen. Dazu ist der Inhalt des Elements uriDerVersion der Serviceprofil-Instanz
+            anzugeben. Die Einhaltung der geforderten Servicequalitäten durch alle beteiligten Infrastrukturknoten ist
+            verpflichtend, ebenso die Überprüfung der korrekten Eintragung durch den Sender. Falls keine
+            Serviceprofil-Instanzen vorgegeben sind, kann das Element genutzt werden, um eine lokal definierte
+            Serviceprofil-Instanz zu referenzieren. Alternativ kann auf die Verwendung des Elements verzichtet
+            werden.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReceiptRequests" minOccurs="0" type="oscimeta:ReceiptRequestType">
+        <xs:annotation>
+          <xs:documentation>Struktur für die vom Autor für den Transportauftrag geforderten Quittungen. Für die
+            erforderlichen Quittungen werden hier leere Elemente übertragen.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NotifyAuthor" minOccurs="0" type="oscimeta:NotifyAuthorType">
+        <xs:annotation>
+          <xs:documentation>Benachrichtigung des Autors über erfolgreiche Zustellung erfordert.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DestinationsType">
+    <xs:annotation>
+      <xs:documentation>Struktur für Adressaten einer Nachricht.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="oscimeta:Reader">
+        <xs:annotation>
+          <xs:documentation>Der Leser der Nachricht. Zusätzlich vom Leser verwendete Zertifikate können in
+            SecurityToken/BinarySecurityToken abgelegt werden.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="oscimeta:OtherDestinations" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Weitere Adressaten der Nachricht. Zusätzlich von weiteren Adressaten verwendete Zertifikate
+            können in SecurityToken/BinarySecurityToken abgelegt werden.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KeyCodeType">
+    <xs:annotation>
+      <xs:documentation>Struktur für die flexible Übertragung von Schlüssel/Wert-Paaren</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="xoev-code:Code">
+        <xs:sequence>
+          <xs:element name="code" type="xs:token" form="unqualified"/>
+          <xs:element name="name" minOccurs="0" type="xs:normalizedString" form="unqualified">
+            <xs:annotation>
+              <xs:documentation>Dokumentation aus XOEV-Bibliothek:</xs:documentation>
+              <xs:documentation>Mit diesem optionalen XML-Element kann die Beschreibung des Codes, wie in der jeweiligen
+                Beschreibungsspalte der Codeliste vorgegeben, übermittelt werden.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="listURI" type="xs:anyURI" use="required">
+          <xs:annotation>
+            <xs:documentation>Dokumentation aus XOEV-Bibliothek:</xs:documentation>
+            <xs:documentation>Mit diesem XML-Attribut wird die Kennung der Codeliste übermittelt, in deren Kontext der
+              jeweilige Code zu interpretieren ist. Die Kennung identifiziert die Codeliste, nicht jedoch deren Version
+              eindeutig. Wird bereits im Rahmen des XÖV-Standards eine Kennung vorgegeben (es handelt sich in diesem
+              Fall um einen Code-Typ 1, 2 oder 3) darf auf eine nochmalige Angabe der Kennung bei der Übermittlung eines
+              Codes verzichtet werden. Aus diesem Grund ist das XML-Attribut listURI zunächst als optional
+              deklariert.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="listVersionID" type="xs:normalizedString" use="required">
+          <xs:annotation>
+            <xs:documentation>Dokumentation aus XOEV-Bibliothek:</xs:documentation>
+            <xs:documentation>Die konkrete Version der zu nutzenden Codeliste wird mit diesem XML-Attribut übertragen.
+              Analog zum listURI ist die Bestimmung der Version einer Codeliste bei der Übertragung eines Codes
+              zwingend. Die Version kann jedoch ebenfalls bereits im XÖV-Standard festgelegt werden (es handelt sich in
+              diesem Fall um einen Code-Typ 1 oder 2).</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MessagePropertiesType">
+    <xs:annotation>
+      <xs:documentation>Erweiterungsobjekt, um zusätzliche Wertepaare im Transportauftrag zu
+        transportieren.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Property" maxOccurs="unbounded" type="oscimeta:PropertyType">
+        <xs:annotation>
+          <xs:documentation>Liste von Schlüssel-Wert-Paaren.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageType">
+    <xs:annotation>
+      <xs:documentation>Angabe des Nachrichtentyp (Art der Fachnachricht) der Struktur "Message", wie er innerhalb des
+        Geschäftsszenarios (fachliches Nachrichtenformat; Fachstandard) definiert ist.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="payloadSchema" type="oscimeta:NonEmptyURIType" use="required">
+          <xs:annotation>
+            <xs:documentation>Angabe des Namespace für den Nachrichtentyp als URI.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MsgIdentificationType">
+    <xs:annotation>
+      <xs:documentation>Informationen zur Zu- und Einordnung der Nachricht auf Anwendungsebene sowie ihr Bezug zu
+        anderen Nachrichten.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="wsa:MessageID">
+        <xs:annotation>
+          <xs:documentation>Eindeutige, zeitlich und räumlich unbegrenzt gültige Identifikationsnummer eines
+            Transportauftrags, die normalerweise von einem Fachverfahren (Autor, Leser) an ein Transportverfahren
+            (Sender, Empfänger) übergeben wird. Sie entspricht der Syntax einer URN und setzt sich aus einem Präfix des
+            Ausstellers sowie einer UUID gemäß IETF RFC4122 zusammen, z.B:
+            urn:de:xta:messageid:clearingstelleXY_xta_01:000ca2fe-f4e1-45c2-8233-3a0eb760bd16 Für die Zwecke der
+            Identifikation, Protokollierung und Nachverfolgung muss die MessageID sowohl beim Sender als auch beim
+            Empfänger eindeutig sein, und außerdem die ausstellende Softwareinstanz anhand des Präfixes eindeutig
+            erkennen lassen.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="In-Reply-To" minOccurs="0" maxOccurs="unbounded" type="wsa:AttributedURIType">
+        <xs:annotation>
+          <xs:documentation>Verweis/Bezug auf weitere Nachrichten-ID(s) auf Anwendungsebene.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProcessRef" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Zuordnung der Nachricht zu einem Geschäftsprozess, hier kann die ID einer XÖV-Nachricht
+            eingetragen werden. Die konkrete Verwendung des Feldes wird durch das ServiceProfil
+            festgelegt.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Requester" minOccurs="0" type="oscimeta:ProcessIdentifierType">
+              <xs:annotation>
+                <xs:documentation>Zuordnung zu einem Geschäftsprozess beim Autor.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Responder" minOccurs="0" type="oscimeta:ProcessIdentifierType">
+              <xs:annotation>
+                <xs:documentation>Zuordnung zu einem Geschäftsprozess beim Leser.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="NonEmptyStringType">
+    <xs:annotation>
+      <xs:documentation>Eine Zeichenkette mit der mindestlänge 1. Dies schließt nicht Leerzeichen o.ä. aus, aber den
+        Leerstring.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NonEmptyURIType">
+    <xs:restriction base="xs:anyURI">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="NotifyAuthorType">
+    <xs:annotation>
+      <xs:documentation>Angaben zur Autoren-Benachrichtigung nach Zustellung einer Nachricht.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NotifyAuthorURI" minOccurs="0" type="xs:anyURI">
+        <xs:annotation>
+          <xs:documentation>ServiceURI, unter welcher der Autor über die erfolgte Zustellung informiert werden
+            kann.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NotifyAuthorEnabled" default="false" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Benachrichtigung des Autors über erfolgreiche Zustellung erfordert.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OriginatorsType">
+    <xs:annotation>
+      <xs:documentation>Autor und Sender der Nachricht, sowie ggf. abweichende Antwort-Adressen.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Author" type="oscimeta:PartyType">
+        <xs:annotation>
+          <xs:documentation>Der Autor der Nachricht. Zusätzlich vom Autor verwendete Zertifikate können in
+            SecurityToken/BinarySecurityToken abgelegt werden.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Sender" minOccurs="0" type="oscimeta:PartyType">
+        <xs:annotation>
+          <xs:documentation>Der Sender der Nachricht, z.B. XTA-WS oder OSCI-Gateway. Zusätzlich vom Sender verwendete
+            Zertifikate können in SecurityToken/BinarySecurityToken abgelegt werden.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReplyTo" minOccurs="0" type="oscimeta:PartyType">
+        <xs:annotation>
+          <xs:documentation>Der Empfänger der Antwort, falls vom im Element Author abweichend. Zusätzlich für
+            abweichende Empfänger verwendete Zertifikate können in SecurityToken/BinarySecurityToken abgelegt
+            werden.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentifierType">
+    <xs:annotation>
+      <xs:documentation>Struktur zur eindeutigen Identifikation eines Kommunikationspartners anhand einer Kennung sowie
+        mehrerer Attribute zur Zuordnung eines Kontextes für diese Kennung.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="oscimeta:NonEmptyStringType">
+        <xs:attribute name="category" type="oscimeta:NonEmptyStringType" use="optional">
+          <xs:annotation>
+            <xs:documentation>Fachkategorie des identifizierten Kommunikationspartners innerhalb der Domäne
+              (z.B."Bundesbehörde", "Landesbehörde", "Standesamt", etc.). Zur Unterstützung stellt die KoSIT die
+              Codeliste XOEV-Category of Partybereit, die mit der URN urn:de:xta:codeliste:category.of.party im
+              XRepository abrufbar ist.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="name" type="oscimeta:NonEmptyStringType" use="optional">
+          <xs:annotation>
+            <xs:documentation>Optionaler menschenlesbarer Name zur Darstellung in User agents (bekannt z.B. aus
+              eMail).</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="type" type="oscimeta:NonEmptyStringType" use="required">
+          <xs:annotation>
+            <xs:documentation>Ausweisung des Schemas zur Interpretation des PartyIdentifiers/Bezeichners, z.B. DVDV oder
+              S.A.F.E. Aus dem jeweiligen Verzeichnisdienst können die Verbindungsparameter entnommen werden. Zur
+              Unterstützung stellt die KoSIT die Codeliste Type of Party Identifierbereit, die mit der URN
+              urn:de:xta:codeliste:type.of.party.identifier im XRepository abrufbar ist.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PartyType">
+    <xs:annotation>
+      <xs:documentation>Struktur für die Identifikation eines Kommunikationspartners sowie dessen
+        Zertifikate/Tokens.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Identifier" type="oscimeta:PartyIdentifierType">
+        <xs:annotation>
+          <xs:documentation>Identifikation des Kommunikationspartners.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="oscimeta:SecurityToken" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Zertifikate/Tokens des Kommunikationspartners, z.B. X.509.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProcessIdentifierType">
+    <xs:annotation>
+      <xs:documentation>Eindeutige Zuordnung zu einem Geschäftsprozess.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ProccesName" type="oscimeta:NonEmptyStringType" use="optional">
+      <xs:annotation>
+        <xs:documentation>Bezeichnung des Geschäftsprozesses, z.B. "Bestellung", als Kontext einer Vorgangsnummer
+          innerhalb des hier benannten Prozesses.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PropertyType">
+    <xs:annotation>
+      <xs:documentation>Generischer Typ für Schlüssel-Wert-Paare innerhalb eines definierten Namensraumes oder einer
+        Codeliste.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Key" type="oscimeta:KeyCodeType">
+        <xs:annotation>
+          <xs:documentation>Schlüssel des Schlüssel-Wert-Paares.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Value" type="oscimeta:NonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation>Wert des Schlüssel-Wert-Paares.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QualifierType">
+    <xs:annotation>
+      <xs:documentation>Struktur zur Einordnung der Nutzlast mit Anwendungsfall-übergreifend genutzten
+        Metadaten.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Subject" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Betreff der Nachricht (informatorisch)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Service" type="xs:anyURI">
+        <xs:annotation>
+          <xs:documentation>Spezifischer Service im Kontext eines bestimmten Geschäftsfalls, einzutragen als URI. Im
+            XÖV-Kontext gewöhnlich die aus DVDV bezogene Dienste-URI.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BusinessScenario">
+        <xs:annotation>
+          <xs:documentation>Angabe eines entweder über Codelisten oder freitextlich definierten Geschäftsszenarios. Die
+            KoSIT stellt hierzu unter der URN urn:de:xta:codeliste:business.scenario eine Codeliste im XRepository
+            bereit. Alternativ können XTA-Kommunikationspartner beschließen und an dieser Stelle mitsamt Codelisten-URI
+            und Versionsnummer eintragen.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="Defined" type="oscimeta:KeyCodeType">
+              <xs:annotation>
+                <xs:documentation>Definierte Angabe eines Geschäftsszenarios zum Abgleich mit einer
+                  Codeliste.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Undefined" type="xs:normalizedString">
+              <xs:annotation>
+                <xs:documentation>Freitextliche Angabe eines nicht in einer Codeliste definierten
+                  Geschäftsszenarios.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MessageType" type="oscimeta:MessageType">
+        <xs:annotation>
+          <xs:documentation>Nachrichtentyp, wie innerhalb des Geschäftsszenarios (z.B. Fachstandard)
+            definiert.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReceiptRequestType">
+    <xs:annotation>
+      <xs:documentation>Struktur für die Anforderung von Quittungen durch den Autor.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Submission" minOccurs="0" type="xs:anyType">
+        <xs:annotation>
+          <xs:documentation>Anforderung einer Quittung über den Erhalt der Nachricht durch den
+            Sender.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Relay" minOccurs="0" type="xs:anyType">
+        <xs:annotation>
+          <xs:documentation>Anforderung einer Quittung über die Weiterleitung der Nachricht durch
+            Infrastrukturknoten.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Delivery" minOccurs="0" type="xs:anyType">
+        <xs:annotation>
+          <xs:documentation>Anforderung einer Quittung über den Erhalt der Nachricht durch den
+            Sender.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Fetch" minOccurs="0" type="xs:anyType">
+        <xs:annotation>
+          <xs:documentation>Anforderung einer Quittung über den Abruf der Nachricht durch den Leser aus dessen
+            MessageBox.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Reception" minOccurs="0" type="xs:anyType">
+        <xs:annotation>
+          <xs:documentation>Anforderung einer Quittung über den Erhalt der Nachricht durch den Leser.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReceiptTo" minOccurs="0" type="wsa:EndpointReferenceType">
+        <xs:annotation>
+          <xs:documentation>Hier kann der Autor einen separaten Knoten (Endpoint Reference) angeben, der die Quittungen
+            für den Transportauftrag erhalten soll. Falls hier kein Wert angegeben wird, wird der Wert aus dem Element
+            wsa:From aus dem Header-Block übernommen.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageProperties">
+    <xs:annotation>
+      <xs:documentation>Element des Typs MessagePropertiesType.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Property" maxOccurs="unbounded" type="oscimeta:PropertyType">
+          <xs:annotation>
+            <xs:documentation>Liste von Schlüssel-Wert-Paaren.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OtherDestinations">
+    <xs:annotation>
+      <xs:documentation>Struktur für weitere Adressaten einer Nachricht.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OtherReaders" maxOccurs="unbounded" type="oscimeta:PartyIdentifierType">
+          <xs:annotation>
+            <xs:documentation>Weitere Empfänger der Nachricht.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="CcReaders" minOccurs="0" maxOccurs="unbounded" type="oscimeta:PartyType">
+          <xs:annotation>
+            <xs:documentation>Nachgeordnete Adressaten der Nachricht, analog zu cc/carbon copy in
+              Emails.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SecurityToken">
+    <xs:annotation>
+      <xs:documentation>Struktur für die Übermittlung von Security Tokens sowie deren Verwendungszweck und Verortung in
+        der Nachricht.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="wsse:BinarySecurityToken">
+          <xs:annotation>
+            <xs:documentation>Als base64binary kodiertes Security Token (z.B. X.509).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="wsse:SecurityTokenReference">
+          <xs:annotation>
+            <xs:documentation>Referenz auf Security Token: Flexibler Adressierungsmechanismus kryptographischer
+              Bestandteile in der Nachricht.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="wsse:UsernameToken">
+          <xs:annotation>
+            <xs:documentation>Struktur für die Angabe eines Security Tokens mit Nutzernamen.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:attribute name="payloadRef" type="xs:IDREF" use="optional">
+        <xs:annotation>
+          <xs:documentation>Dieses Attribut wird in XTA nicht verwendet.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="usage" use="required">
+        <xs:annotation>
+          <xs:documentation>Verwendungszweck eines Security Token.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Verwendungszweck eines Security Token.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="AUTHENTICATION"/>
+            <xs:enumeration value="ENCRYPTION"/>
+            <xs:enumeration value="SIGNATURE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Identifier" type="oscimeta:PartyType">
+    <xs:annotation>
+      <xs:documentation>Element für die Identifikation sowie die Zertifikate/Tokens eines Kommunikationspartners
+        (oscimeta:PartyType). Der Identifier enthält Informationen, die zur Autorisierung von Methodenaufrufen verwendet
+        wird. Er ergänzt damit die Informationen, die bereits aus dem Verbindungsaufbau (z.B. HTTP) vorhaben
+        sind.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="MessageMetaData">
+    <xs:annotation>
+      <xs:documentation>Struktur für den Transportauftrag (MessageMetaData) einer Nachricht. Abgebildet werden dabei
+        sowohl Daten zum Transport der Nachricht, als auch über den Inhalt der Nachricht. Im Transportauftrag wird
+        festgehalten, von wem die Nachricht erstellt wurde (Autor), an wen sie gerichtet ist (Leser) und welche
+        Steuerungsinformationen für unterschiedliche Rollen und Verantwortlichkeiten ("Rollenmodell") sowie deren
+        Service-Qualitäten und Quittungen vorgegeben wurden. Als Metainformation zur Nutzlast der Nachricht werden
+        Identifikation und Prozesszusammenhang der Nachricht sowie der fachliche Kontext und Nachrichtentyp
+        eingetragen.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DeliveryAttributes" type="oscimeta:DeliveryAttributesType">
+          <xs:annotation>
+            <xs:documentation>Zeitstempel der Transportetappen, erforderliche Servicequalitäten und angeforderte
+              Quittungen</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Originators" type="oscimeta:OriginatorsType">
+          <xs:annotation>
+            <xs:documentation>Angaben zum Autor, sowie ggf. abweichende Antwort-Adressen.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Destinations" type="oscimeta:DestinationsType">
+          <xs:annotation>
+            <xs:documentation>Angabe des Lesers sowie weiterer Adressaten.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="MsgIdentification" type="oscimeta:MsgIdentificationType">
+          <xs:annotation>
+            <xs:documentation>Informationen zur Zu- und Einordnung der Fachnachricht (payload) auf Anwendungsebene sowie
+              ihr Bezug zu anderen Nachrichten.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Qualifier" type="oscimeta:QualifierType">
+          <xs:annotation>
+            <xs:documentation>Informationen zur Einordnung der Nutzlast auf Anwendungsebene.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="oscimeta:MessageProperties" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Hier können zusätzliche Wertepaare für den Transport hinzugefügt werden. Dieses Liste kann
+              ggf. durch die verschiedenen Rollen des Rollenmodels bei Bedarf fortgeschrieben werden.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="MsgSize" type="xs:positiveInteger">
+          <xs:annotation>
+            <xs:documentation>Hier ist die Größe des Objekts GenericContentContainer (globales Element im Body) in Bytes
+              zu erfassen.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="TestMsg" type="xs:boolean" use="optional" default="false">
+        <xs:annotation>
+          <xs:documentation>Mit diesem Wahrheitswert kann eine Nachricht als Testnachricht ausgewiesen
+            werden.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Reader" type="oscimeta:PartyType">
+    <xs:annotation>
+      <xs:documentation>Der Leser der Nachricht.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>
