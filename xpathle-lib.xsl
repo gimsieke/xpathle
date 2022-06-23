@@ -21,6 +21,7 @@
 
   <xsl:variable name="color-range" as="xs:integer" select="12"/>
   <xsl:variable name="max-highlight" as="xs:integer" select="20"/>
+  <xsl:variable name="min-highlight" as="xs:integer" select="4"/>
 
   <xsl:template match="/" mode="#default">
     <xsl:param name="secret-path" as="xs:string" tunnel="yes" select="$secret-path"/>
@@ -54,7 +55,17 @@
       <xsl:with-param name="highlight-items" as="item()*" tunnel="yes" 
         select="($selected-by-guess-path)[$solved 
                                           or 
-                                          (position() = (1 to xs:integer(min(($max-highlight, count($selected-by-secret-path) * 2)))))]"/>
+                                          (position() = (1 to xs:integer(
+                                                                min(($max-highlight, 
+                                                                     max((
+                                                                          count($selected-by-secret-path) * 2, 
+                                                                          $min-highlight
+                                                                        ))
+                                                                   ))
+                                                              )
+                                                        )
+                                          )
+                                         ]"/>
     </xsl:call-template>
   </xsl:template>
 

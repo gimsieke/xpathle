@@ -60,3 +60,6 @@ code { background-color: #eee; }
   color: white;
   border: none;
 }
+#distance_diagram {
+  max-width: 50em;
+}

@@ -38,7 +38,7 @@
       XML (you might need to click into the rendering area and scroll down or sideways). The match quality
       will be signalled by color code and by tool tip. The tool tip contains both the hierarchical XPath to
       the item and the distance to the closest target item.</p>
-      <p>The number of items highlighted is limited to <code>min((2 * count($secret-items), 20))</code>.
+      <p>The number of items highlighted is limited to <code>min((max((2 * count($secret-items), 4)), 20))</code>.
       Otherwise you’d be able to select every node and quickly come up with an XPath expression that 
       selects only the green ones. Only when your guess selects the same items as the secret expression,
       the number of highlighted items won’t be limited any more.</p>
@@ -64,7 +64,7 @@
       </ul>
       <p>The following diagram shows several paths between nodes and indicates the corresponding distances
         using the same color.</p>
-      <p><svg
+      <p id="distance_diagram"><svg
    width="100%"
    viewBox="0 0 297 140"
    version="1.1"
@@ -755,16 +755,18 @@
         an item of the secret set.</p>
       <p>The “metric” applied here seeks to strike the balance between being intuitive and being ambiguous enough
       to avoid easy wins.</p>
+
       <h3>Tips</h3>
-      <h4>Query the document</h4>
+      <h4 id="tips_query">Query the document</h4>
       <p>Querying the document without selecting any nodes yields a warning, but doesn’t count as an attempt.</p>
       <p>Try this expression in order to get a list of element names and their frequencies, name and frequency 
         separated by <code>~</code>, sorted by frequency:</p>
       <p><input type="text" size="140" value="sort(for $n in distinct-values(//*/name()) return $n || '~' || count(//*[name()=$n]), (), function($i) {-number(substring-after($i, '~'))})"/></p>
       <p>might yield (when applied to this HTML document):</p>
       <p class="warning" id="xpathle_error3"> Warning (code XPathle03): <code>path~31 text~29 tspan~29 g~25 p~19 rect~17 code~15 li~10 span~7 a~7 div~6 h3~5 ellipse~4 ul~3 script~2 html~1 head~1 title~1 meta~1 link~1 body~1 h1~1 details~1 summary~1 svg~1 defs~1 input~1</code> is not a node from the document.</p>
-      <h4>Scatter your first shots evenly</h4>
-      <p>It has been said that at most two times the secretly selected items (or 20, whatever is the lower number) will be highlighted. 
+
+      <h4 id="tips_scatter">Scatter your first shots evenly</h4>
+      <p>It has been said that at most two times the secretly selected items (or 20, whatever is the lower number; at least 4) will be highlighted. 
       Suppose that, as it is in the “HTML landing page for the transpect documentation” case, 33 items have been secretly selected.
       Then you can get hints for at most 20 guessed items. You can select 20 evenly spaced (in terms of <code>position()</code>) elements
       below the document node:</p>
@@ -775,9 +777,19 @@
         In other documents, the situation may be different.</p>
       <p>The scatter method doesn’t work well in large documents with few secret items. If there’s just one secret item, you can randomly select
       an element at about a third of the document and another guess at two thirds. But it might be as good a first guess as anything else.</p>
-      <h4>Draw distance samples among siblings</h4>
-      <p>If the document contains many siblings on the same level, for example <code>xs:element</code> and <code>xs:complexType</code>,
+
+      <h4 id="tips_siblings">Draw distance samples among siblings</h4>
+      <p>If the document contains many siblings on the same level, for example <code>xs:element</code>, <code>xs:simpleType</code>, 
+        and <code>xs:complexType</code> in the XSD that is the 2022-06-23 daily challenge,
       you can select as many of them as can be highlighted and see whether some of them are closer to target items than others.</p>
+      <p>A modified scatter expression might look like this:</p>
+      <p><input type="text" size="110" value="let $start := /*, $count := count($start/*), $dist := $count idiv 4 return $start/*[position() mod $dist = 0]"/></p>
+      <p>In this expression, we want to skip initial <code>xs:annotation</code> and <code>xs:import</code> elements. Therefore
+      we don’t use <code>mod $dist = $dist idiv 2</code> which would select an item in the middle of each evenly spaced selected item groups. Specifying 
+      <code>mod $dist = 0</code> instead causes the first <code>$dist</code> elements to be skipped.</p>
+      <p>Also note that <code>$dist := $count idiv 4</code> although only one item has been selected by the secret
+        expression. We didn’t use two times this count, which would amount to just two items, because the minimum number
+        of highlighted items is set to <code>4</code>, see above.</p>
       <h3>Known Issues</h3>
       <ul>
         <li>The serialized XML lacks namespace declarations.</li>
