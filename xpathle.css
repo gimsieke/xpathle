@@ -63,3 +63,6 @@ code { background-color: #eee; }
 #distance_diagram {
   max-width: 50em;
 }
+*:target {
+  background-color: #eed;
+}
