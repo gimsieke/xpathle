@@ -783,7 +783,7 @@
         and <code>xs:complexType</code> in the XSD that is the 2022-06-23 daily challenge,
       you can select as many of them as can be highlighted and see whether some of them are closer to target items than others.</p>
       <p>A modified scatter expression might look like this:</p>
-      <p><input type="text" size="110" value="let $start := /*, $count := count($start/*), $dist := $count idiv 4 return $start/*[position() mod $dist = 0]"/></p>
+      <p><input type="text" size="110" value="let $start := /*, $count := count($start/*), $dist := min(($count idiv 4, 1)) return $start/*[position() mod $dist = 0]"/></p>
       <p>In this expression, we want to skip initial <code>xs:annotation</code> and <code>xs:import</code> elements. Therefore
       we don’t use <code>mod $dist = $dist idiv 2</code> which would select an item in the middle of each evenly spaced selected item groups. Specifying 
       <code>mod $dist = 0</code> instead causes the first <code>$dist</code> elements to be skipped.</p>
