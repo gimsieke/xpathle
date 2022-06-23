@@ -38,7 +38,7 @@
       XML (you might need to click into the rendering area and scroll down or sideways). The match quality
       will be signalled by color code and by tool tip. The tool tip contains both the hierarchical XPath to
       the item and the distance to the closest target item.</p>
-      <p>The number of items highlighted is limited to <code>min((max((2 * count($secret-items), 4)), 20))</code>.
+      <p id="highlight_formula">The number of items highlighted is limited to <code>min((max((2 * count($secret-items), 4)), 20))</code>.
       Otherwise you’d be able to select every node and quickly come up with an XPath expression that 
       selects only the green ones. Only when your guess selects the same items as the secret expression,
       the number of highlighted items won’t be limited any more.</p>
@@ -789,7 +789,7 @@
       <code>mod $dist = 0</code> instead causes the first <code>$dist</code> elements to be skipped.</p>
       <p>Also note that <code>$dist := $count idiv 4</code> although only one item has been selected by the secret
         expression. We didn’t use two times this count, which would amount to just two items, because the minimum number
-        of highlighted items is set to <code>4</code>, see above.</p>
+        of highlighted items is set to <code>4</code>, see <a href="#highlight_formula">above</a>.</p>
       <h3>Known Issues</h3>
       <ul>
         <li>The serialized XML lacks namespace declarations.</li>

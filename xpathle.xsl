@@ -17,8 +17,14 @@
   <xsl:import href="xpathle-lib.xsl"/>
 
   <xsl:template name="main">
+    
     <ixsl:schedule-action document="config.txt">
       <xsl:call-template name="read-config"/>
+    </ixsl:schedule-action>
+    <ixsl:schedule-action wait="1">
+      <xsl:call-template name="uncollapse-details">
+        <xsl:with-param name="href" select="ixsl:location()"/>
+      </xsl:call-template>
     </ixsl:schedule-action>
   </xsl:template>
   
@@ -35,7 +41,7 @@
     <xsl:param name="name" as="xs:string"/>
     <xsl:param name="map" as="map(*)"/>
     <xsl:param name="type" as="xs:string"/>
-    <p>
+    <p id="{$type}_{$name}">
       <xsl:if test="$type = 'daily'">
         <xsl:value-of select="fn:format-date(xs:date($name), '[MNn] [D], [Y]')"/>: 
       </xsl:if>
@@ -145,6 +151,26 @@
     <xsl:variable name="key" select="ixsl:get(ixsl:event(), 'key')"/>
     <xsl:if test="$key = 'Enter'">
       <xsl:call-template name="guess"/>
+    </xsl:if>
+  </xsl:template>
+  
+  <xsl:template match="." mode="ixsl:onhashchange">
+    <xsl:variable name="new" select="ixsl:get(ixsl:event(), 'newURL')"/>
+    <xsl:call-template name="uncollapse-details">
+      <xsl:with-param name="href" select="$new"/>
+    </xsl:call-template>
+    <xsl:next-match/>
+  </xsl:template>
+  
+  <xsl:template name="uncollapse-details">
+    <xsl:param name="href" as="xs:string"/>
+    <xsl:variable name="fragment-id" as="xs:string?" select="$href[contains(., '#')] => substring-after('#')"/>
+    <xsl:variable name="details" as="element()*" select="id($fragment-id, ixsl:page())/ancestor-or-self::details"/>
+    <xsl:for-each select="$details">
+      <ixsl:set-property name="open" select="true()" object="."/>
+    </xsl:for-each>
+    <xsl:if test="$fragment-id">
+      <ixsl:set-property name="location.hash" select="$fragment-id"/>
     </xsl:if>
   </xsl:template>
   
