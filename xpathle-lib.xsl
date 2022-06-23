@@ -166,34 +166,38 @@
       <p>The guess selected <xsl:value-of select="$guess-count"/> items. Only the first <xsl:value-of 
         select="count($highlight-items)"/> will be highlighted.</p>
     </xsl:if>
-    <xsl:try>
-      <!-- the error may be deferred, for example, if $guess-path = 'false()' -->
-      <xsl:choose>
-        <xsl:when test="some $g in $selected-by-guess-path satisfies (not($g instance of node()))
-                        or (exists($error-para) and not($error-para instance of node()))">
-          <p class="warning">
-          <xsl:attribute name="id" select="'xpathle_error3'"/> Warning (code XPathle03): <code><xsl:value-of
-            select="$selected-by-guess-path[not(. instance of node())], $error-para"/></code> is not a node from the document.</p>
-        </xsl:when>
-        <xsl:when test="exists($error-para)">
-          <xsl:sequence select="$error-para"/>
-        </xsl:when>
-        <xsl:when test="tr:result-is-error($selected-by-guess-path)">
-          <xsl:sequence select="$selected-by-guess-path"/>
-        </xsl:when>
-      </xsl:choose>
-      <xsl:catch>
-        <p class="error">
-          <xsl:attribute name="id" select="'xpathle_error2'"/> There was an error (code <xsl:value-of select="$err:code"
-          />) evaluating the expression <code><xsl:value-of select="$guess-path"/></code>: <xsl:value-of
-            select="$err:description"/></p>
-      </xsl:catch>
-    </xsl:try>
+    <xsl:variable name="potential-error" as="element()?">
+      <xsl:try>
+        <!-- the error may be deferred, for example, if $guess-path = 'false()' -->
+        <xsl:choose>
+          <xsl:when test="some $g in $selected-by-guess-path satisfies (not($g instance of node()))
+                          or (exists($error-para) and not($error-para instance of node()))">
+            <p class="warning">
+            <xsl:attribute name="id" select="'xpathle_error3'"/> Warning (code XPathle03): <code><xsl:value-of
+              select="$selected-by-guess-path[not(. instance of node())], $error-para"/></code> is not a node from the document.</p>
+          </xsl:when>
+          <xsl:when test="exists($error-para)">
+            <xsl:sequence select="$error-para"/>
+          </xsl:when>
+          <xsl:when test="tr:result-is-error($selected-by-guess-path)">
+            <xsl:sequence select="$selected-by-guess-path"/>
+          </xsl:when>
+        </xsl:choose>
+        <xsl:catch>
+          <p class="error">
+            <xsl:attribute name="id" select="'xpathle_error2'"/> There was an error (code <xsl:value-of select="$err:code"
+            />) evaluating the expression <code><xsl:value-of select="$guess-path"/></code>: <xsl:value-of
+              select="$err:description"/></p>
+        </xsl:catch>
+      </xsl:try>  
+    </xsl:variable>
+    <xsl:sequence select="$potential-error"/>
     <xsl:sequence select="$error-para"/>
-    <p>Attempts so far: <span id="iteration"><xsl:value-of select="$iteration + 1"/></span> of <xsl:value-of select="$tries"/></p>
+    <xsl:variable name="new-iteration" as="xs:integer" select="if (exists($potential-error | $error-para)) then $iteration else $iteration + 1"/>
+    <p>Attempts so far: <span id="iteration"><xsl:value-of select="$new-iteration"/></span> of <xsl:value-of select="$tries"/></p>
     <div id="counts">
       <xsl:variable name="attempts-string" as="xs:string" 
-        select="string($iteration + 1) || ' attempt' || (if ($iteration ge 1) then 's' else '')">
+        select="string($new-iteration) || ' attempt' || (if ($new-iteration gt 1) then 's' else '')">
       </xsl:variable>
       <xsl:choose>
         <xsl:when test="$solved">
@@ -210,8 +214,8 @@
               (copy to clipboard)</p>
           </xsl:if>
         </xsl:when>
-        <xsl:when test="$iteration + 1 = $tries">
-          <p id="losing" class="end">Unfortunately, you couldn’t solve the puzzle in <xsl:value-of select="$tries"/> attempt<xsl:if test="$iteration ge 1">s</xsl:if>.
+        <xsl:when test="$new-iteration = $tries">
+          <p id="losing" class="end">Unfortunately, you couldn’t solve the puzzle in <xsl:value-of select="$tries"/> attempt<xsl:if test="$new-iteration gt 1">s</xsl:if>.
           Hopefully you learned a bit of XPath nevertheless.</p>
           <p>The secret expression is: <code><xsl:value-of select="$secret-path"/></code>.</p>
         </xsl:when>
