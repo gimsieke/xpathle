@@ -780,7 +780,7 @@
 
       <h4 id="tips_siblings">Draw distance samples among siblings</h4>
       <p>If the document contains many siblings on the same level, for example <code>xs:element</code>, <code>xs:simpleType</code>, 
-        and <code>xs:complexType</code> in the XSD that is the 2022-06-23 daily challenge,
+        and <code>xs:complexType</code> in the XSD that is the <a href="#daily_2022-06-23">2022-06-23 daily challenge</a>,
       you can select as many of them as can be highlighted and see whether some of them are closer to target items than others.</p>
       <p>A modified scatter expression might look like this:</p>
       <p><input type="text" size="120" value="let $start := /*, $count := count($start/*), $dist := max(($count idiv 4, 1)) return $start/*[position() mod $dist = 0]"/></p>
@@ -790,6 +790,13 @@
       <p>Also note that <code>$dist := $count idiv 4</code> although only one item has been selected by the secret
         expression. We didn’t use two times this count, which would amount to just two items, because the minimum number
         of highlighted items is set to <code>4</code>, see <a href="#highlight_formula">above</a>.</p>
+      <p>Once you have a candidate item that has the shortest distance of all equally scattered candidates, you can look at the 
+        preceding or following siblings whether one of them is even closer, like so:</p>
+      <p><input type="text" size="140" value="let $start := /*, $count := count($start/*), $dist := max(($count idiv 4, 1)) return $start/*[position() mod $dist = 0]/following-sibling::*[1]"/></p>
+      <p>Then you can either reassign <code>$start</code> to that candidate and apply the same procedure to its children or grandchildren, 
+        or you can enter a new expression that addresses the candidate more directly, such as:</p> 
+      <p><input type="text" size="50" value="/*/*:complexType[@name = 'KeyCodeType']/*/*"/></p>
+      <p>Then you are only 2 items away from the solution (in <a href="#daily_2022-06-23">that example</a>).</p>
       <h3>Known Issues</h3>
       <ul>
         <li>The serialized XML lacks namespace declarations.</li>

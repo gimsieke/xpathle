@@ -98,7 +98,7 @@
         </xsl:if>
       </input></p>
     <p id="guesspara"><label for="guesspath">Guess an XPath expression:</label>  <input id="guesspath" type="text" 
-      name="guesspath" autocomplete="off" size="40" autocapitalize="none" value="()"/>  <button 
+      name="guesspath" autocomplete="off" size="74" autocapitalize="none" value="()"/>  <button 
         id="submit-guess" value="{$type}/{$name}">Submit</button></p>
     </xsl:result-document>
     <xsl:if test="exists(id('iteration', ixsl:page()))">
