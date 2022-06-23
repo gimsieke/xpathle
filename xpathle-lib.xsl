@@ -43,9 +43,11 @@
       </xsl:try>
     </xsl:variable>
     <xsl:variable name="solved" as="xs:boolean"
-        select="(count($selected-by-guess-path) = count($selected-by-secret-path)) 
-                    and 
-                    (empty($selected-by-guess-path except $selected-by-secret-path))"/>
+        select="if (some $i in $selected-by-guess-path satisfies not($i instance of node()))
+                then false()
+                else (count($selected-by-guess-path) = count($selected-by-secret-path)) 
+                     and 
+                     (empty($selected-by-guess-path except $selected-by-secret-path))"/>
     <xsl:call-template name="render">
       <xsl:with-param name="secret-path" select="$secret-path" tunnel="yes"/>
       <xsl:with-param name="guess-path" select="$guess-path" tunnel="yes"/>
