@@ -29,7 +29,21 @@
         <p>For selecting namespaced elements with a prefix, such as <code>xsl:for-each</code> in the XSLT example,
           you can enter something like <code>//Q{http://www.w3.org/1999/XSL/Transform}for-each</code>
         or <code>//*:for-each</code>. Elements without a prefix can be selected without namespace if they
-          are in the same namespace as the top-level element.</p>
+          are in the same namespace as the top-level element. If a prefix is declared on the top-level
+        element, you can also use this prefix in the expression. An example is the Atom/CAP feed in the 
+          <a href="#daily_2022-06-23">2022-06-24 daily challenge</a> where you can use <code>cap:*</code>. 
+        It must be noted, however, that the namespace declaration such as <code>xmlns:cap="urn:oasis:names:tc:emergency:cap:1.1"</code>
+        that might appear on the top-level element in the rendered XML are actually at some descendant
+        element in the actual XML. If they are not on the top-level element in the actual XML,
+        you cannot use the prefix and need to resort to wildcards or to the <code>Q{namespace-uri}</code>
+        notation.</p>
+      <p>You might want to use the <code>xs</code> prefix of <code>xmlns:xs="http://www.w3.org/2001/XMLSchema"</code>
+      in your queries, for example, if you want to check <code>//*[. castable as xs:dateTime]</code>.
+      This is currently only possible if the actual XML contains this namespace declaration. Be aware
+      that this namespace declaration won’t typically be rendered (only if it is used for an element or attribute
+      in the document). I added the declaration to some documents (of which I saved and modified a copy in this repo),
+      so try if you can use the <code>xs</code> prefix. If you can’t use it, an error will be thrown and
+      the attempt won’t count.</p>
         <p>You cannot select <code>//namespace-node()</code> (well, you can, but they won’t be displayed).
         You cannot select processing instructions or comments that are outside the top-level element, either.</p>
       <p>As a result of evaluating your guess, the number of selected items will be displayed so you can
