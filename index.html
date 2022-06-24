@@ -37,7 +37,7 @@
         element in the actual XML. If it is not declared on the top-level element in the actual XML,
         you cannot use the prefix and you need to resort to wildcards or to the <code>Q{namespace-uri}</code>
         notation.</p>
-      <p>You might want to use the <code>xs</code> prefix of <code>xmlns:xs="http://www.w3.org/2001/XMLSchema"</code> in
+      <p id="help_xs">You might want to use the <code>xs</code> prefix of <code>xmlns:xs="http://www.w3.org/2001/XMLSchema"</code> in
         your queries, for example if you want to check <code>//*[. castable as xs:dateTime]</code>. This is currently
         only possible if the actual XML contains this namespace declaration on the top-level element. Be aware that this
         namespace declaration won’t typically be rendered (only if it is used for an element or attribute in the
