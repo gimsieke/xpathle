@@ -41,9 +41,10 @@
         your queries, for example if you want to check <code>//*[. castable as xs:dateTime]</code>. This is currently
         only possible if the actual XML contains this namespace declaration on the top-level element. Be aware that this
         namespace declaration won’t typically be rendered (only if it is used for an element or attribute in the
-        document). The daily challenge curator added the declaration to some documents (of which I saved and modified
+        document). The daily challenge curator added the declaration to some documents (of which they saved and modified
         a copy in this repo), so try if you can use the <code>xs</code> prefix. If you can’t use it, an error will be
-        thrown and the attempt won’t count.</p>
+        thrown and the attempt won’t count. Then you can still resort to the <code>Q{}</code> notation, as in
+      <code>//*[. castable as Q{http://www.w3.org/2001/XMLSchema}dateTime]</code>.</p>
         <p>You cannot select <code>//namespace-node()</code> (well, you can, but they won’t be displayed).
         You cannot select processing instructions or comments that are outside the top-level element, either.</p>
       <p>As a result of evaluating your guess, the number of selected items will be displayed so you can
