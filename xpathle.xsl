@@ -17,11 +17,10 @@
   <xsl:import href="xpathle-lib.xsl"/>
 
   <xsl:template name="main">
-    
     <ixsl:schedule-action document="config.txt">
       <xsl:call-template name="read-config"/>
     </ixsl:schedule-action>
-    <ixsl:schedule-action wait="1">
+    <ixsl:schedule-action wait="1000">
       <xsl:call-template name="uncollapse-details">
         <xsl:with-param name="href" select="ixsl:location()"/>
       </xsl:call-template>
