@@ -316,6 +316,22 @@
       <xsl:value-of select="name()"/>
     </span>
     <xsl:apply-templates select="." mode="xmlns"/>
+    <xsl:if test="empty(parent::*)">
+      <xsl:for-each-group select="(//* | //@*)[exists(prefix-from-QName(node-name(.)))]" 
+        group-by="prefix-from-QName(node-name((.[self::*], ..)[1]))">
+        <span class="namespace att">
+          <xsl:value-of select="' xmlns:' || current-grouping-key()"/>
+        </span>
+        <span class="name att">
+          <xsl:text>=</xsl:text>
+        </span>
+        <span class="val att">
+          <xsl:text>"</xsl:text>
+          <xsl:value-of select="namespace-uri-for-prefix(current-grouping-key(), (.[self::*], ..)[1])"/>
+          <xsl:text>"</xsl:text>
+        </span>
+      </xsl:for-each-group>
+    </xsl:if>
     <xsl:apply-templates select="@*" mode="#current"/>
     <xsl:choose>
       <xsl:when test="empty(node())">
@@ -350,7 +366,10 @@
   <xsl:template match="*" mode="xmlns">
     <xsl:if test="not(namespace-uri(.) = namespace-uri(..))">
       <span class="name att">
-        <xsl:text> xmlns="</xsl:text>
+        <xsl:text> xmlns=</xsl:text>
+      </span>
+      <span class="val att">
+        <xsl:text>"</xsl:text>
         <xsl:value-of select="namespace-uri(.)"/>
         <xsl:text>"</xsl:text>
       </span>

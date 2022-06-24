@@ -11,6 +11,7 @@ div#code {
 #footer { font-size: smaller; margin-top: 3em; }
 .name.elt { color: #55e; }
 .name.att { color: #e95; }
+.namespace.att { color: #9af; }
 .val.att { color: #a66; }
 .comment { color: #474; }
 .pi { color: #a6a; }
