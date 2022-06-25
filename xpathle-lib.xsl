@@ -221,8 +221,9 @@
           <p>The secret expression is: <code><xsl:value-of select="$secret-path"/></code>.</p>
           <xsl:if test="$is-daily">
             <xsl:variable name="clipboard-text" as="xs:string" 
-              select="'It took me ' || $attempts-string || ' to guess an #XPath expression that selected the correct items in #XPathle’s ' ||
-              tr:YYYY-MM-DD() || ' challenge, “' || replace($description, '''', '\\''') || '”\nhttps://gimsieke.github.io/xpathle/'"/>
+              select="'It took me ' || $attempts-string || ' to guess an #XPath expression that selected the correct items in #XPathle’s ' 
+              || tr:YYYY-MM-DD() || ' challenge, “' || replace($description, '''', '\\''') 
+              || '”\nhttps://gimsieke.github.io/xpathle/#' || 'daily_' || tr:YYYY-MM-DD()"/>
             <p><button id="share" onclick="navigator.clipboard.writeText('{$clipboard-text}')">Share</button>
               (copy to clipboard)</p>
           </xsl:if>

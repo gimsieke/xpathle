@@ -20,7 +20,7 @@
     <ixsl:schedule-action document="config.txt">
       <xsl:call-template name="read-config"/>
     </ixsl:schedule-action>
-    <ixsl:schedule-action wait="1000">
+    <ixsl:schedule-action wait="3000">
       <xsl:call-template name="uncollapse-details">
         <xsl:with-param name="href" select="ixsl:location()"/>
       </xsl:call-template>
