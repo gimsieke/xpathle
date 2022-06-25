@@ -20,7 +20,7 @@
     <ixsl:schedule-action document="config.txt">
       <xsl:call-template name="read-config"/>
     </ixsl:schedule-action>
-    <ixsl:schedule-action wait="3000">
+    <ixsl:schedule-action wait="1000">
       <xsl:call-template name="uncollapse-details">
         <xsl:with-param name="href" select="ixsl:location()"/>
       </xsl:call-template>
@@ -169,6 +169,7 @@
       <ixsl:set-property name="open" select="true()" object="."/>
     </xsl:for-each>
     <xsl:if test="$fragment-id">
+      <ixsl:set-property name="location.hash" select="''"/>
       <ixsl:set-property name="location.hash" select="$fragment-id"/>
     </xsl:if>
   </xsl:template>
