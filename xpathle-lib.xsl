@@ -30,7 +30,6 @@
     
     <xsl:variable name="namespace-context" as="element()">
       <xsl:copy select="*">
-        <xsl:copy-of select="/*/namespace-node()"/>
         <xsl:for-each-group select="(//* | //@*)[exists(prefix-from-QName(node-name(.)))]" 
           group-by="prefix-from-QName(node-name(.))">
           <xsl:namespace name="{current-grouping-key()}" select="namespace-uri(.)"/>
