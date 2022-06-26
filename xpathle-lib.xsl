@@ -2,11 +2,12 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:tr="http://transpect.io"
+  xmlns:saxon="http://saxon.sf.net/"
   xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:err="http://www.w3.org/2005/xqt-errors"
   default-mode="process-document-entrypoint"
   xmlns="http://www.w3.org/1999/xhtml"
-  exclude-result-prefixes="xs html tr" version="3.0"> 
+  exclude-result-prefixes="xs html tr saxon" version="3.0"> 
 
   <!-- These two params are for standalone invocation using this stylesheet.
        In the interactive stylesheet, tunnel params with the same names
@@ -27,12 +28,23 @@
     <xsl:param name="secret-path" as="xs:string" tunnel="yes" select="$secret-path"/>
     <xsl:param name="guess-path" as="xs:string" tunnel="yes" select="$guess-path"/>
     
+    <xsl:variable name="namespace-context" as="element()">
+      <xsl:copy select="*">
+        <xsl:copy-of select="/*/namespace-node()"/>
+        <xsl:for-each-group select="(//* | //@*)[exists(prefix-from-QName(node-name(.)))]" 
+          group-by="prefix-from-QName(node-name((.[self::*], ..)[1]))">
+          <xsl:namespace name="{current-grouping-key()}" select="namespace-uri(.)"/>
+        </xsl:for-each-group>
+        <xsl:namespace name="xs" select="'http://www.w3.org/2001/XMLSchema'"/>
+      </xsl:copy>
+    </xsl:variable>
+    <xsl:message select="'DDDDDDDD ', serialize($namespace-context)"></xsl:message>
     <xsl:variable name="selected-by-secret-path" as="item()*">
-      <xsl:evaluate xpath="$secret-path" context-item="." namespace-context="/*"/>
+      <xsl:evaluate xpath="$secret-path" context-item="." namespace-context="$namespace-context"/>
     </xsl:variable>
     <xsl:variable name="selected-by-guess-path" as="item()*">
       <xsl:try>
-        <xsl:evaluate xpath="$guess-path" context-item="." namespace-context="/*"/>
+        <xsl:evaluate xpath="$guess-path" context-item="." namespace-context="$namespace-context"/>
         <xsl:catch>
           <p class="error">
             <xsl:attribute name="id" select="'xpathle_error'"/>
