@@ -12,7 +12,7 @@ active alerts.
 -->
 
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.1"
-  xmlns:ha="http://www.alerting.net/namespace/index_1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  xmlns:ha="http://www.alerting.net/namespace/index_1.0">
   <!-- http-date = Thu, 23 Jun 2022 07:49:00 GMT -->
   <id>https://alerts.weather.gov/cap/ca.php?x=0</id>
   <logo>http://alerts.weather.gov/images/xml_logo.gif</logo>

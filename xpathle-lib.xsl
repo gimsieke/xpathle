@@ -32,13 +32,12 @@
       <xsl:copy select="*">
         <xsl:copy-of select="/*/namespace-node()"/>
         <xsl:for-each-group select="(//* | //@*)[exists(prefix-from-QName(node-name(.)))]" 
-          group-by="prefix-from-QName(node-name((.[self::*], ..)[1]))">
+          group-by="prefix-from-QName(node-name(.))">
           <xsl:namespace name="{current-grouping-key()}" select="namespace-uri(.)"/>
         </xsl:for-each-group>
         <xsl:namespace name="xs" select="'http://www.w3.org/2001/XMLSchema'"/>
       </xsl:copy>
     </xsl:variable>
-    <xsl:message select="'DDDDDDDD ', serialize($namespace-context)"></xsl:message>
     <xsl:variable name="selected-by-secret-path" as="item()*">
       <xsl:evaluate xpath="$secret-path" context-item="." namespace-context="$namespace-context"/>
     </xsl:variable>
@@ -331,7 +330,7 @@
     <xsl:apply-templates select="." mode="xmlns"/>
     <xsl:if test="empty(parent::*)">
       <xsl:for-each-group select="(//* | //@*)[exists(prefix-from-QName(node-name(.)))]" 
-        group-by="prefix-from-QName(node-name((.[self::*], ..)[1]))">
+        group-by="prefix-from-QName(node-name(.))">
         <span class="namespace att">
           <xsl:value-of select="' xmlns:' || current-grouping-key()"/>
         </span>
