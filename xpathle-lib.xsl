@@ -394,7 +394,9 @@
 
   <xsl:template match="comment()" mode="serialize" priority="1">
     <span class="comment{if(empty(parent::*)) then ' unselectable' else''}">
-      <xsl:attribute name="title" select="'this comment cannot be selected'"/>
+      <xsl:if test="empty(parent::*)">
+        <xsl:attribute name="title" select="'this comment cannot be selected'"/>
+      </xsl:if>
       <xsl:value-of select="string-join(('&lt;!--', ., '-->'))"/>
     </span>
     <xsl:if test="empty(parent::*)">&#xa0;&#xa;</xsl:if>
