@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE recipe SYSTEM "recipe.dtd">
+<recipe id="cashewscones">
+  <nav/>
+  <info>
+    <title>Butterscotch and Cashew Drop-scones</title>
+    <author>Anon</author>
+    <copyright year="2019" web="https://www.teatimemagazine.com/"
+      contrib="Ann Marie O’Connell">Tea Time Magazine</copyright>
+  </info>
+  <intro>
+    <para>Anna mentioned this online and I asked her for the recipe.
+      The original was from Tea Time Magazine (Jan/Feb 2019, but is
+      not in their archive¹). She notes that it works fine with all
+      white whole-wheat flour, and she also added large-crystal raw
+      sugar as a topping, instead of an egg glaze, because of the
+      additional caramel notes.</para>
+  </intro>
+  <ingredients>
+    <ingredient xml:id="plainflour" quantity="1.5" unit="cup"
+      quality="all-purpose" basic="flour"/>
+    <ingredient xml:id="wwflour" quantity=".5" unit="cup"
+      quality="whole-wheat" basic="flour"/>
+    <ingredient xml:id="sugar" quantity="0.333" unit="cup"
+      quality="dark brown" treatment="packed" spice="sugar"/>
+    <ingredient xml:id="bp" quantity="1" unit="tbsp"
+      basic="baking-powder"/>
+    <ingredient xml:id="salt" quantity=".5" unit="tsp" spice="salt"
+      comment="use ¼ tsp if the cashews are already salted"/>
+    <ingredient xml:id="butter" quantity=".5" unit="cup"
+      quality="unsalted" dairy="butter" treatment="chilled and
+      diced"/>
+    <ingredient xml:id="chips" quantity=".5" unit="cup"
+      treatment="slightly heaping" topping="butterscotch-chips"
+      alt="any preferred chips"/>
+    <ingredient xml:id="cashews" quantity=".5" unit="cup"
+      quality="toasted" treatment="slightly heaping"
+      vegetable="cashew"/>
+    <ingredient xml:id="cream" quantity=".5" unit="cup"
+      quality="heavy" dairy="cream"/>
+    <ingredient xml:id="egg" quantity="1" size="large"
+      treatment="beaten" part="egg"/>
+  </ingredients>
+  <method>
+    <step>
+      <para>Preheat oven to 400°F.</para>
+    </step>
+    <step>
+      <para>Combine together <ing i="plainflour wwflour sugar 
+          bp salt"/> in medium bowl.</para>
+    </step>
+    <step>
+      <para>Add the <ing i="butter"/>; using fingertips,
+        rub to form coarse meal.</para>
+    </step>
+    <step>
+      <para>In separate bowl, whisk the <ing i="milk"/> and
+        the <ing i="egg"/>.</para>
+    </step>
+    <step>
+      <para>Gradually add the <ing i="milk egg"/> mix to the 
+        flour mixture, keeping back 1 tsp of the egg mix to use
+        for glazing.</para>
+    </step>
+    <step>
+      <para>Toss or knead it to thoroughly moisten it and form a
+        clumpy dough (add more milk if too dry).</para>
+    </step>
+    <step>
+      <para>Mix in the <ing i="chips"/>.</para>
+    </step>
+    <step>
+      <para>Drop the dough by ¼ cupfuls onto a nonstick or lightly
+        greased baking sheet at least 1 inch apart, to give 8–10
+        drop-scones. (You can line a regular pan with aluminum foil
+        instead of greasing it.)</para>
+    </step>
+    <step>
+      <para>Brush the remaining <ing i="egg"/> on top as a
+        glaze.</para>
+    </step>
+    <step>
+      <para>Bake for about 20 minutes or until golden brown.</para>
+    </step>
+  </method>
+  <para>You can also use a mini-scone baking pan, like the Nordic Ware
+    cast-aluminum one, which gives you 16 triangular scones.</para>
+  <para>If you use the “freeze the portioned dough” technique, they
+    will need to bake 3–5 minutes longer.</para>
+  <para>¹ Possibly because the ingredients didn’t match the method in
+    several places.</para>
+</recipe>
