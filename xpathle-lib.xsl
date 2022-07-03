@@ -375,7 +375,8 @@
   </xsl:template>
 
   <xsl:template match="*" mode="xmlns">
-    <xsl:if test="not(namespace-uri(.) = namespace-uri(..))">
+    <xsl:if test="not(namespace-uri(.) = namespace-uri(..))
+                  and not(in-scope-prefixes(.) = prefix-from-QName(node-name(.)))">
       <span class="name att">
         <xsl:text> xmlns=</xsl:text>
       </span>
