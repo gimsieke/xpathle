@@ -95,7 +95,9 @@
         <xsl:if test="$conf($type)($name)?cache_url">
           <xsl:attribute name="data-cache-url" select="$conf($type)($name)?cache_url"/>
         </xsl:if>
-      </input></p>
+      </input> <input id="format" type="checkbox"/>
+      <label for="format">Format &amp; indent</label>
+      </p>
     <p id="guesspara"><label for="guesspath">Guess an XPath expression:</label>  <input id="guesspath" type="text" 
       name="guesspath" autocomplete="off" size="74" autocapitalize="none" value="()"/>  <button 
         id="submit-guess" value="{$type}/{$name}">Submit</button></p>
@@ -108,6 +110,13 @@
     </ixsl:schedule-action>
   </xsl:template>
 
+  <xsl:template mode="ixsl:onclick" match="id('format')">
+    <xsl:variable name="checked" as="xs:boolean" select="ixsl:get(., 'checked')"/>
+    <ixsl:schedule-action wait="1">
+      <xsl:call-template name="guess"/>
+    </ixsl:schedule-action>
+  </xsl:template>
+  
   <xsl:template mode="ixsl:onclick" match="id('submit-guess')" name="guess">
     <xsl:variable name="doc-uri" as="xs:string" 
       select="(id('doc-uri',ixsl:page())/@data-cache-url, ixsl:get(id('doc-uri',ixsl:page()), 'value'))[1]"/>
@@ -121,11 +130,13 @@
       <xsl:call-template name="process">
         <xsl:with-param name="secret-path" select="$conf($type)($name)?secret" as="xs:string" tunnel="yes"/>
         <xsl:with-param name="guess-path" select="ixsl:get(id('guesspath',ixsl:page()), 'value')" as="xs:string?" tunnel="yes"/>
+        <xsl:with-param name="previous" as="xs:string?" select="id('previous', ixsl:page())" tunnel="yes"/>
         <xsl:with-param name="tries" select="$conf($type)($name)?tries ! xs:integer(.)" tunnel="yes" as="xs:integer"/>
         <xsl:with-param name="href" select="$doc-uri"/>
         <xsl:with-param name="iteration" as="xs:integer" select="$iteration" tunnel="yes"/>
         <xsl:with-param name="is-daily" as="xs:boolean" tunnel="yes" 
           select="tr:YYYY-MM-DD() = $name and $type = 'daily'"/>
+        <xsl:with-param name="format" as="xs:boolean" tunnel="yes" select="ixsl:get(id('format', ixsl:page()), 'checked')"/>
         <xsl:with-param name="description" as="xs:string" tunnel="yes" select="$conf($type)($name)?description"/>
       </xsl:call-template>
     </ixsl:schedule-action>
@@ -133,9 +144,14 @@
 
   <xsl:template name="process">
     <xsl:param name="href"/>
+    <xsl:param name="previous" tunnel="yes" as="xs:string?"/>
+    <xsl:param name="guess-path" tunnel="yes" as="xs:string"/>
+    <xsl:param name="iteration" tunnel="yes" as="xs:integer"/>
     <xsl:variable name="result" as="element(html:div)">
       <xsl:apply-templates select="doc($href)" mode="process-document-entrypoint">
         <xsl:with-param name="omit-html-scaffold" select="true()" as="xs:boolean" tunnel="yes"/>
+        <xsl:with-param name="iteration" as="xs:integer" tunnel="yes"
+          select="if ($previous = $guess-path) then $iteration - 1 else $iteration"/>
       </xsl:apply-templates>
     </xsl:variable>
     <xsl:result-document href="#rendition" method="ixsl:replace-content">

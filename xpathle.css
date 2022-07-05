@@ -64,6 +64,9 @@ code { background-color: #eee; }
 #distance_diagram {
   max-width: 50em;
 }
+#previous {
+  display: none;
+}
 *:target {
   background-color: #eed;
 }

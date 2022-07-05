@@ -5,9 +5,10 @@
   xmlns:saxon="http://saxon.sf.net/"
   xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:err="http://www.w3.org/2005/xqt-errors"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
   default-mode="process-document-entrypoint"
   xmlns="http://www.w3.org/1999/xhtml"
-  exclude-result-prefixes="xs html tr saxon" version="3.0"> 
+  exclude-result-prefixes="xs html tr saxon sch" version="3.0"> 
 
   <!-- These two params are for standalone invocation using this stylesheet.
        In the interactive stylesheet, tunnel params with the same names
@@ -27,6 +28,7 @@
   <xsl:template match="/" mode="#default">
     <xsl:param name="secret-path" as="xs:string" tunnel="yes" select="$secret-path"/>
     <xsl:param name="guess-path" as="xs:string" tunnel="yes" select="$guess-path"/>
+    <xsl:param name="format" as="xs:boolean" tunnel="yes" select="false()"/>    
     
     <xsl:variable name="namespace-context" as="element()">
       <xsl:copy select="*">
@@ -37,12 +39,16 @@
         <xsl:namespace name="xs" select="'http://www.w3.org/2001/XMLSchema'"/>
       </xsl:copy>
     </xsl:variable>
+    
+    <xsl:variable name="document-node" as="document-node()" 
+      select="if ($format) then /* => serialize(map{'indent': true()}) => parse-xml() else /"/>
+    
     <xsl:variable name="selected-by-secret-path" as="item()*">
-      <xsl:evaluate xpath="$secret-path" context-item="." namespace-context="$namespace-context"/>
+      <xsl:evaluate xpath="$secret-path" context-item="$document-node" namespace-context="$namespace-context"/>
     </xsl:variable>
     <xsl:variable name="selected-by-guess-path" as="item()*">
       <xsl:try>
-        <xsl:evaluate xpath="$guess-path" context-item="." namespace-context="$namespace-context"/>
+        <xsl:evaluate xpath="$guess-path" context-item="$document-node" namespace-context="$namespace-context"/>
         <xsl:catch>
           <p class="error">
             <xsl:attribute name="id" select="'xpathle_error'"/>
@@ -64,6 +70,7 @@
       <xsl:with-param name="selected-by-secret-path" as="item()*" select="$selected-by-secret-path" tunnel="yes"/>
       <xsl:with-param name="selected-by-guess-path" as="item()*" tunnel="yes" select="$selected-by-guess-path"/>
       <xsl:with-param name="solved" as="xs:boolean" tunnel="yes" select="$solved"/>
+      <xsl:with-param name="document-node" as="document-node()" tunnel="yes" select="$document-node"/>
       <xsl:with-param name="highlight-items" as="item()*" tunnel="yes" 
         select="($selected-by-guess-path)[$solved 
                                           or 
@@ -84,13 +91,15 @@
   <xsl:template name="render">
     <xsl:param name="omit-html-scaffold" as="xs:boolean" tunnel="yes" select="false()"/>
     <xsl:param name="guess-path" as="xs:string" tunnel="yes"/>
+    <xsl:param name="document-node" as="document-node()" tunnel="yes"/>
+    
     <xsl:variable name="prelim" as="element()">
       <div id="rendition">
         <xsl:try>
           <!-- the error may be deferred, for example, if $guess-path = 'false()' -->
-          <xsl:apply-templates select="/" mode="serialize"/>
+          <xsl:apply-templates select="$document-node" mode="serialize"/>
           <xsl:catch>
-            <xsl:apply-templates select="/" mode="serialize">
+            <xsl:apply-templates select="$document-node" mode="serialize">
               <xsl:with-param name="error-para" as="element(html:p)" tunnel="yes">
                 <p class="error">
                   <xsl:attribute name="id" select="'xpathle_error3'"/> There was an error (code <xsl:value-of
@@ -222,6 +231,9 @@
       <xsl:variable name="attempts-string" as="xs:string" 
         select="string($new-iteration) || ' attempt' || (if ($new-iteration gt 1) then 's' else '')">
       </xsl:variable>
+      <div id="previous">
+        <xsl:value-of select="$guess-path"/>
+      </div>
       <xsl:choose>
         <xsl:when test="$solved">
           <h2>Congratulations!</h2>
@@ -326,24 +338,43 @@
       <xsl:text>&lt;</xsl:text>
       <xsl:value-of select="name()"/>
     </span>
-    <xsl:apply-templates select="." mode="xmlns"/>
-    <xsl:if test="empty(parent::*)">
-      <xsl:for-each-group select="(//* | //@*)[exists(prefix-from-QName(node-name(.)))]" 
-        group-by="prefix-from-QName(node-name(.))">
-        <span class="namespace att">
-          <xsl:value-of select="' xmlns:' || current-grouping-key()"/>
-        </span>
-        <span class="name att">
-          <xsl:text>=</xsl:text>
-        </span>
-        <span class="val att">
-          <xsl:text>"</xsl:text>
-          <xsl:value-of select="namespace-uri-for-prefix(current-grouping-key(), (.[self::*], ..)[1])"/>
-          <xsl:text>"</xsl:text>
-        </span>
-      </xsl:for-each-group>
-    </xsl:if>
-    <xsl:apply-templates select="@*" mode="#current"/>
+    <xsl:variable name="atts" as="document-node()">
+      <xsl:document>
+        <xsl:apply-templates select="." mode="xmlns"/>
+        <xsl:if test="empty(parent::*)">
+          <xsl:for-each-group select="(//* | //@*)[exists(prefix-from-QName(node-name(.)))]" 
+            group-by="prefix-from-QName(node-name(.))">
+            <span>
+              <span class="namespace att">
+                <xsl:value-of select="' xmlns:' || current-grouping-key()"/>
+              </span>
+              <span class="name att">
+                <xsl:text>=</xsl:text>
+              </span>
+              <span class="val att">
+                <xsl:text>"</xsl:text>
+                <xsl:value-of select="namespace-uri-for-prefix(current-grouping-key(), (.[self::*], ..)[1])"/>
+                <xsl:text>"</xsl:text>
+              </span>
+            </span>
+          </xsl:for-each-group>
+        </xsl:if>
+        <xsl:apply-templates select="@*" mode="#current"/>
+      </xsl:document>
+    </xsl:variable>
+    <xsl:variable name="max-length-for-atts" as="xs:integer" select="80"/>
+    <xsl:iterate select="$atts/node()">
+      <xsl:param name="length" as="xs:integer" select="0"/>
+      <xsl:variable name="new-length" as="xs:integer" select="$length + string-length(.)"/>
+      <xsl:if test="$new-length gt $max-length-for-atts">
+        <xsl:text>&#xa;</xsl:text>
+      </xsl:if>
+      <xsl:sequence select="."/>
+      <xsl:next-iteration>
+        <xsl:with-param name="length" select="if ($new-length gt $max-length-for-atts) 
+                                              then string-length(.) else $new-length"/>
+      </xsl:next-iteration>
+    </xsl:iterate>
     <xsl:choose>
       <xsl:when test="empty(node())">
         <span class="name elt">/></span>
@@ -362,28 +393,32 @@
   
   <xsl:template match="@*" mode="serialize" priority="1">
     <xsl:text> </xsl:text>
-    <span class="name att">
-      <xsl:value-of select="name()"/>
-    </span>
-    <span class="val att">
-      <xsl:text>="</xsl:text>
-      <xsl:value-of select=". => replace('&amp;', '&amp;amp;')
-                              => replace('&lt;', '&amp;lt;')
-                              => replace('&#x22;', '&amp;quot;')"/>
-      <xsl:text>"</xsl:text>
+    <span>
+      <span class="name att">
+        <xsl:value-of select="name()"/>
+      </span>
+      <span class="val att">
+        <xsl:text>="</xsl:text>
+        <xsl:value-of select=". => replace('&amp;', '&amp;amp;')
+                                => replace('&lt;', '&amp;lt;')
+                                => replace('&#x22;', '&amp;quot;')"/>
+        <xsl:text>"</xsl:text>
+      </span>
     </span>
   </xsl:template>
 
   <xsl:template match="*" mode="xmlns">
     <xsl:if test="not(namespace-uri(.) = namespace-uri(..))
                   and not(in-scope-prefixes(.) = prefix-from-QName(node-name(.)))">
-      <span class="name att">
-        <xsl:text> xmlns=</xsl:text>
-      </span>
-      <span class="val att">
-        <xsl:text>"</xsl:text>
-        <xsl:value-of select="namespace-uri(.)"/>
-        <xsl:text>"</xsl:text>
+      <span>
+        <span class="name att">
+          <xsl:text> xmlns=</xsl:text>
+        </span>
+        <span class="val att">
+          <xsl:text>"</xsl:text>
+          <xsl:value-of select="namespace-uri(.)"/>
+          <xsl:text>"</xsl:text>
+        </span>
       </span>
     </xsl:if>
   </xsl:template>

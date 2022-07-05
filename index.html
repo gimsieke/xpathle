@@ -46,6 +46,12 @@
       Otherwise you’d be able to select every node and quickly come up with an XPath expression that 
       selects only the green ones. Only when your guess selects the same items as the secret expression,
       the number of highlighted items won’t be limited any more.</p>
+      <p>If you check the “Format &amp; indent” box, the input document will be serialized with <code>indent=true</code>
+        and parsed again. This might lead to a code rendition that is easier graspable. You can try this feature
+      on <a href="#daily_2022-06-28">the Saxonica Blog Atom feed</a>.</p>
+      <p>Be aware that checking/unchecking the format &amp; indent box after changing the XPath guess will increase
+        your guess count. If you don’t change the guess, the guess count won’t change when you check/uncheck the box (or
+      when you hit Submit).</p>
       <h3>Performance</h3>
       <p>The distance calculation scales with the product of secretly selected items and the
       items you guess. Therefore it can take a couple of seconds if these counts are around 30 or higher, 
