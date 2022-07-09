@@ -91,12 +91,13 @@
     <xsl:variable name="type" as="xs:string" select="@name"/>
     <xsl:result-document href="#controls2" method="ixsl:replace-content">
       <p><label for="doc-uri">Document URI:</label>  <input id="doc-uri" type="text" name="doc-uri" 
-        autocomplete="off" size="90" autocapitalize="none" value="{$conf($type)($name)?url}">
+        autocomplete="off" size="110" autocapitalize="none" value="{$conf($type)($name)?url}">
         <xsl:if test="$conf($type)($name)?cache_url">
           <xsl:attribute name="data-cache-url" select="$conf($type)($name)?cache_url"/>
         </xsl:if>
-      </input> <input id="format" type="checkbox"/>
-      <label for="format">Format &amp; indent</label>
+      </input> 
+        <span id="format-checkbox-wrapper"><input id="format" type="checkbox"/>
+      <label for="format">Format &amp; indent</label></span>
       </p>
     <p id="guesspara"><label for="guesspath">Guess an XPath expression:</label>  <input id="guesspath" type="text" 
       name="guesspath" autocomplete="off" size="74" autocapitalize="none" value="()"/>  <button 
@@ -112,11 +113,11 @@
 
   <xsl:template mode="ixsl:onclick" match="id('format')">
     <xsl:variable name="checked" as="xs:boolean" select="ixsl:get(., 'checked')"/>
-    <ixsl:schedule-action wait="1">
-      <xsl:call-template name="guess"/>
-    </ixsl:schedule-action>
+      <ixsl:schedule-action wait="1">
+        <xsl:call-template name="guess"/>
+      </ixsl:schedule-action>
   </xsl:template>
-  
+
   <xsl:template mode="ixsl:onclick" match="id('submit-guess')" name="guess">
     <xsl:variable name="doc-uri" as="xs:string" 
       select="(id('doc-uri',ixsl:page())/@data-cache-url, ixsl:get(id('doc-uri',ixsl:page()), 'value'))[1]"/>
@@ -155,10 +156,11 @@
       </xsl:apply-templates>
     </xsl:variable>
     <xsl:result-document href="#rendition" method="ixsl:replace-content">
-      <xsl:sequence select="$result"/>
+      <xsl:sequence select="$result/node()"/>
     </xsl:result-document>
     <xsl:if test="$result//html:p[@class = 'end']">
       <xsl:result-document href="#guesspara" method="ixsl:replace-content"/>
+      <xsl:result-document href="#format-checkbox-wrapper" method="ixsl:replace-content"/>
     </xsl:if>
   </xsl:template>
 

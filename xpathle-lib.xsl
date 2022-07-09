@@ -6,6 +6,7 @@
   xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:err="http://www.w3.org/2005/xqt-errors"
   xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+  xmlns:map="http://www.w3.org/2005/xpath-functions/map"
   default-mode="process-document-entrypoint"
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="xs html tr saxon sch" version="3.0"> 
@@ -450,7 +451,34 @@
 
   <xsl:function name="tr:path-without-default-namespace" as="xs:string">
     <xsl:param name="node" as="node()"/>
-    <xsl:sequence select="path($node) => replace('Q\{' || namespace-uri(($node/self::*|$node/..)[1]) || '\}', '')"/>
+    <xsl:variable name="prefixes" as="map(*)*">
+      <xsl:for-each select="distinct-values(in-scope-prefixes($node/ancestor-or-self::*[1]))">
+        <xsl:map>
+          <xsl:map-entry key="namespace-uri-for-prefix(., $node/ancestor-or-self::*[1])" select="."/>
+        </xsl:map>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:variable name="in-scope-prefix" as="map(*)" select="map:merge($prefixes, map{'duplicates':'use-first'})"/>
+    <xsl:variable name="tokens" as="xs:string+">
+    <xsl:analyze-string select="path($node)" regex="Q\{{(.+?)\}}">
+      <xsl:matching-substring>
+        <xsl:variable name="prefix" as="xs:string?" select="$in-scope-prefix(regex-group(1))[normalize-space()]"/>
+        <xsl:choose>
+          <xsl:when test="exists($prefix)">
+            <xsl:sequence select="$prefix || ':'"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:sequence select="."/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:matching-substring>
+      <xsl:non-matching-substring>
+        <xsl:sequence select="."/>
+      </xsl:non-matching-substring>
+    </xsl:analyze-string>  
+    </xsl:variable>
+    <xsl:sequence select="string-join($tokens)"/>
+<!--    <xsl:sequence select="path($node) => replace('Q\{' || namespace-uri(($node/self::*|$node/..)[1]) || '\}', '')"/>-->
   </xsl:function>
 
   <xsl:function name="tr:node-distance" as="xs:integer">
