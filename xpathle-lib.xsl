@@ -458,24 +458,31 @@
         </xsl:map>
       </xsl:for-each>
     </xsl:variable>
-    <xsl:variable name="in-scope-prefix" as="map(*)" select="map:merge($prefixes, map{'duplicates':'use-first'})"/>
+    <xsl:variable name="in-scope-prefix" as="map(*)" select="map:merge($prefixes, map{'duplicates':'use-last'})"/>
     <xsl:variable name="tokens" as="xs:string+">
-    <xsl:analyze-string select="path($node)" regex="Q\{{(.+?)\}}">
-      <xsl:matching-substring>
-        <xsl:variable name="prefix" as="xs:string?" select="$in-scope-prefix(regex-group(1))[normalize-space()]"/>
-        <xsl:choose>
-          <xsl:when test="exists($prefix)">
-            <xsl:sequence select="$prefix || ':'"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:sequence select="."/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:matching-substring>
-      <xsl:non-matching-substring>
-        <xsl:sequence select="."/>
-      </xsl:non-matching-substring>
-    </xsl:analyze-string>  
+      <xsl:analyze-string select="path($node)" regex="Q\{{(.+?)\}}">
+        <xsl:matching-substring>
+          <xsl:variable name="prefix" as="xs:string*" select="$in-scope-prefix(regex-group(1))"/>
+          <xsl:choose>
+            <xsl:when test="every $uri in ($node/ancestor-or-self::* ! namespace-uri(.))
+                            satisfies ($uri = namespace-uri(root($node)/*))">
+              <xsl:sequence select="''"/>
+            </xsl:when>
+            <xsl:when test="normalize-space($prefix)">
+              <xsl:sequence select="$prefix || ':'"/>
+            </xsl:when>
+            <xsl:when test="$prefix = '' and namespace-uri($node) = namespace-uri(root($node)/*)">
+              <xsl:sequence select="''"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:sequence select="."/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:matching-substring>
+        <xsl:non-matching-substring>
+          <xsl:sequence select="."/>
+        </xsl:non-matching-substring>
+      </xsl:analyze-string>  
     </xsl:variable>
     <xsl:sequence select="string-join($tokens)"/>
 <!--    <xsl:sequence select="path($node) => replace('Q\{' || namespace-uri(($node/self::*|$node/..)[1]) || '\}', '')"/>-->
