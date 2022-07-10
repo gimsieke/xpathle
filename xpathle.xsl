@@ -101,13 +101,16 @@
       </p>
     <p id="guesspara"><label for="guesspath">Guess an XPath expression:</label>  <input id="guesspath" type="text" 
       name="guesspath" autocomplete="off" size="74" autocapitalize="none" value="()"/>  <button 
-        id="submit-guess" value="{$type}/{$name}">Submit</button></p>
+        id="submit-guess" value="{$type}/{$name}">Submit</button>  <span id="computing">Computing…</span></p>
     </xsl:result-document>
     <xsl:if test="exists(id('iteration', ixsl:page()))">
-      <xsl:result-document href="#iteration" method="ixsl:replace-content"></xsl:result-document>
+      <xsl:result-document href="#iteration" method="ixsl:replace-content">0</xsl:result-document>
     </xsl:if>
+    <xsl:result-document href="#previous" method="ixsl:replace-content"/>
     <ixsl:schedule-action wait="1">
-      <xsl:call-template name="guess"/>
+      <xsl:call-template name="guess">
+        <xsl:with-param name="reset" select="true()"/>
+      </xsl:call-template>
     </ixsl:schedule-action>
   </xsl:template>
 
@@ -119,19 +122,22 @@
   </xsl:template>
 
   <xsl:template mode="ixsl:onclick" match="id('submit-guess')" name="guess">
-    <xsl:variable name="doc-uri" as="xs:string" 
+    <xsl:param name="reset" as="xs:boolean" select="false()"/>
+    <xsl:variable name="doc-uri" as="xs:string"
       select="(id('doc-uri',ixsl:page())/@data-cache-url, ixsl:get(id('doc-uri',ixsl:page()), 'value'))[1]"/>
     <xsl:variable name="conf" as="map(*)" select="tr:get-conf()"/>
     <xsl:variable name="type-and-name" as="xs:string" select="ixsl:get(id('submit-guess'), 'value')"/>
     <xsl:variable name="type" as="xs:string" select="substring-before($type-and-name, '/')"/>
+    <xsl:variable name="previous" as="xs:string?" select="id('previous', ixsl:page())"/>
     <xsl:variable name="name" as="xs:string" select="substring-after($type-and-name, '/')"/>
     <xsl:variable name="iteration" as="xs:integer" 
-      select="(id('iteration',ixsl:page())[. castable as xs:integer] ! xs:integer(.), -1)[1]"/>
+      select="(-1[$reset], id('iteration',ixsl:page())[. castable as xs:integer] ! xs:integer(.), -1)[1]"/>
+    <ixsl:set-style name="display" select="'inline'" object="id('computing', ixsl:page())"/>
     <ixsl:schedule-action document="{$doc-uri}">
       <xsl:call-template name="process">
         <xsl:with-param name="secret-path" select="$conf($type)($name)?secret" as="xs:string" tunnel="yes"/>
         <xsl:with-param name="guess-path" select="ixsl:get(id('guesspath',ixsl:page()), 'value')" as="xs:string?" tunnel="yes"/>
-        <xsl:with-param name="previous" as="xs:string?" select="id('previous', ixsl:page())" tunnel="yes"/>
+        <xsl:with-param name="previous" as="xs:string?" select="$previous" tunnel="yes"/>
         <xsl:with-param name="tries" select="$conf($type)($name)?tries ! xs:integer(.)" tunnel="yes" as="xs:integer"/>
         <xsl:with-param name="href" select="$doc-uri"/>
         <xsl:with-param name="iteration" as="xs:integer" select="$iteration" tunnel="yes"/>
@@ -142,8 +148,17 @@
       </xsl:call-template>
     </ixsl:schedule-action>
   </xsl:template>
-
+  
   <xsl:template name="process">
+    <xsl:param name="href"/>
+    <ixsl:schedule-action wait="1">
+      <xsl:call-template name="process2">
+        <xsl:with-param name="href" select="$href"/>
+      </xsl:call-template>
+    </ixsl:schedule-action>
+  </xsl:template>
+  
+  <xsl:template name="process2">
     <xsl:param name="href"/>
     <xsl:param name="previous" tunnel="yes" as="xs:string?"/>
     <xsl:param name="guess-path" tunnel="yes" as="xs:string"/>
@@ -158,6 +173,7 @@
     <xsl:result-document href="#rendition" method="ixsl:replace-content">
       <xsl:sequence select="$result/node()"/>
     </xsl:result-document>
+    <ixsl:set-style name="display" select="'none'" object="id('computing', ixsl:page())"/>
     <xsl:if test="$result//html:p[@class = 'end']">
       <xsl:result-document href="#guesspara" method="ixsl:replace-content"/>
       <xsl:result-document href="#format-checkbox-wrapper" method="ixsl:replace-content"/>

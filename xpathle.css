@@ -70,3 +70,7 @@ code { background-color: #eee; }
 *:target {
   background-color: #eed;
 }
+#computing {
+  display:none;
+  color: #652;
+}

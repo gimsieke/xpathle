@@ -226,7 +226,8 @@
     </xsl:variable>
     <xsl:sequence select="$potential-error"/>
     <xsl:sequence select="$error-para"/>
-    <xsl:variable name="new-iteration" as="xs:integer" select="if (exists($potential-error | $error-para)) then $iteration else $iteration + 1"/>
+    <xsl:variable name="new-iteration" as="xs:integer" 
+      select="if (exists($potential-error | $error-para)) then $iteration else $iteration + 1"/>
     <p>Attempts so far: <span id="iteration"><xsl:value-of select="$new-iteration"/></span> of <xsl:value-of select="$tries"/></p>
     <div id="counts">
       <xsl:variable name="attempts-string" as="xs:string" 
@@ -452,11 +453,13 @@
   <xsl:function name="tr:path-without-default-namespace" as="xs:string">
     <xsl:param name="node" as="node()"/>
     <xsl:variable name="prefixes" as="map(*)*">
-      <xsl:for-each select="distinct-values(in-scope-prefixes($node/ancestor-or-self::*[1]))">
-        <xsl:map>
-          <xsl:map-entry key="namespace-uri-for-prefix(., $node/ancestor-or-self::*[1])" select="."/>
-        </xsl:map>
-      </xsl:for-each>
+      <xsl:if test="exists($node/ancestor-or-self::*)">
+        <xsl:for-each select="distinct-values(in-scope-prefixes($node/ancestor-or-self::*[1]))">
+          <xsl:map>
+            <xsl:map-entry key="namespace-uri-for-prefix(., $node/ancestor-or-self::*[1])" select="."/>
+          </xsl:map>
+        </xsl:for-each>  
+      </xsl:if>
     </xsl:variable>
     <xsl:variable name="in-scope-prefix" as="map(*)" select="map:merge($prefixes, map{'duplicates':'use-last'})"/>
     <xsl:variable name="tokens" as="xs:string+">
@@ -464,8 +467,12 @@
         <xsl:matching-substring>
           <xsl:variable name="prefix" as="xs:string*" select="$in-scope-prefix(regex-group(1))"/>
           <xsl:choose>
-            <xsl:when test="every $uri in ($node/ancestor-or-self::* ! namespace-uri(.))
-                            satisfies ($uri = namespace-uri(root($node)/*))">
+            <xsl:when test="not(contains(name(root($node)/*), ':'))
+                            and
+                            (
+                              every $uri in ($node/ancestor-or-self::* ! namespace-uri(.))
+                              satisfies ($uri = namespace-uri(root($node)/*))
+                            )">
               <xsl:sequence select="''"/>
             </xsl:when>
             <xsl:when test="normalize-space($prefix)">
@@ -485,7 +492,6 @@
       </xsl:analyze-string>  
     </xsl:variable>
     <xsl:sequence select="string-join($tokens)"/>
-<!--    <xsl:sequence select="path($node) => replace('Q\{' || namespace-uri(($node/self::*|$node/..)[1]) || '\}', '')"/>-->
   </xsl:function>
 
   <xsl:function name="tr:node-distance" as="xs:integer">
