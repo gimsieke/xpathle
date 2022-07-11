@@ -94,5 +94,9 @@ summary > * {
   display: inline;
 }
 .date {
+  display: inline-block;
   min-width: 8em;
+}
+#archive * {
+  color: #555;
 }

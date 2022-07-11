@@ -41,11 +41,11 @@
     <xsl:param name="map" as="map(*)"/>
     <xsl:param name="type" as="xs:string"/>
     <p id="{$type}_{$name}">
-      <span class="date">
-        <xsl:if test="$type = 'daily'">
+      <xsl:if test="$type = 'daily'">
+        <span class="date">
           <xsl:value-of select="fn:format-date(xs:date($name), '[MNn] [D], [Y]')"/>:  
-        </xsl:if>
-      </span> 
+        </span>
+      </xsl:if> 
       <button name="{$type}" value="{$name}" class="load">
         <xsl:if test="$type = 'daily' and $name = tr:YYYY-MM-DD()">
           <xsl:attribute name="id" select="'daily'"/>
