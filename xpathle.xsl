@@ -75,7 +75,7 @@
             <p>Sorry, no daily challenge today. But you can send a suggestion to <a 
               href="mailto:gerrit.imsieke@le-tex.de">Gerrit</a>. Or browse the archive.</p>
           </xsl:if>
-          <details id="archive">
+          <details id="archive" open="open">
             <summary>Archive</summary>
             <xsl:for-each-group select="$archive" group-by="substring(., 1, 7)">
               <details>
