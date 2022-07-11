@@ -41,9 +41,11 @@
     <xsl:param name="map" as="map(*)"/>
     <xsl:param name="type" as="xs:string"/>
     <p id="{$type}_{$name}">
-      <xsl:if test="$type = 'daily'">
-        <xsl:value-of select="fn:format-date(xs:date($name), '[MNn] [D], [Y]')"/>: 
-      </xsl:if>
+      <span class="date">
+        <xsl:if test="$type = 'daily'">
+          <xsl:value-of select="fn:format-date(xs:date($name), '[MNn] [D], [Y]')"/>:  
+        </xsl:if>
+      </span> 
       <button name="{$type}" value="{$name}" class="load">
         <xsl:if test="$type = 'daily' and $name = tr:YYYY-MM-DD()">
           <xsl:attribute name="id" select="'daily'"/>
@@ -73,9 +75,16 @@
             <p>Sorry, no daily challenge today. But you can send a suggestion to <a 
               href="mailto:gerrit.imsieke@le-tex.de">Gerrit</a>. Or browse the archive.</p>
           </xsl:if>
-          <details>
+          <details id="archive">
             <summary>Archive</summary>
-            <xsl:sequence select="$archive ! tr:render-conf-item(., $conf?daily(.), 'daily')"/>
+            <xsl:for-each-group select="$archive" group-by="substring(., 1, 7)">
+              <details>
+                <summary>
+                  <xsl:value-of select="current-grouping-key()"/>
+                </summary>
+                <xsl:sequence select="current-group() ! tr:render-conf-item(., $conf?daily(.), 'daily')"/>
+              </details>
+            </xsl:for-each-group>
           </details>
         </xsl:if>
         <xsl:if test="exists($daily)">
