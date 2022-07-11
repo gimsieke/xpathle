@@ -79,7 +79,7 @@ code { background-color: #eee; }
   color: #652;
 }
 #archive > details > summary {
-  margin-top: 1em;
+  margin-top: 0.9em;
 }
 #archive > details {
   margin-left: 1em;
