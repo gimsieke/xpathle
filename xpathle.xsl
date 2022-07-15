@@ -108,9 +108,11 @@
         <span id="format-checkbox-wrapper"><input id="format" type="checkbox"/>
       <label for="format">Format &amp; indent</label></span>
       </p>
-    <p id="guesspara"><label for="guesspath">Guess an XPath expression:</label>  <input id="guesspath" type="text" 
-      name="guesspath" autocomplete="off" size="74" autocapitalize="none" value="()"/>  <button 
-        id="submit-guess" value="{$type}/{$name}">Submit</button>  <span id="computing">Computing…</span></p>
+    <p id="guesspara"><label for="guesspath">Guess an XPath expression:</label>  <button 
+        id="use-stats">use stats</button> <label for="use-stats">(see <a href="#tips_query">above</a>)</label>  <button 
+        id="use-scatter">use scatter</button> <label for="use-scatter">(see <a href="#tips_scatter">above</a>)</label>  
+      <input id="guesspath" type="text" name="guesspath" autocomplete="off" size="74" autocapitalize="none" value="()"/>  
+      <button id="submit-guess" value="{$type}/{$name}">Submit</button>  <span id="computing">Computing…</span></p>
     </xsl:result-document>
     <xsl:if test="exists(id('iteration', ixsl:page()))">
       <xsl:result-document href="#iteration" method="ixsl:replace-content">0</xsl:result-document>
@@ -121,6 +123,21 @@
         <xsl:with-param name="reset" select="true()"/>
       </xsl:call-template>
     </ixsl:schedule-action>
+  </xsl:template>
+
+  <xsl:template mode="ixsl:onclick" match="button[@id='use-scatter']">
+    <xsl:variable name="secret-count" as="xs:integer" 
+      select="id('counts', ixsl:page())/table/tr[2]/td[. castable as xs:integer] => xs:integer()"/>
+    <xsl:variable name="expression" as="xs:string" 
+      select="'let $start := /*, $count := count($start/descendant-or-self::*), $dist := max(($count idiv ' ||
+              tr:highlight-count($min-highlight, $max-highlight, $secret-count) || 
+              ', 1)) return $start/descendant-or-self::*[position() mod $dist = $dist idiv 2]'"/>
+    <ixsl:set-property name="value" select="$expression" object="id('guesspath', ixsl:page())"/>
+  </xsl:template>
+
+  <xsl:template mode="ixsl:onclick" match="button[@id='use-stats']">
+    <ixsl:set-property name="value" object="id('guesspath', ixsl:page())"
+      select="'sort(for $n in distinct-values(//*/name()) return $n || ''~'' || count(//*[name()=$n]), (), function($i) {-number(substring-after($i, ''~''))})'"/>
   </xsl:template>
 
   <xsl:template mode="ixsl:onclick" match="id('format')">

@@ -75,19 +75,25 @@
       <xsl:with-param name="highlight-items" as="item()*" tunnel="yes" 
         select="($selected-by-guess-path)[$solved 
                                           or 
-                                          (position() = (1 to xs:integer(
-                                                                min(($max-highlight, 
-                                                                     max((
-                                                                          count($selected-by-secret-path) * 2, 
-                                                                          $min-highlight
-                                                                        ))
-                                                                   ))
-                                                              )
-                                                        )
+                                          (position() = (1 to tr:highlight-count($min-highlight, $max-highlight, count($selected-by-secret-path)))
                                           )
                                          ]"/>
     </xsl:call-template>
   </xsl:template>
+  
+  <xsl:function name="tr:highlight-count" as="xs:integer">
+    <xsl:param name="min" as="xs:integer"/>
+    <xsl:param name="max" as="xs:integer"/>
+    <xsl:param name="selected" as="xs:integer"/>
+    <xsl:sequence select="xs:integer(
+                                      min(($max, 
+                                           max((
+                                                count($selected) * 2, 
+                                                $min
+                                              ))
+                                         ))
+                                    )"/>
+  </xsl:function>
 
   <xsl:template name="render">
     <xsl:param name="omit-html-scaffold" as="xs:boolean" tunnel="yes" select="false()"/>

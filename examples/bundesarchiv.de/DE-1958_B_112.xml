@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ead audience="external" xmlns="urn:isbn:1-931666-22-9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="urn:isbn:1-931666-22-9 http://www.archivesportaleurope.net/Portal/profiles/apeEAD.xsd">
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511" scriptencoding="iso15924" relatedencoding="MARC21">
+    <eadid countrycode="DE" mainagencycode="DE-1958" url="https://invenio.bundesarchiv.de/basys2-invenio/direktlink/3d7ab776-09f5-4067-a297-4fb6e1af5891/" identifier="DE-1958_3d7ab776-09f5-4067-a297-4fb6e1af5891">DE-1958_3d7ab776-09f5-4067-a297-4fb6e1af5891</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper encodinganalog="245">Bundesrechnungshof</titleproper>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Bundesarchiv</publisher>
+        <date encodinganalog="260$c" calendar="gregorian" normal="2009">2009</date>
+        <address>
+          <addressline>Potsdamer Straße 1</addressline>
+          <addressline>56075 Koblenz</addressline>
+          <addressline>koblenz@bundesarchiv.de</addressline>
+        </address>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+      <creation>
+        <date normal="2016-04-01">01.04.2016</date>
+      </creation>
+    </profiledesc>
+    <revisiondesc>
+      <change>
+        <date normal="2018-09-12">12.09.2018</date>
+        <item>Converted_apeEAD_version_BASYS</item>
+      </change>
+      <change>
+        <date normal="2018-09-12">12.09.2018</date>
+        <item>automated export from BASYS database</item>
+      </change>
+    </revisiondesc>
+  </eadheader>
+  <archdesc level="fonds" type="inventory" encodinganalog="3.1.4" relatedencoding="ISAD(G)v2">
+    <did>
+      <unitid encodinganalog="3.1.1" type="call number">BArch B 112</unitid>
+      <unitdate calendar="gregorian" era="ce" normal="1939-01-01/1945-12-31" encodinganalog="3.1.3">(1939) 1945ff.</unitdate>
+      <unittitle encodinganalog="3.1.2">Bundesrechnungshof</unittitle>
+      <physdesc>
+        <genreform>Schriftgut</genreform>
+        <extent>4576 Aufbewahrungseinheiten</extent>
+        <extent>76,6 laufende Meter</extent>
+      </physdesc>
+      <langmaterial>
+        <language langcode="ger" scriptcode="Latn">deutsch</language>
+      </langmaterial>
+      <origination encodinganalog="3.2.1" label="final">Bundesrechnungshof (BRH)</origination>
+      <repository>
+        <corpname>Bundesarchiv</corpname>
+        <address>
+          <addressline>Potsdamer Straße 1</addressline>
+          <addressline>56075 Koblenz</addressline>
+          <addressline>koblenz@bundesarchiv.de</addressline>
+        </address>
+        <extref xlink:role="url_archive" xlink:href="http://www.bundesarchiv.de">http://www.bundesarchiv.de</extref>
+      </repository>
+    </did>
+    <bioghist>
+      <head>Geschichte des Bestandsbildners</head>
+      <p>Das Gesetz über die Aufstellung und Ausführung des Bundeshaushaltsplans für das Rechnungsjahr 1949 sowie über die Haushaltsführung und über die vorläufige Rechnungsprüfung im Bereich der Bundesverwaltung (Haushaltsgesetz und Vorläufige Haushaltsordnung) vom 7. Juni 1950 (BGBl. 1949/50 S. 199 f.) legte fest, daß der Rechnungshof im Vereinigten Wirtschaftsgebiet (VWG) bereits die Aufgaben des Bundesrechnungshofes übernehmen und gleichzeitig die Rechnungsprüfung der Verwaltung des VWG zu Ende führen sollte. Der Bundesrechnungshof (BRH) wurde mit Gesetz vom 27. November 1950 (BGBl. 1949/50 S. 765 f.) gegründet. Dieses Gesetz trat rückwirkend zum 1. April 1950 in Kraft. Der BRH ist eine oberste Bundesbehörde. Seine Stellung als unabhängiges Organ der Finanzkontrolle und seine Aufgaben wurden durch Art. 114 Abs. 2 GG und entsprechende Gesetze (Vgl. Gesetz über den BRH vom 11. Juli 1986, BGBl. I S. 1445, Bundeshaushaltsordnung vom 19. Aug. 1969, BGBl. I S. 1284, Haushaltsgrundsätzegesetz vom 19. Aug. 1969, BGBl. I S. 1273 sowie weitere Spezialgesetze) bestimmt. Präsident und Vizepräsident werden vom Bundestag und Bundesrat gewählt. Der Präsident ist zugleich Bundesbeauftragter für die Wirtschaftlichkeit in der Verwaltung (B 112 Anhang), Vorsitzender des Bundespersonalausschusses und des Bundessschuldenausschusses. Der BRH gliedert sich in nach Prüfungsgebieten getrennte Abteilungen. Das Gesetz zur Fortentwicklung des Haushaltsrechts von Bund und Ländern vom 22. Dez. 1997 (BGBl. I S. 3251 ff.) ermöglichte es, Prüfungsämter einzurichten, die den BRH bei der Prüfung der Haushalts- und Wirtschaftsführung des Bundes unterstützen. Der BRH prüft die Haushalts- und Wirtschaftsführung des Bundes, seiner Sondervermögen und Betriebe, die bundesunmittelbaren juristischen Personen des öffentlichen Rechts einschließlich der Bundesunternehmen in dieser Rechtsform, die bundes- und landesunmittelbaren Sozialversicherungsträger, soweit sie Bundeszuschüsse erhalten oder Garantieverpflichtungen bestehen, die Betätigung des Bundes bei Unternehmen des privaten Rechts, an denen der Bund beteiligt ist und unter bestimmten Voraussetzungen auch sonstige juristische Personen des privaten Rechts. Die Feststellungen fasst der Bundesrechnungshof in Berichten und Prüfungsmitteilungen zusammen. Jährlich berichtet er dem Bundestag, dem Bundesrat und der Bundesregierung. Wie im Bonn-Berlin-Gesetz vom 26. April 1994 (BGBl. I S. 918) vorgesehen, verlegte der Bundesrechnungshof seinen Sitz ab Juli 2000 von Frankfurt/Main nach Bonn. In Potsdam wurde eine Außenstelle eingerichtet. Der BRH gibt jährlich Jahresberichte (Bemerkungen des Bundesrechnungshofes) heraus, in dem die wichtigsten Prüfergebnisse zusammengefasst veröffentlicht werden.</p>
+    </bioghist>
+    <processinfo>
+      <head>Bearbeitungshinweise</head>
+      <p>Ein Aussonderungs- und Bewertungskatalog liegt vor.</p>
+    </processinfo>
+    <scopecontent encodinganalog="summary">
+      <head>Bestandsbeschreibung</head>
+      <p>Archivische Bewertung und Bearbeitung</p>
+      <p>Der Bestand umfasst Fachakten und Prüfungsakten. Nach einem mit dem Bundesrechnungshof abgestimmten Aussonderungs- und Bewertungskatalog übernimmt das Bundesarchiv nur noch diejenigen Akten des Bundesrechnungshofes, die Prüfungen zum Gegenstand haben, die in den jährlich erscheinenden Bemerkungen aufgeführt werden. Darüber hinaus übernimmt das Bundesarchiv Unterlagen zur Organisation, Schriftgutverwaltung und Aufgabenentwicklung des Bundesrechnungshofes einschließlich der internen sowie nationalen und internationalen Ausschuss- und Gremienarbeit.</p>
+    </scopecontent>
+    <prefercite>
+      <head>Zitierweise</head>
+      <p>BArch B 112/...</p>
+    </prefercite>
+    <dsc type="othertype">
+      <c level="fonds" id="DE-1958_3d7ab776-09f5-4067-a297-4fb6e1af5891" encodinganalog="3.1.4">
+        <did>
+          <unittitle encodinganalog="3.1.2">Bundesrechnungshof</unittitle>
+          <physdesc>
+            <genreform>Schriftgut,Akten</genreform>
+            <extent>4576 Aufbewahrungseinheiten</extent>
+            <extent>76,6 laufende Meter</extent>
+          </physdesc>
+          <langmaterial>
+            <language langcode="ger" scriptcode="Latn">deutsch</language>
+          </langmaterial>
+        </did>
+        <c level="class" id="DE-1958_3fce8d9b-a791-4609-bb26-e57473fd9387" encodinganalog="3.1.4">
+          <did>
+            <unittitle encodinganalog="3.1.2">B 112 Bundesrechnungshof</unittitle>
+          </did>
+          <c level="class" id="DE-1958_6b875358-67d7-4017-8c7d-89f493c3dde6" encodinganalog="3.1.4">
+            <did>
+              <unittitle encodinganalog="3.1.2">Rechnungshof des Deutschen Reichs in der Britischen Zone (Hamburg)</unittitle>
+              <note>
+                <p>Es können keine Archivalien angezeigt werden.</p>
+              </note>
+            </did>
+          </c>
+          <c level="class" id="DE-1958_2ed98756-000a-4d5c-9df0-30fbebfe455c" encodinganalog="3.1.4">
+            <did>
+              <unittitle encodinganalog="3.1.2">Rechnungshof für Sonderaufgaben</unittitle>
+              <note>
+                <p>Es können keine Archivalien angezeigt werden.</p>
+              </note>
+            </did>
+          </c>
+          <c level="class" id="DE-1958_c37b9ee7-a1e5-4a1b-9547-157cdbed6ddb" encodinganalog="3.1.4">
+            <did>
+              <unittitle encodinganalog="3.1.2">Rechnungshof im Vereinigten Wirtschaftsgebiet</unittitle>
+              <note>
+                <p>Es können keine Archivalien angezeigt werden.</p>
+              </note>
+            </did>
+          </c>
+          <c level="class" id="DE-1958_a2d12298-9278-472a-90dc-ddf97198a201" encodinganalog="3.1.4">
+            <did>
+              <unittitle encodinganalog="3.1.2">Organisation, Verwaltung, Innerer Dienst</unittitle>
+              <note>
+                <p>Es können keine Archivalien angezeigt werden.</p>
+              </note>
+            </did>
+          </c>
+          <c level="class" id="DE-1958_5b552d5b-2b52-4d14-a36d-a981df7f580c" encodinganalog="3.1.4">
+            <did>
+              <unittitle encodinganalog="3.1.2">Prüfungsakten</unittitle>
+            </did>
+            <c level="class" id="DE-1958_2ab1f5c5-dc6b-4cda-9229-c11a87319056" encodinganalog="3.1.4">
+              <did>
+                <unittitle encodinganalog="3.1.2">Haushalts- und Vermögensrechnung des Bundes für einzelne Haushaltsjahre</unittitle>
+                <note>
+                  <p>Es können keine Archivalien angezeigt werden.</p>
+                </note>
+              </did>
+            </c>
+            <c level="class" id="DE-1958_123bd138-57ad-4ec0-b0e7-decf64642bbe" encodinganalog="3.1.4">
+              <did>
+                <unittitle encodinganalog="3.1.2">Finanzwirtschaftliche Entwicklung des Bundes.- Einnahmen und Ausgaben</unittitle>
+                <note>
+                  <p>Es können keine Archivalien angezeigt werden.</p>
+                </note>
+              </did>
+            </c>
+            <c level="class" id="DE-1958_95bba5ce-ca47-4242-90ea-84ef5b232fcb" encodinganalog="3.1.4">
+              <did>
+                <unittitle encodinganalog="3.1.2">Haushalts- und Wirtschaftsführung des Bundes für einzelne Haushaltsjahre</unittitle>
+              </did>
+              <c level="class" id="DE-1958_b40ea390-1975-428d-9d03-47726e910793" encodinganalog="3.1.4">
+                <did>
+                  <unittitle encodinganalog="3.1.2">Oberste Organe, Bundesministerien</unittitle>
+                </did>
+                <c level="class" id="DE-1958_1096e25f-0b86-4aa5-8bba-e67f669b44aa" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Auswärtiges Amt</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+              </c>
+              <c level="class" id="DE-1958_b87852a2-a382-43db-b918-09f054be906a" encodinganalog="3.1.4">
+                <did>
+                  <unittitle encodinganalog="3.1.2">Nichtministerielle Bundesverwaltung</unittitle>
+                </did>
+                <c level="class" id="DE-1958_25bb2961-e467-4e55-9cee-ab62e7e1ff78" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Umweltbundesamt</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_03d2b151-2b61-49b2-8283-ea18deb96b63" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Deutsche Bundespost</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+              </c>
+              <c level="class" id="DE-1958_109e38f0-d6db-4f9a-801d-d54636bb7ad5" encodinganalog="3.1.4">
+                <did>
+                  <unittitle encodinganalog="3.1.2">Andere</unittitle>
+                  <note>
+                    <p>Es können keine Archivalien angezeigt werden.</p>
+                  </note>
+                </did>
+              </c>
+            </c>
+            <c level="class" id="DE-1958_91c586c1-0f26-4e5c-bf4e-e1ce07d5adea" encodinganalog="3.1.4">
+              <did>
+                <unittitle encodinganalog="3.1.2">Weitere Prüfungsergebnisse</unittitle>
+              </did>
+              <c level="class" id="DE-1958_4f9fac40-eb66-4315-ab78-269af1269ed7" encodinganalog="3.1.4">
+                <did>
+                  <unittitle encodinganalog="3.1.2">Oberste Organe, Bundesministerien</unittitle>
+                </did>
+                <c level="class" id="DE-1958_7c183966-f6c3-44fb-9a33-daa64b457151" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Bundesministerium des Innern</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_c7ad26d4-d990-4d66-ae98-52a0312e2c05" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Bundesministerium der Verteidigung</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_75df7a69-180c-4e98-ba7b-209a48574789" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Bundesministerium für innerdeutsche Beziehungen</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+              </c>
+              <c level="class" id="DE-1958_4a97aaef-536b-4d0d-bf6d-6f37c9bf937e" encodinganalog="3.1.4">
+                <did>
+                  <unittitle encodinganalog="3.1.2">Nichtministerielle Bundesverwaltung</unittitle>
+                </did>
+                <c level="class" id="DE-1958_8bcc509f-bfbb-4966-81d0-7a0193810564" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Bundeskriminalamt</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_e957f468-2c6b-4aa1-987a-92287ea5ceda" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Bundesanstalt für Flugsicherung</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_6d47fec2-f41c-4f37-bc53-a4f1e8fedc04" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Bundesverwaltungsamt</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_016aaa83-25ac-432e-84f5-c5e331cd863d" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Generalbundesanwalt</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_39e5e8a2-465b-43f6-8f7a-a6922dae3cd2" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Bundesamt für Finanzen</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_fe286137-1d3a-4162-8426-8d1f4a7ecd03" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Bundesanstalt für Gewässerkunde</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+                <c level="class" id="DE-1958_3884d24c-b2fc-4f78-ac68-a15dabc5e65c" encodinganalog="3.1.4">
+                  <did>
+                    <unittitle encodinganalog="3.1.2">Amt für Wehrtechnik und Beschaffung</unittitle>
+                    <note>
+                      <p>Es können keine Archivalien angezeigt werden.</p>
+                    </note>
+                  </did>
+                </c>
+              </c>
+              <c level="class" id="DE-1958_b7ba80b6-0d8a-4245-b325-708d748c7968" encodinganalog="3.1.4">
+                <did>
+                  <unittitle encodinganalog="3.1.2">Andere</unittitle>
+                  <note>
+                    <p>Es können keine Archivalien angezeigt werden.</p>
+                  </note>
+                </did>
+              </c>
+            </c>
+          </c>
+        </c>
+      </c>
+    </dsc>
+  </archdesc>
+</ead>
