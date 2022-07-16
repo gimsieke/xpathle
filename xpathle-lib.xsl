@@ -84,11 +84,11 @@
   <xsl:function name="tr:highlight-count" as="xs:integer">
     <xsl:param name="min" as="xs:integer"/>
     <xsl:param name="max" as="xs:integer"/>
-    <xsl:param name="selected" as="xs:integer"/>
+    <xsl:param name="selected-count" as="xs:integer"/>
     <xsl:sequence select="xs:integer(
                                       min(($max, 
                                            max((
-                                                count($selected) * 2, 
+                                                $selected-count * 2, 
                                                 $min
                                               ))
                                          ))
