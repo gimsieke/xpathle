@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RTML	mode="request" uid="rtml://DE.Uni-Goettingen.MONET/requests/North/12345678"
+	version="3.2c"
+	xmlns="http://www.rtml.org/v3.2c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.rtml.org/v3.2c http://monet.uni-goettingen.de/XMLSchema/RTML/schemas/RTML-3.2c.xsd">
+	<!--
+		EXAMPLE LEVEL 1 DOCUMENT USING MINIMAL RTML SUPPORT
+
+		1. Parse userid for use in FITS header)
+			<Project><Contact><Username>
+		2. Observational unit task is a Schedule within a DateTimeConstraint
+			<Schedule>
+				<DateTimeContraint><DateTimeStart/><DateTimeEnd/>
+		3. Parse values of CCD binning
+				<Camera><Detector><Binning><X/><Y/>
+		4. Parse name of target
+				<Target name="">
+		5. Go to target position (equinox 2000 assumed).
+					<Coordinates>
+						<RightAscension><Value units="hours">
+						<Declination><Value units="degrees">
+		6. Set filter by name
+				<Camera><FilterWheel><Filter name=""/>
+		7. Set exposure time and count
+				<Exposure count="1"><Value units="seconds">
+		8. Take an exposure using the current parameters
+				<Observation/>
+		9. Take bias image(s)
+			<Calibration>
+				<BiasCorrection><Count>
+		10. Take dark current image(s)
+				<DarkCurrentCorrection>
+					<Count>
+					<ExposureTime>
+		11. Continue while there are possible Schedules+DateTimeConstraints+DateTimeStart .....
+	-->
+
+	<!-- LEVEL 1: MINIMAL HISTORY -->
+	<History>
+		<Entry timeStamp="2011-12-25T19:19:19" />
+	</History>
+
+	<!-- LEVEL 1: MINIMAL PROJECT INFO [NOTE USERID!] -->
+	<Project>
+		<Contact>
+			<Username>GoeObserver</Username>
+		</Contact>
+	</Project>
+
+	<!-- LEVEL 1: A SINGLE Schedule ACCOMPANIED BY A DateTimeConstraint IS THE UNIT OF OBSERVATION -->
+	<Schedule>
+		<!-- LEVEL 1: STARTING TIME ONLY : SCHEDULER FIND Schedule WITH CLOSEST STARTING DATETIME -->
+		<DateTimeConstraint>
+			<DateTimeStart value="2011-12-25T22:22:22"/>
+			<DateTimeEnd   value="2011-12-25T23:23:23"/>
+		</DateTimeConstraint>
+
+		<!-- LEVEL 1: SET CCD BINNING -->
+		<Camera><Detector><Binning><X>2</X><Y>2</Y></Binning></Detector></Camera>
+
+		<!-- LEVEL 1: MOVE TELESCOPE [NOTE NAME!] -->
+		<Target name="USNO 1234567">
+			<Coordinates>
+				<RightAscension><Value units="hours">23.45678</Value></RightAscension>
+				<Declination><Value units="degrees">+12.34567</Value></Declination>
+			</Coordinates>
+		</Target>
+
+		<!-- LEVEL 1: SELECT FILTER -->
+		<Camera><FilterWheel><Filter name="V"/></FilterWheel></Camera>
+
+		<!-- LEVEL 1: SET EXPOSURE AND COUNT -->
+		<Exposure count="1"><Value units="seconds">40.0</Value></Exposure>
+
+		<!-- LEVEL 1: MAKE EXPOSURE OR SERIES OF EXPOSURES BASED ON PREVIOUS <Exposure> -->
+		<Observation/>
+		
+		<!-- LEVEL 1: TAKE THESE CALIBRATIONS NOW WHETHER THEY'VE BEEN DONE BEFORE OR NOT -->
+		<Calibration>
+			<!-- LEVEL 1: TAKE n BIAS EXPOSURES -->
+			<BiasCorrection><Count>10</Count></BiasCorrection>
+
+			<!-- LEVEL 1: TAKE n DARK EXPOSURES OF GIVEN EXPOSURE TIME -->
+			<DarkCurrentCorrection>
+				<Count>10</Count>
+				<!-- RTML 3.2b : ADDED ExposureTime AS OPTIONAL PARAMETER FOR THIS PURPOSE -->
+				<ExposureTime units="seconds">40.0</ExposureTime>
+			</DarkCurrentCorrection>
+		</Calibration>
+	</Schedule>
+
+	<!-- LEVEL 1: HERE COULD BE FURTHER <Schedule><DateTimeConstraint> UNITS ..... -->
+</RTML>

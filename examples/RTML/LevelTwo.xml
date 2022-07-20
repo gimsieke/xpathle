@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RTML	mode="request" uid="rtml://DE.Uni-Goettingen.MONET/requests/North/12345678"
+	version="3.2c"
+	xmlns="http://www.rtml.org/v3.2c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.rtml.org/v3.2c http://monet.uni-goettingen.de/XMLSchema/RTML/schemas/RTML-3.2c.xsd">
+	<!--
+		EXAMPLE LEVEL 2 DOCUMENT USING THE FOLLOWING ADDITIONAL FUNCTIONALITY
+
+		1. Support focussing
+			<Calibration><FocusCorrection/></Calibration>
+		2. Test unit observation task by a minimum airmass constraint (sanity check)
+			<Schedule><AirmassConstraint>
+		3. Change userid stored in FITS header of the next observation (RTML 3.2c)
+			<Schedule><Username/></Schedule>
+		4. Set FITS keyword OBSTYPE (e.g. for sky flats; RTML 3.2c) FOR CURRENT OBSERVATION ONLY
+			<Schedule><Observation><Type>
+		5. Support MedianCountsConstraint (for aborting skyflats)
+			<Schedule><MedianCountsConstraint>
+	-->
+
+	<History>
+		<Entry timeStamp="2011-12-25T19:19:19" />
+	</History>
+	<Project>
+		<Contact>
+			<Username>GoeObserver</Username>
+		</Contact>
+	</Project>
+
+	<!-- STARTUP SCHEDULE TO FOCUS THE TELESCOPE -->
+	<Schedule>
+		<DateTimeConstraint>
+			<DateTimeStart value="2011-12-25T22:00:00"/>
+			<DateTimeEnd   value="2011-12-25T23:00:00"/>
+		</DateTimeConstraint>
+		
+		<!-- LEVEL 2: AIRMASS SANITY CHECK FOR THIS Schedule -->
+		<AirmassConstraint maximum="3.0"/>
+		
+		<Target name="M13">
+			<Coordinates>
+				<RightAscension><Value units="hours">23.45678</Value></RightAscension>
+				<Declination><Value units="degrees">+12.34567</Value></Declination>
+			</Coordinates>
+		</Target>
+		<Camera>
+			<Detector><Binning><X>2</X><Y>2</Y></Binning></Detector>
+			<FilterWheel><Filter name="clear"/></FilterWheel>
+		</Camera>
+		<Exposure count="1"><Value units="seconds">10.0</Value></Exposure>
+
+		<!-- LEVEL 2: VIRTUALLY PRESS THE FOCUS BUTTON -->
+		<Calibration><FocusCorrection/></Calibration>
+	</Schedule>
+
+	<!-- HERE'S THE FIRST REAL OBSERVATION Schedule  -->
+	<Schedule>
+
+		<!-- LEVEL 2: THE ABILITY TO MODIFY THE userid (FOR LATER ACCOUNTINT; RTML 3.2c) -->
+		<Username>ACustomer</Username>
+		<DateTimeConstraint>
+			<DateTimeStart value="2011-12-26T00:00:00"/>
+			<DateTimeEnd   value="2011-12-26T01:00:00"/>
+		</DateTimeConstraint>
+		<AirmassConstraint maximum="3.0"/>
+		<Target name="M31">
+			<Coordinates>
+				<RightAscension><Value units="hours">23.45678</Value></RightAscension>
+				<Declination><Value units="degrees">+12.34567</Value></Declination>
+			</Coordinates>
+		</Target>
+		<Camera><Detector><Binning><X>2</X><Y>2</Y></Binning></Detector></Camera>
+		<Exposure count="1"><Value units="seconds">200.0</Value></Exposure>
+		<Observation>
+
+			<!-- LEVEL 2: THE ABILITY TO ADD A COMMENT TO THE FITS HEADER FOR THESE IMAGES -->
+			<!-- <Comment>Observation carried out by MONET scheduler.</Comment> -->
+		</Observation>
+	</Schedule>
+
+	<!-- HERE'S A MORNING TWILIGHT FLAT OBSERVATION SCHEDULED BY TIME,ALT,AZ USING MedianCountsConstraint -->
+	<Schedule>
+		<DateTimeConstraint>
+			<DateTimeStart value="2011-12-26T13:00:00"/>
+			<DateTimeEnd   value="2011-12-25T14:00:00"/>
+		</DateTimeConstraint>
+
+		<!-- LEVEL 2: THE ABILITY TO ABORT THE CURRENT SUB-Schedule BECAUSE OF BRIGHT IMAGE -->
+		<MedianCountsConstraint maximum="30000"/>
+		
+		<Username>GoeObserver</Username>
+		<Camera>
+			<Detector><Binning><X>2</X><Y>2</Y></Binning></Detector>
+			<FilterWheel><Filter name="V"/></FilterWheel>
+		</Camera>
+		<Target name="SkyFlat">
+			<Coordinates>
+				<Altitude units="degrees">23.45678</Altitude>
+				<Azimuth  units="degrees">+12.34567</Azimuth>
+			</Coordinates>
+		</Target>
+		<Exposure count="50"><Value units="seconds">10.0</Value></Exposure>
+
+		<!-- LEVEL 2: THE ABILITY TO NOTE THE FITS OBSTYPE PROPERTY WHEN CARRYING OUT THE SERIES -->
+		<!-- <Observation><Type>flat</Type></Observation> -->
+	</Schedule>
+	
+	<!-- FINISHING SCHEDULE TO GET BIASES AND DARKS -->
+	<Schedule>
+		<Calibration>
+			<BiasCorrection><Count>10</Count></BiasCorrection>
+			<DarkCurrentCorrection>
+				<Count>10</Count>
+				<ExposureTime units="seconds">10.0</ExposureTime>
+			</DarkCurrentCorrection>
+		</Calibration>	
+	</Schedule>
+</RTML>
