@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:ixml="http://invisiblexml.org/NS" ixml:state="ambiguous">
+   <data>
+      <name>CONTROL</name>
+      <number>1</number>
+      <property>
+         <name>code</name>
+         <value>CEZ_90_1_2016</value>
+      </property>
+      <property>
+         <name>compliance mode</name>
+         <value>UA</value>
+      </property>
+      <property>
+         <name>version</name>
+         <value>24.1.6</value>
+      </property>
+   </data>
+   <data>
+      <name>LOCATION</name>
+      <number>1</number>
+      <property>
+         <name>state</name>
+         <value>Texas</value>
+      </property>
+      <property>
+         <name>city</name>
+         <value> USA</value>
+      </property>
+   </data>
+   <data>
+      <name>BUILDING</name>
+      <number>1</number>
+      <property>
+         <name>project type</name>
+         <value>NEW_CONSTRUCTION</value>
+      </property>
+      <property>
+         <name>bldg use type</name>
+         <value>WHOLE_BLDG</value>
+      </property>
+      <property>
+         <name>feet bldg height</name>
+         <value>0.000</value>
+      </property>
+      <property>
+         <name>number of stories</name>
+         <value>1</value>
+      </property>
+      <property>
+         <name>is nonresidential conditioning</name>
+         <value>TRUE</value>
+      </property>
+      <property>
+         <name>is residential conditioning</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>is semiheated conditioning</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>conditioning</name>
+         <value>HEATING_AND_COOLING</value>
+      </property>
+   </data>
+   <data>
+      <name>ENVELOPE</name>
+      <number>1</number>
+      <property>
+         <name>use orient details</name>
+         <value>TRUE</value>
+      </property>
+      <property>
+         <name>use vlt details</name>
+         <value>TRUE</value>
+      </property>
+      <property>
+         <name>use cool roof performance details</name>
+         <value>FALSE</value>
+      </property>
+   </data>
+   <data>
+      <name>AG WALL</name>
+      <number>1</number>
+      <property>
+         <name>wall type</name>
+         <value>MASONRY_AG_WALL</value>
+      </property>
+      <property>
+         <name>next to uncond space</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>concrete thickness</name>
+         <value>12.00</value>
+      </property>
+      <property>
+         <name>concrete density</name>
+         <value>115.00</value>
+      </property>
+      <property>
+         <name>furring type</name>
+         <value>NO_FURRING</value>
+      </property>
+      <property>
+         <name>cmu type</name>
+         <value>CMU_PARTIAL_GROUT_CELLS_EMPTY</value>
+      </property>
+      <property>
+         <name>list position</name>
+         <value>1</value>
+      </property>
+      <property>
+         <name>description</name>
+         <value>&lt;|Concrete Block:12", Partially Grouted, Cells Empty|></value>
+      </property>
+      <property>
+         <name>assembly type</name>
+         <value>&lt;|Exterior Wall 1|></value>
+      </property>
+      <property>
+         <name>parent number</name>
+         <value>0</value>
+      </property>
+      <property>
+         <name>bldg use key</name>
+         <value>1884629903</value>
+      </property>
+      <property>
+         <name>continuous rvalue</name>
+         <value>10.00</value>
+      </property>
+      <property>
+         <name>daylight credit</name>
+         <value>0.000</value>
+      </property>
+      <property>
+         <name>orientation</name>
+         <value>WEST</value>
+      </property>
+      <property>
+         <name>allowance type</name>
+         <value>ENV_ALLOWANCE_NONE</value>
+      </property>
+      <property>
+         <name>exemption type</name>
+         <value>ENV_EXEMPTION_NONE</value>
+      </property>
+      <property>
+         <name>valid allowance type</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>valid exemption type</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>construction type</name>
+         <value>NON_RESIDENTIAL </value>
+      </property>
+      <property>
+         <name>adjacent space type</name>
+         <value>ADJACENT_SPACE_EXTERIOR </value>
+      </property>
+      <property>
+         <name>gross area</name>
+         <value>3377.000</value>
+      </property>
+   </data>
+   <data>
+      <name>DOOR</name>
+      <number>4</number>
+      <property>
+         <name>door type</name>
+         <value>INSUL_METAL_DOOR</value>
+      </property>
+      <property>
+         <name>door open type</name>
+         <value>SWINGING_DOOR</value>
+      </property>
+      <property>
+         <name>list position</name>
+         <value>3</value>
+      </property>
+      <property>
+         <name>description</name>
+         <value>&lt;|Insulated Metal|></value>
+      </property>
+      <property>
+         <name>assembly type</name>
+         <value>&lt;|Door 1|></value>
+      </property>
+      <property>
+         <name>parent number</name>
+         <value>1</value>
+      </property>
+      <property>
+         <name>bldg use key</name>
+         <value>1884629903</value>
+      </property>
+      <property>
+         <name>prop uvalue</name>
+         <value>0.100000</value>
+      </property>
+      <property>
+         <name>daylight credit</name>
+         <value>0.000</value>
+      </property>
+      <property>
+         <name>orientation</name>
+         <value>WEST</value>
+      </property>
+      <property>
+         <name>allowance type</name>
+         <value>ENV_ALLOWANCE_NONE</value>
+      </property>
+      <property>
+         <name>exemption type</name>
+         <value>ENV_EXEMPTION_NONE</value>
+      </property>
+      <property>
+         <name>valid allowance type</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>valid exemption type</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>construction type</name>
+         <value>NON_RESIDENTIAL </value>
+      </property>
+      <property>
+         <name>adjacent space type</name>
+         <value>ADJACENT_SPACE_EXTERIOR </value>
+      </property>
+      <property>
+         <name>gross area</name>
+         <value>21.000</value>
+      </property>
+   </data>
+   <data>
+      <name>AG WALL</name>
+      <number>2</number>
+      <property>
+         <name>wall type</name>
+         <value>METAL_FRAME_16_AG_WALL</value>
+      </property>
+      <property>
+         <name>next to uncond space</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>list position</name>
+         <value>4</value>
+      </property>
+      <property>
+         <name>description</name>
+         <value>&lt;|Steel-Framed, 16" o.c.|></value>
+      </property>
+      <property>
+         <name>assembly type</name>
+         <value>&lt;|Exterior Wall 2|></value>
+      </property>
+      <property>
+         <name>parent number</name>
+         <value>0</value>
+      </property>
+      <property>
+         <name>bldg use key</name>
+         <value>1884629903</value>
+      </property>
+      <property>
+         <name>cavity rvalue</name>
+         <value>21.00</value>
+      </property>
+      <property>
+         <name>continuous rvalue</name>
+         <value>0.00</value>
+      </property>
+      <property>
+         <name>daylight credit</name>
+         <value>0.000</value>
+      </property>
+      <property>
+         <name>orientation</name>
+         <value>NORTH</value>
+      </property>
+      <property>
+         <name>allowance type</name>
+         <value>ENV_ALLOWANCE_NONE</value>
+      </property>
+      <property>
+         <name>exemption type</name>
+         <value>ENV_EXEMPTION_NONE</value>
+      </property>
+      <property>
+         <name>valid allowance type</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>valid exemption type</name>
+         <value>FALSE</value>
+      </property>
+      <property>
+         <name>construction type</name>
+         <value>NON_RESIDENTIAL </value>
+      </property>
+      <property>
+         <name>adjacent space type</name>
+         <value>ADJACENT_SPACE_EXTERIOR </value>
+      </property>
+      <property>
+         <name>gross area</name>
+         <value>42.000</value>
+      </property>
+   </data>
+</Document>
+
