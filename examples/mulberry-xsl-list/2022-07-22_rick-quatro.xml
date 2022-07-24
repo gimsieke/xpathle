@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<task>
+  <pretopic lbl="A.">
+    <title>General</title>
+    <list1>
+      <l1item lbl="(1)">This task gives...</l1item>
+      <list2>
+        <l2item lbl="(a)">Replace the water...</l2item>
+        <l2item lbl="(b)">Replace the barrier...</l2item>
+        <l2item lbl="(c)">Replace the...</l2item>
+      </list2>
+      <l1item lbl="(2)">This task takes...</l1item>
+      <note type="note" position="1">NOTE:</note>
+      <note type="note" position="2">Refer to typical...</note>
+    </list1>
+  </pretopic>
+  <pretopic lbl="B.">
+    <title>References</title>
+  </pretopic>
+  <pretopic lbl="C.">
+    <title>Tools/Equipment</title>
+    <note type="note" position="1">NOTE:</note>
+    <note type="note" position="2">When more than one...</note>
+    <effectivity>Effective on:</effectivity>
+    <effectivity>Effective on:</effectivity>
+  </pretopic>
+  <pretopic lbl="D.">
+    <title>Consumable Materials</title>
+  </pretopic>
+  <pretopic lbl="E.">
+    <title>Location Zones</title>
+  </pretopic>
+  <pretopic lbl="F.">
+    <title>Procedure</title>
+    <list1>
+      <l1item lbl="(1)">Do a check...</l1item>
+      <l1item lbl="(2)">Repair or replace...</l1item>
+      <l1item lbl="(3)">Do this task...</l1item>
+      <l1item lbl="(4)">Do a check...</l1item>
+      <l1item lbl="(5)">Replace the sealant...</l1item>
+      <l1item lbl="(6)">Do a check of...</l1item>
+      <list2>
+        <l2item lbl="(a)">Replace the water...</l2item>
+        <l2item lbl="(b)">Replace the barrier...</l2item>
+        <l2item lbl="(c)">Replace the...</l2item>
+      </list2>
+      <l1item lbl="(7)">Assemble the...</l1item>
+      <l1item lbl="(8)">Seal all of the...</l1item>
+      <note type="caution" position="1">CAUTION:</note>
+      <note type="caution" position="2">MAKE SURE...</note>
+      <l1item lbl="(9)">Apply a layer of grease as follows: <para>Apply a layer of...</para></l1item>
+      <note type="note" position="1">NOTE:</note>
+      <note type="note" position="2">The grease can...</note>
+      <l1item lbl="(10)">Use the <b>vacuum cups</b> ...</l1item>
+    </list1>
+  </pretopic>
+</task>
