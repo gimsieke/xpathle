@@ -28,7 +28,7 @@
         comments, processing instructions, and/or attributes).
         You need to enter an XPath expression such as <code>/*</code> in order to make a first guess.</p>
         <p>For selecting namespaced elements with a prefix, such as <code>xsl:for-each</code> in the XSLT example,
-          you can enter something like <code>//Q{http://www.w3.org/1999/XSL/Transform}for-each</code>
+          you can enter <code>//xsl:for-each</code>, <code>//Q{http://www.w3.org/1999/XSL/Transform}for-each</code>,
         or <code>//*:for-each</code>. Elements without a prefix can be selected without namespace if they
           are in the same namespace as the top-level element. If a prefix is declared on any
         element, you can also use this prefix in the expression. An example is the Atom/CAP feed in the 
@@ -38,12 +38,14 @@
         <p>You cannot select <code>//namespace-node()</code> (well, you can, but they won’t be displayed).
         You cannot select processing instructions or comments that are outside the top-level element, either.</p>
       <p>As a result of evaluating your guess, the number of selected items will be displayed so you can
-      see whether at least the count of selected items matches.</p>
+      see whether at least the item count matches. But you are not finished until you selected exactly 
+      the same items that the secret expression selected, or until you run out of attempts.</p>
       <p>In order to see how well your guess-selected items match, the items will be highlighted in the rendered
       XML (you might need to click into the rendering area and scroll down or sideways). The match quality
       will be signalled by color code and by tool tip. The tool tip contains both the hierarchical XPath to
       the item and the distance to the closest target item.</p>
-      <p id="highlight_formula">The number of items highlighted is limited to <code>min((max((2 * count($secret-items), 4)), 20))</code>.
+      <p id="highlight_formula">The number of items highlighted is limited to <code>min((max((2 * count($secret-items), 4)), 20))</code>
+        (that is, normally double the secret count; minimum of 4 items, maximum of 20).
       Otherwise you’d be able to select every node and quickly come up with an XPath expression that 
       selects only the green ones. Only when your guess selects the same items as the secret expression,
       the number of highlighted items won’t be limited any more.</p>
