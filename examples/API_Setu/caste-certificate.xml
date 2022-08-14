@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<PullDocResponse xmlns:ns2="http://tempuri.org/">
+  <ResponseStatus status="1" ts="YYYY-MM-DDThh:mm:ss+/-nn:nn" txn="">
+        //1-Success //0-Failure </ResponseStatus>
+  <DocDetails>
+        <DocContent>//Base64 encoded PDF content</DocContent>
+          <DataContent>
+                //Certificate metadata in XML format
+                <Certificate language="99" name="Caste Certificate" type="CTCER" number="C012345" issuedAt="" issueDate="01-01-1980" validFromDate="01-01-1980" expiryDate="" status="A/E/R/S">
+                  <IssuedBy>
+                         <Organization name="" code="" tin="" uid="" type="CG/SG/NG" >
+                                <Address type="present/permanent/mailing/official" line1="" line2="" house="" landmark="" locality="" vtc="" district="" pin="" state="" country="" />
+                         </Organization>
+                  </IssuedBy>
+                  <IssuedTo>
+                        <Person uid="" title="" name="" dob="" swd="" swdIndicator="S/W/D" gender="M/F/T" maritalStatus="" religion="" phone="" email="">
+                          <Address type="present/permanent/mailing/official" line1="" line2="" house="" landmark="" locality="" vtc="" district="" pin="" state="" country="" />
+                          <Photo format="RAW/PNG/JPG/JPEG">Base 64 encoded image content</Photo>
+                        </Person>
+                  </IssuedTo>
+                  <CertificateData>
+                        <Caste name="" category="SC/ST/OBC/GC" subCategory="" description="" />
+                  </CertificateData>
+                  <Signature/>
+                </Certificate>
+          </DataContent>
+  </DocDetails>
+ </PullDocResponse>
