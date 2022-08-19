@@ -370,10 +370,12 @@
         <xsl:apply-templates select="@*" mode="#current"/>
       </xsl:document>
     </xsl:variable>
-    <xsl:variable name="max-length-for-atts" as="xs:integer" select="80"/>
+    <xsl:variable name="max-length-for-atts" as="xs:integer" select="120"/>
     <xsl:iterate select="$atts/node()">
       <xsl:param name="length" as="xs:integer" select="0"/>
-      <xsl:variable name="new-length" as="xs:integer" select="$length + string-length(.)"/>
+      <xsl:variable name="multiline-max" as="xs:integer" 
+        select="max(tokenize(., '&#xa;') ! string-length(.)) => xs:integer()"/>
+      <xsl:variable name="new-length" as="xs:integer" select="$length + $multiline-max"/>
       <xsl:if test="$new-length gt $max-length-for-atts">
         <xsl:text>&#xa;</xsl:text>
       </xsl:if>
@@ -407,7 +409,8 @@
       </span>
       <span class="val att">
         <xsl:text>="</xsl:text>
-        <xsl:value-of select=". => replace('&amp;', '&amp;amp;')
+        <xsl:value-of select=". => replace('[ ]([ ]{4,})', '&#xa;$1') (: attribute values were probably multiline :)
+                                => replace('&amp;', '&amp;amp;')
                                 => replace('&lt;', '&amp;lt;')
                                 => replace('&#x22;', '&amp;quot;')"/>
         <xsl:text>"</xsl:text>

@@ -866,8 +866,11 @@
       <h3>Known Issues</h3>
       <ul>
         <li>Multiline attribute values, as they may appear in XPath expressions in XSLT <code>@select</code> attributes,
-        are serialized as single lines. This is because XML parsers are required to turn newlines in attributes into 
-        plain spaces, which is a pity.</li>
+        might not be reproduced correctly. This is because XML parsers are required to turn newlines in attributes into 
+        plain spaces, which is a pity. As a heuristic, if there a at least 5 spaces in a row in an attribute value,
+        it is assumed that the first space used to be a newline prior to parsing, and it will be converted to 
+        a newline in the rendered XML. Of course this heuristic may fail if indentation was done using tabs,
+        if there were spaces before the newlines, or if there was no newline at all.</li>
       </ul>
       <h3>To Do</h3>
       <ul>
