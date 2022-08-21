@@ -314,7 +314,14 @@
     <xsl:variable name="distance" as="xs:integer?">
       <xsl:call-template name="distance-to-closest-secret-item"/>
     </xsl:variable>
-    <span title="{string-join(($path, 'Distance:'[exists($distance)], $distance), ' ')}">
+    <span>
+      <xsl:attribute name="title" separator=" ">
+        <xsl:sequence select="$path"/>
+        <xsl:if test="exists($distance) and generate-id() = $highlight-items ! generate-id(.)">
+          <xsl:sequence select="'Distance:'"/>
+          <xsl:sequence select="$distance"/>
+        </xsl:if>
+      </xsl:attribute>
       <xsl:choose>
         <xsl:when test="some $g in $selected-by-guess-path satisfies (not($g instance of node()))">
           <!-- the guess was 'false()', for example -->
