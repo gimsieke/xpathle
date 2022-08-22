@@ -10,6 +10,7 @@
   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
   xmlns:array="http://www.w3.org/2005/xpath-functions/array"
   xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+  xmlns:js="http://saxonica.com/ns/globalJS"
   version="3.0"
   extension-element-prefixes="ixsl" 
   xpath-default-namespace="http://www.w3.org/1999/xhtml">

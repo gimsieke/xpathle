@@ -68,8 +68,8 @@
     <xsl:call-template name="render">
       <xsl:with-param name="secret-path" select="$secret-path" tunnel="yes"/>
       <xsl:with-param name="guess-path" select="$guess-path" tunnel="yes"/>
-      <xsl:with-param name="selected-by-secret-path" as="item()*" select="$selected-by-secret-path" tunnel="yes"/>
-      <xsl:with-param name="selected-by-guess-path" as="item()*" tunnel="yes" select="$selected-by-guess-path"/>
+      <xsl:with-param name="selected-by-secret-path" as="item()*" select="$selected-by-secret-path[ancestor-or-self::*]" tunnel="yes"/>
+      <xsl:with-param name="selected-by-guess-path" as="item()*" tunnel="yes" select="$selected-by-guess-path[ancestor-or-self::*]"/>
       <xsl:with-param name="solved" as="xs:boolean" tunnel="yes" select="$solved"/>
       <xsl:with-param name="document-node" as="document-node()" tunnel="yes" select="$document-node"/>
       <xsl:with-param name="highlight-items" as="item()*" tunnel="yes" 
@@ -165,8 +165,9 @@
     <xsl:param name="selected-by-guess-path" as="item()*" tunnel="yes"/>
     <xsl:param name="selected-by-secret-path" as="item()*" tunnel="yes"/>
     <xsl:if test="every $g in $selected-by-guess-path satisfies ($g instance of node())">
-      <xsl:if test="generate-id() = $selected-by-guess-path ! generate-id(.)">
-        <xsl:sequence select="xs:integer(min($selected-by-secret-path ! tr:node-distance(., current())))"/>
+      <xsl:if test="generate-id(.[ancestor-or-self::*]) = $selected-by-guess-path[ancestor-or-self::*] ! generate-id(.)">
+        <xsl:sequence select="xs:integer(min($selected-by-secret-path 
+                                                ! tr:node-distance(., current())))"/>
       </xsl:if>  
     </xsl:if>
   </xsl:template>
@@ -326,10 +327,10 @@
         <xsl:when test="some $g in $selected-by-guess-path satisfies (not($g instance of node()))">
           <!-- the guess was 'false()', for example -->
         </xsl:when>
-        <xsl:when test="generate-id() = ($selected-by-guess-path except $highlight-items) ! generate-id(.)">
+        <xsl:when test="generate-id(.[ancestor-or-self::*]) = ($selected-by-guess-path except $highlight-items) ! generate-id(.)">
           <xsl:attribute name="class" select="'white hidden'"/>
         </xsl:when>
-        <xsl:when test="generate-id() = $highlight-items ! generate-id(.)">
+        <xsl:when test="generate-id(.[ancestor-or-self::*]) = $highlight-items ! generate-id(.)">
           <xsl:attribute name="class" select="string-join(('guess', tr:distance-class($distance)), ' ')"/>
         </xsl:when>
       <!-- intersect doesn’t seem to work correctly with attributes in SaxonJS (tested on v1.2 and v2.4),
