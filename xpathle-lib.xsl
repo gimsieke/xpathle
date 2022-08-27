@@ -69,7 +69,8 @@
       <xsl:with-param name="secret-path" select="$secret-path" tunnel="yes"/>
       <xsl:with-param name="guess-path" select="$guess-path" tunnel="yes"/>
       <xsl:with-param name="selected-by-secret-path" as="item()*" select="$selected-by-secret-path[ancestor-or-self::*]" tunnel="yes"/>
-      <xsl:with-param name="selected-by-guess-path" as="item()*" tunnel="yes" select="$selected-by-guess-path[ancestor-or-self::*]"/>
+      <xsl:with-param name="selected-by-guess-path" as="item()*" tunnel="yes" 
+        select="$selected-by-guess-path[ if (. instance of node()) then exists(ancestor-or-self::*) else true()]"/>
       <xsl:with-param name="solved" as="xs:boolean" tunnel="yes" select="$solved"/>
       <xsl:with-param name="document-node" as="document-node()" tunnel="yes" select="$document-node"/>
       <xsl:with-param name="highlight-items" as="item()*" tunnel="yes" 
