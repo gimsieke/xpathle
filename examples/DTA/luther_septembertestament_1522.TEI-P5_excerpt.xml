@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Das Newe Testament Deutzsch</title>
+        <editor corresp="#DTACorpusPublisher">
+          <persName ref="http://d-nb.info/gnd/115266127">
+            <surname>Geyken</surname>
+            <forename>Alexander</forename>
+          </persName>
+        </editor>
+        <editor corresp="#DTACorpusPublisher">
+          <persName ref="http://d-nb.info/gnd/1018099549">
+            <surname>Haaf</surname>
+            <forename>Susanne</forename>
+          </persName>
+        </editor>
+        <editor corresp="#DTACorpusPublisher">
+          <persName ref="http://d-nb.info/gnd/1019062681">
+            <surname>Jurish</surname>
+            <forename>Bryan</forename>
+          </persName>
+        </editor>
+        <editor corresp="#DTACorpusPublisher">
+          <persName>
+            <surname>Boenig</surname>
+            <forename>Matthias</forename>
+          </persName>
+        </editor>
+        <editor corresp="#DTACorpusPublisher">
+          <persName>
+            <surname>Thomas</surname>
+            <forename>Christian</forename>
+          </persName>
+        </editor>
+        <editor corresp="#DTACorpusPublisher">
+          <persName>
+            <surname>Wiegand</surname>
+            <forename>Frank</forename>
+          </persName>
+        </editor>
+        <respStmt>
+          <orgName>Wikisource</orgName>
+          <resp>
+            <note type="remarkResponsibility">Bereitstellung der Texttranskription.</note>
+            <note type="remarkRevisionDTA">Bitte beachten Sie, dass die aktuelle Transkription (und
+              Textauszeichnung) mittlerweile nicht mehr dem Stand zum Zeitpunkt der Übernahme des
+              Werkes in das DTA entsprechen muss.</note>
+            <ref target="https://de.wikisource.org/wiki/Das_Newe_Testament_Deutzsch"/>
+            <date type="importDTA">2017-03-09T12:26:56Z</date>
+          </resp>
+        </respStmt>
+        <respStmt>
+          <persName xml:id="AH">
+            <surname>Herold</surname>
+            <forename>Axel</forename>
+          </persName>
+          <resp>
+            <note type="remarkResponsibility">Konvertierung der Wikisource-Quelldateien in das
+              DTA-Basisformat.</note>
+            <date type="importDTA">2017-03-09T12:26:56Z</date>
+          </resp>
+        </respStmt>
+        <respStmt>
+          <persName>
+            <surname>Schulze</surname>
+            <forename>Magdalena</forename>
+          </persName>
+          <persName>
+            <surname>Fiechter</surname>
+            <forename>Benjamin</forename>
+          </persName>
+          <persName>
+            <surname>Nau</surname>
+            <forename>Juliane</forename>
+          </persName>
+          <persName>
+            <surname>Wind</surname>
+            <forename>Susanne</forename>
+          </persName>
+          <persName>
+            <surname>Würzner</surname>
+            <forename>Kay-Michael</forename>
+          </persName>
+          <persName>
+            <surname>Thomas</surname>
+            <forename>Christian</forename>
+          </persName>
+          <persName>
+            <surname>Haaf</surname>
+            <forename>Susanne</forename>
+          </persName>
+          <persName>
+            <surname>Wiegand</surname>
+            <forename>Frank</forename>
+          </persName>
+          <resp>
+            <note type="remarkResponsibility">Bearbeitung der digitalen Edition.</note>
+            <date type="importDTA">2017-10-30T12:00:00Z</date>
+          </resp>
+        </respStmt>
+        <respStmt>
+          <orgName ref="https://www.clarin-d.de">CLARIN-D</orgName>
+          <resp>
+            <note type="remarkResponsibility">Langfristige Bereitstellung der DTA-Ausgabe</note>
+            <ref target="https://clarin.bbaw.de"/>
+          </resp>
+        </respStmt>
+      </titleStmt>
+      <editionStmt>
+        <edition>Vollständige digitalisierte Ausgabe.</edition>
+      </editionStmt>
+      <extent>
+        <measure type="images">452</measure>
+        <measure type="tokens">197150</measure>
+        <measure type="types">14441</measure>
+        <measure type="characters">1208531</measure>
+      </extent>
+      <publicationStmt>
+        <publisher xml:id="DTACorpusPublisher">
+          <email>dta@bbaw.de</email>
+          <orgName role="project">Deutsches Textarchiv</orgName>
+          <orgName role="hostingInstitution" xml:lang="en">Berlin-Brandenburg Academy of Sciences
+            and Humanities (BBAW)</orgName>
+          <orgName role="hostingInstitution" xml:lang="de">Berlin-Brandenburgische Akademie der
+            Wissenschaften (BBAW)</orgName>
+          <address>
+            <addrLine>Jägerstr. 22/23, 10117 Berlin</addrLine>
+            <country>Germany</country>
+          </address>
+        </publisher>
+        <pubPlace>Berlin</pubPlace>
+        <date type="publication">2018-12-17T16:56:00Z</date>
+        <availability>
+          <licence target="https://creativecommons.org/licenses/by-sa/3.0/">
+            <p>CC BY-SA 3.0</p>
+          </licence>
+        </availability>
+        <idno>
+          <idno type="URLWeb">http://www.deutschestextarchiv.de/luther_septembertestament_1522</idno>
+          <idno type="URLXML">http://www.deutschestextarchiv.de/book/download_xml/luther_septembertestament_1522</idno>
+          <idno type="URLHTML">http://www.deutschestextarchiv.de/book/download_html/luther_septembertestament_1522</idno>
+          <idno type="URLText">http://www.deutschestextarchiv.de/book/download_text/luther_septembertestament_1522</idno>
+          <idno type="DTADirName">luther_septembertestament_1522</idno>
+          <idno type="DTAID">31321</idno>
+          <idno type="URN">urn:nbn:de:kobv:b4-31321-1</idno>
+        </idno>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl type="M">Das Newe Testament Deutzsch. [Septembertestament.] Übersetzt von Martin
+          Luther. Wittenberg, 1522.</bibl>
+        <biblFull>
+          <titleStmt>
+            <title level="m" type="main">Das Newe Testament Deutzsch</title>
+            <editor role="translator">
+              <persName ref="http://d-nb.info/gnd/118575449">
+                <surname>Luther</surname>
+                <forename>Martin </forename>
+              </persName>
+            </editor>
+          </titleStmt>
+          <editionStmt>
+            <edition n="1"/>
+          </editionStmt>
+          <extent>
+            <measure type="pages">CVII, LXXVII, [26] Bl</measure>
+          </extent>
+          <publicationStmt>
+            <publisher><name>[Melchior Lotther d. J. für Christian Döring und Lukas Cranach d.
+                Ä.]</name></publisher>
+            <pubPlace>Wittenberg</pubPlace>
+            <date type="publication">1522</date>
+          </publicationStmt>
+        </biblFull>
+        <msDesc>
+          <msIdentifier>
+            <repository>Württembergische Landesbibliothek</repository>
+            <idno>
+              <idno type="shelfmark">Bb deutsch 152201</idno>
+              <idno type="URLCatalogue">http://digital.wlb-stuttgart.de/purl/bsz351727574</idno>
+              <idno type="URLImages">http://digital.wlb-stuttgart.de/purl/bsz351727574</idno>
+              <idno type="URN">http://nbn-resolving.de/urn:nbn:de:bsz:24-digibib-bsz3517275746</idno>
+            </idno>
+          </msIdentifier>
+          <physDesc>
+            <typeDesc>
+              <p>Rotunda</p>
+            </typeDesc>
+          </physDesc>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <p/>
+      </editorialDecl>
+      <tagsDecl>
+        <rendition scheme="css" xml:id="aq">font-family:sans-serif</rendition>
+        <rendition scheme="css" xml:id="b">font-weight:bold</rendition>
+        <rendition scheme="css" xml:id="blue">color:blue</rendition>
+        <rendition scheme="css" xml:id="c">display:block; text-align:center</rendition>
+        <rendition scheme="css" xml:id="et">display:block; margin-left:2em;
+          text-indent:0</rendition>
+        <rendition scheme="css" xml:id="et2">display:block; margin-left:4em;
+          text-indent:0</rendition>
+        <rendition scheme="css" xml:id="et3">display:block; margin-left:6em;
+          text-indent:0</rendition>
+        <rendition scheme="css" xml:id="f">border:1px dotted silver</rendition>
+        <rendition scheme="css" xml:id="fr">border:1px dotted silver</rendition>
+        <rendition scheme="css" xml:id="g">letter-spacing:0.125em</rendition>
+        <rendition scheme="css" xml:id="i">font-style:italic</rendition>
+        <rendition scheme="css" xml:id="in">font-size:150%</rendition>
+        <rendition scheme="css" xml:id="k">font-variant:small-caps</rendition>
+        <rendition scheme="css" xml:id="larger">font-size:larger</rendition>
+        <rendition scheme="css" xml:id="red">color:red</rendition>
+        <rendition scheme="css" xml:id="right">display:block; text-align:right</rendition>
+        <rendition scheme="css" xml:id="s">text-decoration:line-through</rendition>
+        <rendition scheme="css" xml:id="smaller">font-size:smaller</rendition>
+        <rendition scheme="css" xml:id="sub">vertical-align:sub; font-size:.7em</rendition>
+        <rendition scheme="css" xml:id="sup">vertical-align:super; font-size:.7em</rendition>
+        <rendition scheme="css" xml:id="u">text-decoration:underline</rendition>
+        <rendition scheme="css" xml:id="uu">border-bottom:double 3px #000</rendition>
+      </tagsDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="deu">German</language>
+      </langUsage>
+      <textClass>
+        <classCode scheme="http://www.deutschestextarchiv.de/doku/klassifikation#dwds1main">Gebrauchsliteratur</classCode>
+        <classCode scheme="http://www.deutschestextarchiv.de/doku/klassifikation#dwds1sub">Bibelübersetzung</classCode>
+        <classCode scheme="http://www.deutschestextarchiv.de/doku/klassifikation#DTACorpus">ready</classCode>
+        <classCode scheme="http://www.deutschestextarchiv.de/doku/klassifikation#DTACorpus">wikisource</classCode>
+      </textClass>
+    </profileDesc>
+  </teiHeader><text>
+    <front>
+      <pb facs="#f0001"/>
+      <pb facs="#f0002"/>
+      <pb facs="#f0003"/>
+      <pb facs="#f0004"/>
+      <pb facs="#f0005"/>
+      <pb facs="#f0006"/>
+      <pb facs="#f0007" n="[1]"/>
+      <titlePage type="main">
+        <docTitle>
+          <titlePart type="main">Das Newe Teſta-<lb/> ment
+            Deůtzſch-</titlePart>
+        </docTitle>
+        <lb/>
+        <docImprint><pubPlace>Vuittemberg.</pubPlace></docImprint>
+      </titlePage>
+      <pb facs="#f0008" n="[2]"/>
+      <pb facs="#f0009" n="[3]"/>
+      <div n="1">
+        <head>Voꝛrhede.</head>
+        <lb/>
+        <p><hi rendition="#in">E</hi>S were wol recht vnd billich/ das dis buch on alle
+          voꝛrhe-<lb/> de vnnd frembden namen auſzgieng/ vnnd nur ſeyn
+          ſelbs<lb/> eygen namen vnd rede furete/ Aber die weyl durch manche<lb/> wilde
+          deuttung vnd voꝛrhede/ der Chꝛiſten ſynn da hyn ver-<lb/>
+          triebẽ iſt/ das man ſchier nit mehꝛ weys/ was Euangeli oder
+          geſetz/<lb/> new oder alt teſtament/ heyſſe/ fodert die
+          noddurfft eyn antzeygen vñ<lb/> voꝛrhede zu ſtellen/ da mit der
+          eynfelltige man/ aus ſeynem allten<lb/> wahn/ auff die rechte ban gefuret vnd
+          vnterrichtet werde/ wes er ynn<lb/> diſem buch gewartten ſolle/ auff das er
+          nicht gepott vnnd geſetze ſu-<lb/> che/ da er Euangeli vnd
+          verheyſſung Gottis ſuchen ſollt.</p>
+        <p>Darumb iſt auffs erſte zu wiſſen/ das abtzuthun iſt
+          der wahn/ das<lb/> vier Euangelia vnd nur vier Euangeliſten ſind/ vñ
+          gantz zuverwerf-<lb/> fen/ das etlich des newen teſtaments bucher teyllen/ ynn
+          legales/ hi-<lb/> ſtoꝛiales/ Pꝛophetales/ vnnd ſapientiales/
+          vermeynen damit (weyſz<lb/> nicht wie) das newe/ dem alten teſtament
+          zuuergleychen/ Sondern<lb/> feſtiglich zu halten/ das gleych wie das allte
+          teſtament iſt eyn buch/<lb/> darynnen Gottis geſetz vñ gepot/
+          da neben die geſchichte beyde dere<lb/> die ſelben gehallten vnd nicht
+          gehallten haben/ geſchꝛieben ſind/ Al-<lb/> ſo iſt das
+          newe teſtament/ eyn buch/ darynnen das Euangelion vnd<lb/> Gottis
+          verheyſſung/ danebe auch geſchichte beyde/ dere die dran <choice>
+            <orig>gle</orig>
+            <reg>gle-</reg>
+          </choice><lb/> wben vnd nit glewben/ geſchꝛieben ſind/ Alſo
+          das man gewiſſz ſey/<lb/> das nur eyn Euãgelion ſey/
+          gleych wie nur eyn buch des newen teſta<lb/> ments/ vnd nur eyn glawb/ vnd nur eyn
+          Gott/ der do verheyſſet.</p>
+        <lb/>
+        <p>Denn Euangelion iſt eyn kriechiſch woꝛtt/ vñ heyſt
+          auff deutſch/<lb/> gute botſchafft/ gute meher/ gutte newzeytung/ gutt
+          geſchꝛey/ dauon<lb/> man ſinget/ ſaget vñ frolich
+          iſt/ gleych als do Dauid den groſſen <choice>
+            <orig>Go</orig>
+            <reg>Go-</reg>
+          </choice><lb/> liath vberwand/ kam eyn gutt geſchꝛey/ vnd troſtlich
+          newtzeyttung<lb/> vnter das Judiſch volck/ das yhꝛer grewlicher feynd
+          erſchlagen/ vnd<lb/> ſie erloſet/ zu freud vnd frid geſtellet
+          weren/ dauon ſie ſungen vñ <choice>
+            <orig>ſpꝛun</orig>
+            <reg>ſpꝛun-</reg>
+          </choice><lb/> gen vnnd frolich waren/ Alſo iſt dis Euangelion Gottis vnnd
+          new<lb/> teſtament/ eyn gutte meher vñ geſchꝛey ynn alle
+          wellt erſchollen durch<lb/> die Apoſtell/ von eynem rechten Dauid/ der mit
+          der ſund/ tod vnnd<lb/> teuffel geſtritten/ vnd vberwunden hab/ vnnd damit
+          alle die/ ſzo ynn<lb/> ſunden gefangen/ mit dem todt geplagt/ vom teuffel
+          vberweldiget <choice>
+            <orig>ge</orig>
+            <reg>ge-</reg>
+          </choice><lb/> weſen/ on yhr verdienſt erloſet/ rechtfertig/ lebendig
+          vnd ſelig gema-<lb/> cht hat/ vnd da mit zu frid geſtellet/ vnd Gott wider
+          heym bꝛacht/ <choice>
+            <orig>da</orig>
+            <reg>da-</reg>
+          </choice><lb/> uon ſie ſingen/ dancken Gott/ loben vnd frolich ſind
+          ewiglich/ ſzo ſie<lb/> des anders feſt glawben/ vnd ym glawben
+          beſtendig bleyben.</p>
+        <lb/>
+        <p>Solch geſchꝛey vnd troſtliche mehꝛe odder Euangeliſch
+          vnd Got-<lb/> lich newzeyttung/ heyſt auch eyn new teſtament/ darumb/ <choice>
+            <abbr>dz</abbr>
+            <expan>das</expan>
+          </choice> gleych<lb/> wie eyn teſtament iſt/ wenn eyn ſterbender man
+          ſeyn gutt beſcheydet<lb/> nach ſeynem todt den benandten erben aus zu
+          teylen/ Alſo hatt auch<lb/>
+          <fw type="catch" place="bottom">Chꝛiſtus</fw>
+          <pb facs="#f0010" n="[4]"/>
+          <fw type="header" place="top">Voꝛrhede.</fw><lb/> Chriſtus fur ſeynem
+          ſterben befolhen vnd beſcheyden/ ſolchs <choice>
+            <orig>Euan</orig>
+            <reg>Euan-</reg>
+          </choice><lb/> gelion nach ſeynem todt/ aus zuruffen ynn alle wellt/ vnd damit
+          al-<lb/> len/ die do glewbẽ/ zu eygen geben alles ſeyn gutt/ das
+          iſt/ ſeyn leben<lb/> da mit er den todt verſchlungen/ ſeyn
+          gerechtigkeyt da mit er die ſund<lb/> vertilget/ vnd ſeyn ſeligkeyt
+          damit er die ewige verdamnis vberwun-<lb/> den hat/ Nu kan yhe der arme menſch/ ynn
+          ſunden/ todt vñ zur helle<lb/> verſtrickt/ nichts
+          troſtlichers hoꝛen/ denn ſolch thewre lieblich bot-<lb/>
+          ſchafft võ Chꝛiſto/ vñ mus ſeyn hertz von
+          grund lachen vnd frolich<lb/> druber werden/ wo ers glewbt das war ſey.</p>
+        <lb/>
+        <p>Nu hat Gott ſolchen glawben zu ſtercken/ diſes ſeyn
+          Euangelion<lb/> vnd teſtament viel felltig ym allten teſtament durch die
+          pꝛopheten <choice>
+            <orig>ver</orig>
+            <reg>ver-</reg>
+          </choice><lb/> ſpꝛochẽ/ wie Paulus ſagt Ro .1. Jch byn
+          auſsgeſondert zu pꝛedigen<lb/> das Euangelion Gottis/ wilchs er
+          zuuoꝛ verheyſſen hat durch ſeyne<lb/> pꝛopheten ynn der
+          heyligen ſchꝛifft/ von ſeynem ſon der yhm geporn<lb/>
+          iſt von dem ſamen etce. Vnnd das wyr der etlich antzihen/ hat ers<lb/> am
+          erſten verſpꝛochen/ da er ſagt zu der ſchlangen
+          Geñ .3. Jch will<lb/> feyndſchafft legẽ zwiſchen dyr
+          vñ eynem weyb/ zwiſſchen deynem <choice>
+            <orig>ſa</orig>
+            <reg>ſa-</reg>
+          </choice><lb/> men vnd yhꝛem ſamen/ der ſelb ſoll dyr deyn
+          hewbt zutretten/ vñ du<lb/> wirſt yhm ſeyn ſolen zutretten/
+          Chꝛiſtus iſt der ſame diſes weybs/<lb/> der dem teuffel
+          ſeyn heubt/ das iſt/ ſund/ tod/ helle vñ alle ſeyne
+          krafft<lb/> zurtretten hatt/ Denn on diſen Samen kan keyn menſch der
+          ſund/<lb/> dem todt/ der hellen entrynnen.</p>
+        <lb/>
+        <p> Jtem Geñ .22. verſpꝛach ers zu Abꝛaham/ Ynn deynem
+          ſamen ſol-<lb/> len alle geſchlecht auff erden geſegnet
+          werden/ Chꝛiſtus iſt der ſame<lb/> Abꝛahe/
+          ſpꝛicht Sanct Paulus Gal .3. Der hat alle wellt geſegnet/<lb/> durchs
+          Euangelion/ Deñ wo Chꝛiſtus nit iſt/ da iſt noch der
+          fluch/<lb/> der vber Adam vnd ſeyne kinder fiel/ da er geſundigt hatte/ das
+          ſie al-<lb/> tzumal der ſunde/ des tods/ vnd der hellen ſchuldig vnnd
+          eygen ſeyn<lb/> muſſen/ Widder den fluch/ ſegenet nu das
+          Euangeliõ alle wellt/ <choice>
+            <orig>da</orig>
+            <reg>da-</reg>
+          </choice><lb/> mit/ das es rufft offentlich/ wer an diſen ſamen Abrahe
+          glewbt/ ſol<lb/> geſegnet/ das iſt/ võ ſund/ tod vnd
+          helle/ los ſeyn/ vnd rechtferttig/ <choice>
+            <orig>le</orig>
+            <reg>le-</reg>
+          </choice><lb/> bendig vnd ſelig bleyben ewiglich/ wie Chꝛiſtus
+          ſelb ſagt Johan .11.<lb/> Wer an mich glewbt/ der wirt nymmer mehꝛ
+          ſterben.</p>
+        <lb/>
+        <p>Jtem ſzo verſpꝛach ers Dauid .2. Reg .17. da er ſagt/ Jch
+          will er-<lb/> wecken deynen ſamen nach dyr/ der ſoll myr eyn haus bawen/
+          vnnd <lb/> ich will ſeyn reich feſtigen ewiglich/ Jch will ſeyn vater
+          ſeyn vnnd er <lb/> ſoll meyn ſon ſeyn/ etce. Das iſt
+          das reich Chꝛiſti/ dauon das <choice>
+            <orig>Euan</orig>
+            <reg>Euan-</reg>
+          </choice><lb/> gelion lautt/ eyn ewiges reich/ Eyn reich des lebens/ der ſeligkeyt
+          vñ <lb/> gerechtigkeyt/ dareyn komen aus dem gefengnis der ſund vnnd todt/
+          <lb/> alle die da glewben/ Solcher verheyſſung des Euangeli/ ſind
+          viel <lb/> mehꝛ auch ynn den andern pꝛopheten/ als Micheas .5. Vnd du
+          Be-<lb/> thlehem du biſt kleyn vnter den tauſenten Juda/ aus dyr ſoll
+          myr ko-<lb/>
+          <fw place="bottom" type="catch">men</fw>
+          <pb facs="#f0011" n="[5]"/>
+          <fw place="top" type="header">Voꝛrhede.</fw><lb/> men/ der eyn hertzog ſey
+          meyns volcks Jſrael/ Jtem Oſee .13. Jch <lb/> will ſie võ der
+          hand des todts erloſen/ vom todt will ich ſie erredten.</p>
+        <lb/>
+        <p>So ſehen wyr nu/ das nicht mehꝛ/ deñ ein Euangelion iſt/
+          gleych <lb/> wie nur eyn Chꝛiſtus/ Syntemal Euangelion nichts anders
+          iſt no-<lb/> ch ſeyn kan/ denn eyn pꝛedigt von Chꝛiſto
+          Gottis vnd Dauids ſon/ <lb/> war Gott vnd menſch/ der fur vns mit
+          ſeym ſterben vnd aufferſtehẽ/ <lb/> aller menſchen
+          ſund tod vnd helle vberwunden hat/ die an yhn glew-<lb/> ben/ das alſo/ das
+          Euangeli eyn kurtz vñ lang rede mag ſeyn/ vnd ey-<lb/> ner kurtz/ der ander
+          lange/ beſchꝛeybẽ mag. Der beſchꝛeybts lange/ <lb/>
+          der viel werck vnd woꝛt Chꝛiſti beſchꝛeybt/ als die
+          vier Euangeliſten <lb/> thun/ Der beſchꝛeybts aber kurtz/ der nicht
+          võ Chꝛiſtus werckẽ/ <choice>
+            <orig>ſon</orig>
+            <reg>ſon-</reg>
+          </choice><lb/> dern kurtzlich antzeygt/ wie er durchs ſterben vnd
+          aufferſtehen/ ſund <lb/> tod vnd helle vberwunden habe/ denen die an yhn
+          glawben/ wie <choice>
+            <orig>Pe</orig>
+            <reg>Pe-</reg>
+          </choice><lb/> trus vnd Paulus.</p>
+        <lb/>
+        <p>Darumb ſihe nu dꝛauff/ das du nit aus Chꝛiſto eyn
+          Moſen ma-<lb/> chiſt/ noch aus dem Euangelio eyn geſetz oder lere
+          buch/ wie bis her <lb/> geſchehen iſt/ vñ ettlich voꝛrhede
+          auch Sanct Hieronymi ſich hoꝛen <lb/> laſſen/ Denn das
+          Euangeli foddert eygentlich nicht vnſer werck/ <lb/> das wyr da mit frum vnd
+          ſelig werden/ ia es verdampt ſolche werck/ <lb/> ſondern es foddert
+          nur glawben an Chꝛiſto/ das der ſelb fur vns/ <lb/> ſund/ tod
+          vnd helle vberwunden hat/ vnd alſo vns nicht durch vnſere <lb/> werck/
+          ſondern durch ſeyne eygen werck ſterben vnd leyden/ frum le-<lb/>
+          bendig vnd ſelig macht/ das wyr vns ſeynes ſterbens vnd vberwyn-<lb/>
+          dens mugen annehmen/ als hetten wyrs ſelber than.</p>
+        <lb/>
+        <p>Das aber Chꝛiſtus ym Euangelio/ datzu Petrus vnnd Paulus <lb/> viel
+          geſetz vnd lere geben/ vnd das geſetze auſz legen/ ſoll man
+          gleych <lb/> rechnen allen andern wercken vnd wolthatten Chꝛiſti/ Vnd gleych
+          <lb/> wie ſeyne werck vnd geſchichte wiſſen/ iſt noch
+          nit das rechte Euan-<lb/> gelion wiſſen/ denn damit weyſtu noch
+          nicht/ das er die ſund todt <lb/> vnd teuffel vberwunden hat/ alſo
+          iſt auch das noch nicht das <choice>
+            <orig>Euan</orig>
+            <reg>Euan-</reg>
+          </choice><lb/> gelion wiſſen/ wenn du ſolche lere vnd gepott
+          weyſſiſt/ ſondern weñ<lb/> die ſtymme kompt/
+          die da ſagt/ Chꝛiſtus ſey deyn eygen mit lebẽ/
+          le-<lb/> ren/ wercken/ ſterben/ aufferſtehen vnnd alles was er iſt/
+          hat/ thutt <lb/> vnd vermag.</p>
+        <lb/>
+        <p>Alſo ſehen wyr auch/ das er nit dꝛinget/ ſondern freuntlich
+          locket <lb/> vñ ſpꝛicht/ Selig ſind die armen etce. Vnd die
+          Apoſtel bꝛauchen des <lb/> woꝛts Jch ermane/ ich flehe/ ich bitte/
+          Das man allenthalbẽ ſihet/ <lb/> wie das Euangelion nicht eyn geſetz
+          buch iſt/ ſzondern nur eyn pꝛe-<lb/> digt võ den wollthatten
+          Chꝛiſti vns ertzeyget vnd zu eygen geben/ ſo <lb/> wyr glewben.
+          Moſes aber ynn ſeynen buchern/ treybt/ dꝛingt/ <choice>
+            <orig>dꝛew</orig>
+            <reg>dꝛew-</reg>
+          </choice><lb/> et/ ſchlecht vnd ſtrafft grewlich/ denn er iſt eyn
+          geſetz ſchꝛeyber vnnd <fw type="catch" place="bottom">treyber</fw>
+          <fw type="sig" place="bottom">3</fw>
+          <pb facs="#f0012" n="[6]"/>
+          <fw place="top" type="header">Voꝛrhede.</fw><lb/> treyber/ Daher kompts auch/ das
+          eym glewbigen keyn geſetz geben <lb/> iſt/ wie Sanct Paulus ſagt .1.
+          Timo .1. Darumb das er durch den <lb/> glawben gerecht lebendig vnd ſelig
+          iſt. Vnnd iſt yhm nit mehꝛ nott/ <lb/> denn das er ſolchen
+          glawben beweyſze.</p>
+        <lb/>
+        <p rendition="#c">Ja wo der glawbe iſt/ kan er ſich nit halten/ er
+          beweyſzet ſich/ <lb/> bꝛicht eraus/ vnnd bekennet vnd leret
+          ſolch Euangelion fur <lb/> den leutten vnd waget ſeyn leben dꝛan/
+          Vnnd alles was <lb/> er lebet vnd thutt/ das richtet er zu des nehiſten nutz/ <lb/>
+          yhm zu helffen/ nicht alleyn auch zu ſolcher <choice>
+            <orig>gna</orig>
+            <reg>gna-</reg>
+          </choice><lb/> de zu komen/ ſondern auch mit leyb/ gut/ <lb/> vñ ehre/ wie
+          er ſihet/ das yhm <choice>
+            <orig>Chꝛi</orig>
+            <reg>Chꝛi-</reg>
+          </choice><lb/> ſtus than hat/ vnd folget al-<lb/> ſo dem exempel <choice>
+            <orig>Chꝛi</orig>
+            <reg>Chꝛi-</reg>
+          </choice><lb/> ſti nach/ Das <lb/> meynet <lb/> auch Chꝛiſtus/ <lb/>
+          da er zur letze keyn an-<lb/> der gepot gab/ deñ die liebe/ <lb/> daran man
+          erkennen ſolte/ wer ſeyne <lb/> iunger weren vnd rechtſchaffne
+          glewbigen/ <lb/> denn wo die werck vnd liebe nicht eraus bꝛicht/ da iſt
+          <lb/> der glawbe nicht recht/ da hafftet das Euangelion noch nit/ <lb/> vnnd iſt
+          Chꝛiſtus nicht recht erkant. Sihe/ nu richte dich alſzo <lb/> ynn die
+          bucher des newen teſtaments/ das du <lb/> ſie auff diſze
+          weyſze zu leſzen <lb/> wyſſeſt.</p>
+        <lb/>
+      </div>
+      <pb facs="#f0013" n="[7]"/>
+      <div n="1">
+        <head>wilchs die rechten vnd Edliſten<lb/> bucher des newen <choice>
+            <orig>teſta</orig>
+            <reg>teſta-</reg>
+          </choice><lb/> ments ſind.</head>
+        <lb/>
+        <p><hi rendition="#in">A</hi>Vs diſem allen kanſtu nu recht vꝛteylen
+          vnter allen buchern/ <lb/> vnd vnterſcheyd nehmen/ wilchs die beſten
+          ſind/ Denn nem-<lb/> lich iſt Johannis Euangelion vnnd Sanct Paulus
+          Epi-<lb/> ſtelln/ ſonderlich die zu den Romern/ vnd ſanct Peters
+          erſte <lb/> Epiſtel der rechte kern vñ marck vnter allen buchern/
+          wilche auch bil-<lb/> lich die erſten ſeyn ſollten/ Vñ eym
+          iglichen Chꝛiſten zu ratten were/ <lb/> das er die ſelben am
+          erſten vnd aller meyſten leſe/ vnd yhm durch teg-<lb/> lich
+          leſzen ſo gemeyn mechte/ als das teglich bꝛott/ Denn ynn diſen
+          <lb/> findiſtu nicht viel werck vnnd wunderthatten Chꝛiſti
+          beſchꝛieben/ <lb/> Du findiſt aber gar meyſterlich
+          auſzgeſtrichen/ wie der glawbe an <lb/> Chꝛiſtum/ ſund/
+          tod vnd helle vberwindet/ vnd das leben/ gerechtig-<lb/> keyt vnnd ſeligkeyt gibt/
+          wilchs die rechte artt iſt des Euangeli/ wie <lb/> du gehoꝛet
+          haſt.</p>
+        <lb/>
+        <p>Denn wo ich yhe der eyns mangelln ſollt/ der werck odder der pꝛe-<lb/> digt
+          Chꝛiſti/ ſzo wollt ich lieber der werck/ denn ſeyner
+          pꝛedigt man-<lb/> gelln/ Denn die werck hulffen myr nichts/ aber ſeyne
+          woꝛt die geben <lb/> das leben/ wie er ſelbs ſagt. Weyl nu Johannes
+          gar wenig werck <lb/> võ Chꝛiſto/ aber gar viel ſeyner
+          pꝛedigt ſchꝛeybt/ widderumb die an-<lb/> dern dꝛey
+          Euangeliſten viel ſeyner werck/ wenig ſeyner woꝛt <choice>
+            <orig>beſchꝛey</orig>
+            <reg>beſchꝛey-</reg>
+          </choice><lb/> ben/ iſt Johannis Euangelion das eynige zartte recht hewbt <choice>
+            <orig>Euan</orig>
+            <reg>Euan-</reg>
+          </choice><lb/> gelion vñ den andern dꝛeyen weyt weyt fur zu zihen
+          vñ hoher zu hebẽ/ <lb/> Alſo auch Sanct Paulus vñ Petrus
+          Epiſtelln/ weyt vber die dꝛey <lb/> Euangelia Matthei/ Marci vnd Luce
+          furgehen.</p>
+        <lb/>
+        <p rendition="#c">Summa/ Sanct Johannis Euangeli vnd ſeyne erſte
+          Epiſtel/ <lb/> Sanct Paulus Epiſtel/ ſonderlich die zu den Romern/
+          <lb/> Galatern/ Epheſern/ vnnd Sanct Peters erſte <lb/> Epiſtel/ das
+          ſind die bucher/ die dyr <choice>
+            <orig>Chꝛi</orig>
+            <reg>Chꝛi-</reg>
+          </choice><lb/> ſtum zeygen/ vnd alles leren/ das dyr <lb/> zu wiſſen
+          nott vnd ſelig iſt/ <lb/> ob du ſchon kein an-<lb/> der buch noch <choice>
+            <orig>le</orig>
+            <reg>le-</reg>
+          </choice><lb/> re num-<lb/> mer <lb/> ſeheſt <lb/> noch
+          hoꝛiſt/ <lb/> Darumb iſt ſanct <lb/> Jacobs Epiſtel eyn
+          rechte <lb/> ſtroern Epiſtel gegen ſie/ denn ſie <lb/> doch
+          keyn Euangeliſch art an yhꝛ hat/ Do-<lb/> ch dauon weytter ynn andern <lb/>
+          voꝛrheden.</p>
+      </div>
+      <pb facs="#f0014" n="[8]"/>
+      <div type="contents" n="1">
+        <head>Die Bucher des<lb/>
+          <choice>
+            <orig>neꝛven</orig>
+            <reg>newen</reg>
+          </choice> teſta-<lb/> ments.</head>
+        <lb/>
+        <list>
+          <item>1 Euangelion Sanct Matthes.</item>
+          <lb/>
+          <item>2 Euangelion Sanct Marcus.</item>
+          <lb/>
+          <item>3 Euangelion Sanct Lucas.</item>
+          <lb/>
+          <item>4 Euangelion Sanct Johannis.</item>
+          <lb/>
+          <item>5 Der Apoſtel geſchicht beſchꝛieben von Sanct
+            Lucas.</item>
+          <lb/>
+          <item>6 Epiſtel Sanct Paulus zu den Romern.</item>
+          <lb/>
+          <item>7 Die erſte Epiſtel Sanct Paulus zu den Coꝛinthern.</item>
+          <lb/>
+          <item>8 Die ander Epiſtel Sanct Paulus zu den Coꝛinthern.</item>
+          <lb/>
+          <item>9 Epiſtel Sanct Paulus zu den Galatern.</item>
+          <lb/>
+          <item>10 Epiſtel Sanct Paulus zu den Epheſern.</item>
+          <lb/>
+          <item>11 Epiſtel Sanct Paulus zu den Philippern.</item>
+          <lb/>
+          <item>12 Epiſtel Sanct Paulus zu den Coloſſern.</item>
+          <lb/>
+          <item>13 Die erſte Epiſtel Sanct Paulus zu den
+            Theſſalonicern.</item>
+          <lb/>
+          <item>14 Die ander Epiſtel Sanct Paulus zu den Theſſalonicern.</item>
+          <lb/>
+          <item>15 Die erſt Epiſtel Sanct Paulus an Timotheon.</item>
+          <lb/>
+          <item>16 Die ander Epiſtel Sanct Paulus an Timotheon.</item>
+          <lb/>
+          <item>17 Epiſtel Sanct Paulus an Titon.</item>
+          <lb/>
+          <item>18 Epiſtel Sanct Paulus an Philemon.</item>
+          <lb/>
+          <item>19 Die erſt Epiſtel Sanct Peters.</item>
+          <lb/>
+          <item>20 Die ander Epiſtel Sanct Peters.</item>
+          <lb/>
+          <item>21 Die erſte Epiſtel Sanct Johannis.</item>
+          <lb/>
+          <item>22 Die ander Epiſtel Sanct Johannis.</item>
+          <lb/>
+          <item>23 Die dꝛit Epiſtel Sanct Johannis.</item>
+        </list>
+        <lb/>
+        <list>
+          <item>Die Epiſtel zu den Ebꝛeern.</item>
+          <lb/>
+          <item>Die Epiſtel Jacobus.</item>
+          <lb/>
+          <item>Die Epiſtel Judas.</item>
+          <lb/>
+          <item>Die offinbarung Johannis.</item>
+        </list>
+      </div>
+    </front>
+    <body>
+      <pb facs="#f0015" n="[9]"/>
+      <fw type="header" place="top">I.</fw>
+      <lb/>
+      <div xml:id="Mt" n="1">
+        <head rendition="#c">Euangelion Sanct Matthes.</head>
+        <lb/>
+        <div xml:id="Mt.1" n="2">
+          <head rendition="#c">Das erſt Capitel.</head>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,1">Matthäus
+              1,1</ref></note><note place="left">Luce. 3.</note><figure facs="https://media.dwds.de/dta/images/luther_septembertestament_1522/figures/0001_mt.jpg"/><supplied><hi rendition="#in">D</hi></supplied><hi rendition="#b #larger">Js
+              iſt das buch von der<lb/> gepurt Jheſu Chꝛiſti der</hi>
+            <lb/> do iſt ein ſon Dauids des ſons <lb/> Abꝛaham. <note resp="#Luther" place="right">Abꝛaham vnd <choice>
+                <orig>Da</orig>
+                <reg>Da-</reg>
+              </choice><lb/> uid werdenn fur-<lb/> nemlich antzogen<lb/> darumb das den<lb/>
+              ſelben Chꝛiſtus<lb/> ſonderlich <choice>
+                <orig>verhey</orig>
+                <reg>verhey-</reg>
+              </choice><lb/> ſſen iſt.</note></p>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,2">Matthäus
+            1,2</ref></note>Abꝛaham hat gepoꝛn den Jſaac.<lb/> Jſaac
+            hatt gepoꝛn den Jacob.<lb/> Jacob hatt gepoꝛn den Juda vnnd <lb/>
+            ſeyne bꝛuder.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,3">Matthäus
+            1,3</ref></note>Juda hat gepoꝛn den Pharez vnnd <lb/> den Zaram von der
+            Thamar.<lb/> Pharez hat gepoꝛn den Hezron.<lb/> Hezron hat gepoꝛn den Ram.
+              <note resp="#Luther" place="right">S. Mattheus leſ-<lb/> ſet ettlich
+              gelid<lb/> auſſzenn/ vnnd fu-<lb/> ret Chꝛiſtus ge-<lb/>
+              ſchlecht von Sa-<lb/> lomon nach dem<lb/> geſetz aber Sanc.<lb/> Lucas
+              furet es <choice>
+                <orig>na</orig>
+                <reg>na-</reg>
+              </choice><lb/> ch der natur vonn<lb/> Nathan <choice>
+                <orig>Salomo</orig>
+                <reg>Salomo-</reg>
+              </choice><lb/> nis bꝛuder. Denn<lb/> das geſetz nennet<lb/> auch die
+              kinder/<lb/> ſo võ bꝛudern auſz<lb/>
+              nachgelaſſenem<lb/> weyb gepoꝛn ſind.<lb/> Deuter.
+              25.</note><lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,4">Matthäus
+            1,4</ref></note>Ram hat gepoꝛn den Amminadab.<lb/> Amminadab hatt gepoꝛn
+            den Na-<lb/> haſſon.<lb/> Nahaſſon hatt gepoꝛn den Salma.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,5">Matthäus
+            1,5</ref></note>Salma hat gepoꝛn den Boas von der Rahab.<lb/> Boas hat
+            gepoꝛn den Obed von der Rhut.<lb/> Obed hat gepoꝛn den Jeſſe.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,6">Matthäus
+            1,6</ref></note>Jeſſe hatt gepoꝛn den konig Dauid.</p>
+          <lb/>
+          <p>Der konig Dauid hat gepoꝛn den Salomon vonn dem weybe<lb/> des Vꝛie.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,7">Matthäus
+            1,7</ref></note>Salomon hat gepoꝛn den Roboam.<lb/> Roboam hat gepoꝛn den
+            Abia.<lb/> Abia hat gepoꝛn den Aſſa.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,8">Matthäus
+            1,8</ref></note>Aſſa hat gepoꝛn den Joſaphat.<lb/>
+            Joſaphat hat gepoꝛn den Joꝛam.<lb/> Joꝛam hat gepoꝛn
+            den Oſia.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,9">Matthäus
+            1,9</ref></note>Oſia hat gepoꝛn den Jotham.<lb/> Jotham hat gepoꝛn
+            den Achas.<lb/> Achas hat gepoꝛn den Ezechia.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,10">Matthäus
+              1,10</ref></note>Ezechia hat gepoꝛn den Manaſſe.<lb/>
+            Manaſſe hatt gepoꝛn den Amon.<lb/> Amon hat gepoꝛn den Joſia.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,11">Matthäus
+              1,11</ref></note>Joſia hatt gepoꝛn den Jechonia vnd ſeyne
+            bꝛuder/ vmb die zeyt der <lb/> Babyloniſchen gefencknis.</p>
+          <lb/>
+          <note place="left">4. Reg.<lb/> 25.</note>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,12">Matthäus
+              1,12</ref></note>Nach der Babyloniſchen gefencknis/ hat Jechonia gepoꝛn
+            den <lb/> Sealthiel.<lb/>
+            <note place="left">1. Eſdre. 2.</note>Sealthiel hatt gepoꝛn den
+              Zorobabel.<note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,13">Matthäus
+              1,13</ref></note><lb/> Zorobabel hatt gepoꝛn den Abiud.<lb/> Abiud hat
+            gepoꝛn den Eliachim.<lb/>
+            <fw place="bottom" type="catch">Eliachim</fw><lb/>
+            <fw place="bottom" type="sig">a</fw><lb/>
+            <pb facs="#f0016" n="[10]"/>
+            <fw place="top" type="header">Euangelion</fw><lb/> Eliachim hat gepoꝛn den Aſoꝛ.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,14">Matthäus
+              1,14</ref></note>Aſoꝛ hat gepoꝛn den Zadoch.<lb/> Zadoch hat
+            gepoꝛn den Achin.<lb/> Achin hat gepoꝛn den Eliud.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,15">Matthäus
+              1,15</ref></note>Eliud hat gepoꝛn den Eleaſar.<lb/> Eleaſar hat
+            gepoꝛn den Mathan.<lb/> Mathan hat gepoꝛn den Jacob.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,16">Matthäus
+              1,16</ref></note>Jacob hat gepoꝛn den Joſeph den man Marie/ von wilcher
+            iſt ge-<lb/> poꝛn Jheſus/ der da heyſt
+            Chꝛiſtus.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,17">Matthäus
+              1,17</ref></note>Alle gelid von Abꝛaham biſz auff Dauid/ ſind
+            vierzehen gelid/<lb/> Vonn Dauid biſz auff die Babyloniſche
+            gefenckniſz ſind viertze-<lb/> hen gelid/ Von der Babyloniſchen
+            gefenckniſz biſz auff Chꝛiſtum<lb/> ſind viertzehen
+            gelid.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,18">Matthäus
+              1,18</ref></note>Die gepurt Chꝛiſti war aber alſzo gethan/ Als
+            Maria ſeyne <choice>
+              <orig>mu</orig>
+              <reg>mu-</reg>
+            </choice><note place="right">Luce. 1.</note><lb/> ter dem Joſeph vertrawet war/
+            ehe ſie mit eynander zu hauſz ſaſſen/<lb/> erfand
+            ſichs das ſie ſchwanger war/ võ dem heyligen geyſt.
+              <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,19">Matthäus
+              1,19</ref></note>Joſeph<lb/>
+            <note resp="#Luther" place="left">(Rugen et ce.)<lb/> Das iſt er wolt
+              ſie<lb/> nicht zu ſchanden<lb/> machen fur den<lb/> leuten/ als er
+              wol<lb/> macht hatte nach<lb/> dem geſetze/ vnd<lb/> rumbt alſo
+              Sanct<lb/> Matth. Joſephs<lb/> fromkeyt das er<lb/> ſich auch
+              ſeynes<lb/> rechten vmb liebe<lb/> willen vertzigen<lb/> hatt.</note>aber
+            yhꝛ man war frum/ vñ wolt ſie nit rugen/ gedacht aber ſie
+            heym<lb/> lich tzuuerlaſſen/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,20">Matthäus
+              1,20</ref></note>Jn dẽ er aber alſzo gedacht/ ſihe/ da
+            erſchyn yhm<lb/> eyn Engell des herñ ym trawm vnd ſpꝛach/
+            Joſeph du ſon Dauid<lb/> furcht dich nit Mariam deyn weyb zu dyr zu
+            nehmen/ denn das yñ<lb/> yhꝛ gepoꝛn iſt/ das iſt von
+            dem heyligen geyſt/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,21">Matthäus
+              1,21</ref></note>vnnd ſie wirt geperen<lb/> eynen ſon/ des namen
+            ſolltu heyſſen Jheſus/ denn er wirt ſeyn volck<lb/>
+            ſelig machen von yhꝛen ſunden.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,22">Matthäus
+              1,22</ref></note>Das iſt aber alles geſchehen/ auff das erfullet wurd
+            das der herr<note place="right">Jſa. 7.</note><lb/> durch den pꝛopheten
+            geſaget hatt/ der do ſpꝛicht. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,23">Matthäus
+              1,23</ref></note>Sihe/ eyne iunck-<lb/> fraw wirt entpfahen vnnd geperen eynen
+            ſon/ vnd ſie werden ſeynen<lb/> namen heyſſen
+            Emanuel/ das iſt verdolmaſchet. Got mit vns.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,24">Matthäus
+              1,24</ref></note>Da nu Joſeph vom ſchlaff erwachte/ thet er wie yhm des
+            hernn<lb/> Engell befolhen hatte/ vnnd nam ſeynn weyb zu ſich/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus1,25">Matthäus
+              1,25</ref></note>vnd erkennet <lb/> ſie nicht/ biſz ſie
+            yhꝛen erſtẽ ſon gepar/ vñ hieſz
+            ſeynẽ namen Jheſus.</p>
+          <lb/>
+        </div>
+        <div xml:id="Mt.2" n="2">
+          <head>Das ander Capitel.</head>
+          <lb/>
+          <p><note resp="#Luther" place="left">(weyſen et ce.)<lb/> Die S. Math <choice>
+                <orig>Ma</orig>
+                <reg>Ma-</reg>
+              </choice><lb/> gos nennet/ vnnd<lb/> ſind magi in etli-<lb/> chen
+              moꝛgenlen-<lb/> der Naturkundi-<lb/> ger vnnd prieſter <lb/>
+              geweſen.</note><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,1">Matthäus
+              2,1</ref></note><hi rendition="#in">D</hi>O Jheſus gepoꝛn war zu
+            Bethlehem/ yhm Judiſchen<lb/> land/ tzur tzeyt des konigs Herodis/ ſihe/
+            da kamen die<lb/> weyſen vom moꝛgenland gen Hieruſalem/ vnnd ſpꝛachen.<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,2">Matthäus
+            2,2</ref></note>Wo iſt der newgeboꝛne konig der Juden? wyr haben
+            ſey-<lb/> nen ſtern geſehen ym moꝛgen land/ vnd ſind
+            komen/ yhn antzubetẽ.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,3">Matthäus
+            2,3</ref></note>Do das der konig Herodes hoꝛte/ erſchꝛack er vnnd
+            mit yhm das<lb/>
+            <note resp="#Luther" place="left" xml:id="m1" next="#m1_1">(Mitt nichte)<lb/> Bethlehem
+              war<lb/> kleyn an zu ſehen<lb/> darumb auch mi-<lb/> cheas ſie kleyn
+              nẽ-<lb/> net. Aber <choice>
+                <abbr>d̕</abbr>
+                <expan>der</expan>
+              </choice>
+              <choice>
+                <orig>Euan</orig>
+                <reg>Euan-</reg>
+              </choice><lb/> geliſt hatt (mitt <choice>
+                <orig>ni</orig>
+                <reg>ni-</reg>
+              </choice><lb/> chte) hyn zu than<lb/> darumb das ſie</note>gantz
+            Hieruſalem/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,4">Matthäus
+            2,4</ref></note>vñ lieſz verſamlen alle hohe Prieſter vnd
+            ſchꝛifft<lb/> gelerteñ vntter dẽ volck/ vñ <choice>
+              <sic>erfoꝛſthete</sic>
+              <corr>erfoꝛſchete</corr>
+            </choice> von yhn/ wo Chꝛiſtus ſolt <choice>
+              <orig>ge</orig>
+              <reg>ge-</reg>
+            </choice><lb/> poꝛn werden? <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,5">Matthäus
+            2,5</ref></note>vnnd ſie ſagten yhm/ zu Bethlehem yhm
+            Judiſchen<lb/> land. Deñ alſo iſt geſchꝛieben
+            durch den pꝛopheten. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,6">Matthäus
+            2,6</ref></note>Vnd du Beth-<lb/> lehem ym Judiſchen land biſt mit nichte
+            die kleyniſt vnter den fur-<note place="right">Mich. 5.<lb/> Joh. 7.</note><lb/>
+            ſten Juda/ denn auſz dyr ſoll myr komen/ der hertzog der vber
+            meyn<lb/> volck von Jſrael eyn herr ſey.</p>
+          <lb/>
+          <fw type="catch" place="bottom">Da berieff</fw>
+          <pb facs="#f0017" n="[11]"/>
+          <fw place="top" type="header">Sanct Matthes. II.</fw>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,7">Matthäus
+            2,7</ref></note>Da berieff Herodes die weyſen heymlich/ vñ erlernet mit
+              vleyſz<note resp="#Luther" prev="#m1" place="right" xml:id="m1_1">itzund
+              erhohett<lb/> war/ do Chꝛiſtus<lb/> da gepoꝛn ward.<lb/> Und
+              trifft alſo der<lb/> Euangeliſt die <choice>
+                <sic>ſi-<lb/> gur</sic>
+                <corr>fi-<lb/> gur</corr>
+              </choice>/ deñ Bethle-<lb/> hem bedeut/ die<lb/> chꝛiſtenheytt
+              die<lb/> veracht fur der<lb/> welt/ groſz fur<lb/> gott iſt.</note><lb/>
+            von yhnen/ weñ der ſtern erſchynen were/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,8">Matthäus 2,8</ref></note>vnd weyſzet ſie gen <choice>
+              <orig>Beth</orig>
+              <reg>Beth-</reg>
+            </choice><lb/> lehem/ vnnd ſpꝛach/ zihet hyn/ vnd
+            foꝛſſchet vleyſſig nach dem <choice>
+              <orig>kynd</orig>
+              <reg>kynd-</reg>
+            </choice><lb/> lin/ vnnd wen yhꝛſz findet/ ſagt myr widder/ das ich
+            auch kome vnd<lb/> es anbete.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,9">Matthäus
+            2,9</ref></note>Als ſie nu den konig gehoꝛt hatten/ zogen ſie hyn/
+            vnnd/ ſihe der<lb/> ſtern/ den ſie ym moꝛgẽ land
+            geſehen hatten/ gieng fur yhn hyn/ biſz<lb/>
+            <choice>
+              <abbr>dz</abbr>
+              <expan>das</expan>
+            </choice> er kam/ vñ ſtund oben vber/ da das kyndlin war. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,10">Matthäus
+              2,10</ref></note>Da ſie den ſtern <lb/> ſahen/ wurdẽ
+            ſie hoch erfrawet/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,11">Matthäus
+              2,11</ref></note>vnd giengen ynn das hauſz/ vnd <choice>
+              <orig>fun</orig>
+              <reg>fun-</reg>
+            </choice><lb/> den das kyndlin mit Maria ſeyner mutter/ vnnd fielen nyder/
+            vnnd<lb/> betten es an/ vnd theten yhꝛe ſchetze auff/ vnnd legten yhm
+            geſche-<lb/> nck fur/ gollt/ weyrach vnnd myrrhen. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,12">Matthäus 2,12</ref></note>Vnnd gott bevahl yhn ym<lb/> trawm/ das ſie
+            ſich nitt ſollten widder zu Herodes lencken/ vnd <choice>
+              <orig>zo</orig>
+              <reg>zo-</reg>
+            </choice><lb/> gen durch eynen andern weg wydder yñ yhꝛ land.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,13">Matthäus
+              2,13</ref></note>Da ſie aber hynweg getzogen waren/ ſihe/ da
+            erſcheyn der engell<lb/> des herren dem Joſeph ym trawm/ vnnd
+            ſpꝛach/ ſtand auff/ vnnd<lb/> nym das kyndlin vñ
+            ſeyn mutter zu dyr/ vñ fleuch yñ Egypten land/<lb/> vnnd bleyb
+            alda/ biſz ich dyr ſage/ denn es iſt forhanden das <choice>
+              <orig>Hero</orig>
+              <reg>Hero-</reg>
+            </choice><lb/> des das kyndlin ſuche daſſelb vmbtzubꝛingen.
+              <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,14">Matthäus
+              2,14</ref></note>Vñ er ſtund auff vnd<lb/> nam das kyndlin vnnd
+            ſeyne mutter zu ſich/ bey der nacht/ vnnd ent-<lb/> weych ynn Egypten
+            land/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,15">Matthäus
+              2,15</ref></note>vnnd bleyb alda/ biſz nach dem todt <choice>
+              <orig>He</orig>
+              <reg>He-</reg>
+            </choice><lb/>
+            <note place="left">Oſee. 11.<lb/> Nũeri. 24.</note>rodes/ auff das
+            erfullet wurde/ das der herr durch den pꝛopheten <choice>
+              <orig>ge</orig>
+              <reg>ge-</reg>
+            </choice><lb/> ſagt hatt der do ſpꝛicht/ Auſz Egypten hab
+            ich meynẽ ſzon beruffen.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,16">Matthäus
+              2,16</ref></note>Da Herodes nu ſahe/ das er võ den weyſen
+            betrogen war/ wart<lb/> er ſeer tzoꝛnig/ vnd ſchickt auſz/
+            vnd lieſz alle kynder tzu Bethlehem<lb/> todten/ vnnd ann yhꝛ gantzen
+            grentze/ die da tzwey ierig vnd <choice>
+              <orig>drun</orig>
+              <reg>drun-</reg>
+            </choice><lb/> der waren/ nach der tzeytt/ die er mit vleyſz erlernet hatte vonn
+            den<lb/> weyſen.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,17">Matthäus
+              2,17</ref></note><note place="left">Jeremie 31</note>Da iſt erfullet/ das
+            geſagt iſt von dem pꝛopheten Jeremia/ der do<lb/> ſpricht.
+              <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,18">Matthäus
+              2,18</ref></note>Auff dẽ gebirge hat man ein geſchꝛey
+            gehoꝛet/ viel klagenſz/<lb/> weynenſz vnnd heulenſz/ Rachel
+            beweynet yhre kyndere/ vnd wollt<lb/> ſich nitt troſten
+            laſſen/ denn es war auſz mit yhnen<note resp="#Luther" place="right">(auſz mitt yhnen)<lb/> Diſen ſpruch hat<lb/> Sanct
+              Math. <choice>
+                <orig>ſon</orig>
+                <reg>ſon-</reg>
+              </choice><lb/> derlich anzogen/<lb/> das er durch yhn<lb/> anzeygt/ wie es<lb/>
+              ſich alltzeytt vmb<lb/> die
+              Ch<supplied>ꝛ</supplied>iſtenheytt<lb/> helt/ denn es leſt<lb/>
+              ſich alweg fur der<lb/> welt an ſehen als<lb/> ſey es aus vmb
+              die<lb/> chꝛiſten/ doch <choice>
+                <orig>wer</orig>
+                <reg>wer-</reg>
+              </choice><lb/> den ſie/ wider alle<lb/> macht <choice>
+                <abbr>d̕</abbr>
+                <expan>der</expan>
+              </choice> helle/<lb/> wunderlich durch<lb/> got <choice>
+                <sic>erhlaten</sic>
+                <corr>erhalten</corr>
+              </choice>/ vnd<lb/> ſicht man hie in<lb/> diſen kinden/ wie<lb/> ein
+              recht chꝛiſtlich<lb/> weſen/ yn leyden<lb/>
+            ſtandt.</note>.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,19">Matthäus
+              2,19</ref></note>Da aber Herodes geſtoꝛbẽ war/ ſihe/ da
+            erſcheyn <choice>
+              <abbr>d̕</abbr>
+              <expan>der</expan>
+            </choice> engel des herñ<lb/> Joſeph ym trawm/ ynn Egypten land/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,20">Matthäus
+              2,20</ref></note>vñ ſpꝛach/ ſtand auff/ vnnd<lb/> nym das
+            kyndlin vnnd ſeyne mutter zu dyr/ vnd ziehe hyn/ ynn das<lb/> land Jſrael/
+            Sie ſind geſtoꝛben/ die dem kynd nach dem leben <choice>
+              <orig>ſtun</orig>
+              <reg>ſtun-</reg>
+            </choice><lb/> den. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,21">Matthäus
+              2,21</ref></note>Vnd er ſtund auff/ vnnd nam das kindlin vnnd ſeyne
+            muter zu<lb/> ſich/ vnd kam ynn das land Jſrael. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,22">Matthäus 2,22</ref></note>Da er aber hoꝛete/ das <choice>
+              <orig>Archela</orig>
+              <reg>Archela-</reg>
+            </choice><lb/> us ym Judiſchen land konig war/ an ſtat ſeynes
+            vatters Herodes/<lb/> furcht er ſich da hyn zukomen/ vnnd ym trawm entpfieng er
+            eyn be-<lb/> vehl võ gott/ vnd zog yñ die oꝛtter des
+            Gallileiſchen lands/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus2,23">Matthäus
+              2,23</ref></note>vñ kam/<lb/>
+            <note place="left">Judicũ. 13.</note>vnnd wonet ynn der ſtat die do
+            heyſt/ Nazareth/ auff das erfullet<lb/> wurd/ <choice>
+              <abbr>dz</abbr>
+              <expan>das</expan>
+            </choice> geſagt iſt durch die pꝛopheten/ Er ſol Nazarenus
+            heyſſen.</p>
+          <lb/>
+          <fw type="catch" place="bottom">Das dꝛit</fw>
+          <fw type="sig" place="bottom">A ij</fw>
+          <lb/>
+        </div>
+        <pb facs="#f0018" n="[12]"/>
+        <fw place="top" type="header">Euangelion</fw>
+        <lb/>
+        <div xml:id="Mt.3" n="2">
+          <head>Das dꝛitt Capitel.</head>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,1">Matthäus
+              3,1</ref></note><hi rendition="#in">Z</hi>V der zeyt kam Johannes der teuffer/ vnd
+            pꝛediget ynn der<note place="right">Luce. 3.<lb/> Joh. 1.</note><lb/>
+            wuſten des iudiſchen lands <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,2">Matthäus
+            3,2</ref></note>vnnd ſpꝛach/ Beſſert euch/ das<lb/> hymel
+            reych iſt nah erbey komen. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,3">Matthäus
+            3,3</ref></note>Vnd er iſt der/ von dem der<lb/> pꝛophet Jſaias
+            geſagt hatt/ vnnd geſpꝛochen/ Es iſt eyn <choice>
+              <orig>ruf</orig>
+              <reg>ruf-</reg>
+            </choice><note place="right">Jſa. 40.<lb/> Marci. 1.</note><lb/> fende
+            ſtymme ynn der wuſten/ Bereyttet dem herrn den weg/ vnnd<lb/> macht
+            ſeyne ſteyge richtig.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,4">Matthäus
+              3,4</ref></note><note resp="#Luther" place="left">Solche <choice>
+                <orig>hewſchꝛe</orig>
+                <reg>hewſchꝛe-</reg>
+              </choice><lb/> cken pflegt man yn<lb/> ettlich <choice>
+                <orig>moꝛgenlen</orig>
+                <reg>moꝛgenlen-</reg>
+              </choice><lb/> der tzu eſſen als<lb/> Hierony.
+              ſchꝛeybt</note>Er aber Johannes hatte eyn kleyd von Cameel haren/ vnnd
+            ey-<lb/> nen leddern gurttel vmb ſeyne lendeñ. Seyne
+            ſpeyſze ware/ heuſchꝛe-<lb/> cken vñ wild honig.
+              <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,5">Matthäus
+            3,5</ref></note>Da gieng zu yhm hynauſz die ſtat Hieruſalem/<lb/>
+            vnnd das gantz iudiſch land/ vnnd alle lender an dem ioꝛdan/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,6">Matthäus
+            3,6</ref></note>vnnd<lb/> lieſzen ſich teuffen von yhm/ ym ioꝛdan/
+            vnnd bekanten yhꝛe ſunde.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,7">Matthäus
+            3,7</ref></note>Als er nu viel phariſeer vnnd ſaduceer ſahe zu
+            ſeyner tauff komen/<lb/> ſpꝛach er zu yhnen/ yhꝛ otter
+            gezichte/ wer hatt denn euch ſo gewyſz<lb/> gemacht <choice>
+              <abbr>dz</abbr>
+              <expan>das</expan>
+            </choice> yhꝛ entrynnẽ werdet dem kunfftigẽ zoꝛn? <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,8">Matthäus
+            3,8</ref></note>Sehet zu/ thut <choice>
+              <orig>re</orig>
+              <reg>re-</reg>
+            </choice><lb/> chtſchaffne frucht <choice>
+              <abbr>d̕</abbr>
+              <expan>der</expan>
+            </choice> puſz. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,9">Matthäus
+            3,9</ref></note>Denckt nur nit/ <choice>
+              <abbr>dz</abbr>
+              <expan>das</expan>
+            </choice> yhꝛ bey euch wolt ſagẽ/<lb/> wyꝛ habẽ
+            Abꝛahã zum vater. Jch ſage euch/ gott vermag dem Abꝛa-<lb/>
+            hã aus dieſen ſteyn kinder erwecken. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,10">Matthäus 3,10</ref></note>Es iſt ſchon die axt den bewmẽ<lb/>
+            an die wurtzel gelegt/ darumb welcher bawm nit gutte frucht bꝛin-<lb/> gt/ wirt
+            abgehawenn/ vnnd ynſz fewr gewoꝛffen.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,11">Matthäus
+              3,11</ref></note><note resp="#Luther" place="left">(alle gerecht) Al-<lb/> le
+              gerechtickeytt<lb/> wirt erfullet weñ<lb/> wir vns aller vn-<lb/> ſer
+              gerechtickeytt<lb/> vnnd ehꝛe <choice>
+                <orig>vertzey</orig>
+                <reg>vertzey-</reg>
+              </choice><lb/> hen/ das gott al-<lb/> leyn fur den <choice>
+                <orig>gehal</orig>
+                <reg>gehal-</reg>
+              </choice><lb/> ten werd/ der ge-<lb/> recht ſey/ vnnd <choice>
+                <orig>ge</orig>
+                <reg>ge-</reg>
+              </choice><lb/> recht mache die<lb/> glewbigen. Dis<lb/> thut Johannes/<lb/> ſo
+              er ſich ſeyner<lb/> gerechtickeyt auſ-<lb/> ſzert/ vnd
+              will võ<lb/> Chꝛiſto getaufft<lb/> vnnd gerechtferti-<lb/> gett
+              werden Dis<lb/> thut auch Chr̃us<lb/> ſo er ſich ſeyner <choice>
+                <orig>ge</orig>
+                <reg>ge-</reg>
+              </choice><lb/> rechtikeyt vñ ehꝛe<lb/> nit annymbt/ <choice>
+                <abbr>ſond̕</abbr>
+                <expan>ſondern</expan>
+              </choice><lb/> leſt ſich teuffen vñ<lb/> todten/ Deñ
+              tauff<lb/> iſt nicht anders<lb/> denn todt.</note>Jch teuffe euch mit
+            waſſer tzur buſſze/ der aber nach myr komet/<lb/> iſt
+            ſtercker denn ich/ dem ich auch nit byn gnugſam/ ſeyne
+            ſchuch zu<lb/> tragen/ der wirt euch teuffen mit dem heyligen geyſt vnnd
+            mit fewr/<lb/>
+            <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,12">Matthäus
+              3,12</ref></note>vnnd er hatt ſeyne woꝛfſchauffel ynn der hand/
+            er wirt ſeyne tenne fe-<lb/> gen/ vñ den weytzen yn ſeyne
+            ſchewren ſamlen/ aber die ſpꝛew/ wirt<lb/> er
+            verpꝛennen mit ewigem fewr.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,13">Matthäus
+              3,13</ref></note>Zu der zeyt kam Jheſus von Gallilea an den Joꝛdan/ zu <choice>
+              <orig>Johan</orig>
+              <reg>Johan-</reg>
+            </choice><lb/> ne/ das er ſich vonn yhm teuffen lieſze/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,14">Matthäus 3,14</ref></note>Aber Johannes weret yhm/<lb/> vnnd ſpꝛach/
+            ich bedarff woll/ das ich von dyr getaufft werde/ vnnd<lb/> du komiſt zu myr?
+              <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,15">Matthäus
+              3,15</ref></note>Jheſꝰ aber antwoꝛtt vñ
+            ſpꝛach/ laſz itzt alſo ſeyn/<lb/> alſzo gepurt
+            es vns/ alle gerechtickeyt zu erfullenn. Da lieſz ers yhm<lb/> zu/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,16">Matthäus
+              3,16</ref></note>vñ do Jheſus getaufft war/ ſteyg er bald erauff
+            auſz dem waſſer/<lb/> vnnd ſihe/ da wurden vber yhm die
+            hymel auffgethan/ vnnd <choice>
+              <orig>Johan</orig>
+              <reg>Johan-</reg>
+            </choice><lb/> nes ſahe den geyſt gottis gleych als eyn tawben erab
+            ſteygen vnd vbir<note place="right">Joh. 1.<lb/> Matth. 17</note><lb/> yhn komen/
+              <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus3,17">Matthäus
+              3,17</ref></note>vnnd ſihe/ Eyn ſtyme vom hymel erab
+            ſpꝛach/ diſz iſt<lb/> meyn lieber ſon/ ynn wilchem
+            ich eyn wolgefallen habe.</p>
+          <lb/>
+        </div>
+        <div xml:id="Mt.4" n="2">
+          <head>Das vierde Capitel.</head>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,1">Matthäus
+              4,1</ref></note><hi rendition="#in">D</hi>A wart Jheſus vom geyſt ynn
+            die wuſten gefurt/ auff das<note place="right">Marci. 1.<lb/> Luce.
+            4.</note><lb/> er von dem teuffel verſucht wurde/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,2">Matthäus 4,2</ref></note>vnnd da er viertzig tage<lb/> vnnd viertzig nacht
+            gefaſtet hatte/ hungert yhn/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,3">Matthäus
+            4,3</ref></note>vnnd der<lb/> verſucher tratt zu yhm/ vnnd ſpꝛach/
+            Biſtu gottis ſon/ ſo<lb/>
+            <fw type="catch" place="bottom">ſpꝛich</fw><lb/>
+            <pb facs="#f0019" n="[13]"/>
+            <fw place="top" type="header">Sanct Matthes. III.</fw><lb/> ſpꝛich das
+            dieſze ſteyne/ bꝛott werden/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,4">Matthäus
+            4,4</ref></note>Vnd er antwoꝛttet vnd ſpꝛach <lb/> Es iſt
+            geſchꝛiebẽ. Der menſch wirt nit võ dem bꝛott
+            alleyn lebẽ/ <choice>
+              <orig>ſon</orig>
+              <reg>ſon-</reg>
+            </choice><lb/>
+            <note place="left">Deu. 8.</note>dern von eynem iglichen woꝛtt/ das durch den
+            mund gottis gehet.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,5">Matthäus
+            4,5</ref></note>Da furt yhn der teuffel mitt ſich ynn die heylige ſtadt/
+            vnnd ſtel-<lb/> let yhn auff die tzynnen des tempels/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,6">Matthäus 4,6</ref></note>vnnd ſpꝛach zu yhm/ Biſtu <choice>
+              <orig>got</orig>
+              <reg>got-</reg>
+            </choice><lb/> tis ſon ſo laſz dich hyn abe. Deñ es
+            iſt geſchꝛieben/ Er wirtt ſeynen <lb/> Engelln vbir dyr
+            befelhẽ/ vñ ſie werden dich auff den henden tragẽ <lb/>
+            auff das du deynẽ fueſſz nit an eynen ſteyn
+            ſtoſſeſt/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,7">Matthäus
+            4,7</ref></note>Da ſpꝛach Jhe-<lb/> ſus zu yhm/ widderumb
+            iſt auch geſchꝛiebenn. Du ſolt gott deynenn <lb/>
+            <note place="left">Deute. 6.</note>herrn nit verſuchenn.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,8">Matthäus
+            4,8</ref></note>Widderumb/ furt yhn der teuffel mit ſich/ auff eynen ſeer
+            hohen <lb/> berg/ vnnd tzeygt yhm alle reych der welt/ vnnd yhꝛe herlickeyt/
+              <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,9">Matthäus
+            4,9</ref></note>vnd <lb/> ſpꝛach zu yhm Das alles will ich dyr
+            gebẽ/ ſo du nyder felliſt/ vnnd <lb/> mich anbetiſt. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,10">Matthäus
+              4,10</ref></note>Da ſpꝛach Jheſus zu yhm/ heb dich Satan/
+            deñ es iſt <lb/>
+            <note place="left">Deute. 6.</note>geſchꝛieben Du ſollt anbeten
+            gott deynen herrñ vnd yhm alleyne <choice>
+              <orig>die</orig>
+              <reg>die-</reg>
+            </choice><lb/> nenn.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,11">Matthäus
+              4,11</ref></note>Da verlieſz yhn der teuffel/ vnd ſihe/ da tratten die
+            Engel zu yhm <lb/> vnnd dieneten yhm.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,12">Matthäus
+              4,12</ref></note><note place="left">Luce. 4.<lb/> Joh. 2.</note>Da nu Jheſus
+            hoꝛete/ das Johannes vberantwoꝛtet war/ zog er <lb/> ynn das
+            Gallileyſche land/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,13">Matthäus
+              4,13</ref></note>vnnd lies die ſtadt Nazaret/ kam/ vnnd <lb/> wonete zu
+            Capernaum/ die do ligt am meer an der grentze Zabu-<lb/> lon vnd Nepthalim/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,14">Matthäus
+              4,14</ref></note>auff das erfullet wurde/ das do geſagt iſt/ <choice>
+              <orig>dur</orig>
+              <reg>dur-</reg>
+            </choice><lb/> ch den pꝛophetẽ Jſaiã/ <choice>
+              <abbr>d̕</abbr>
+              <expan>der</expan>
+            </choice> do ſpꝛicht/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,15">Matthäus
+              4,15</ref></note>Das land Zabulon vñ das land <lb/>
+            <note place="left">Jſai. 9.</note>Nepthalim/ am wege des meeriſz/
+            ihenſid dem Joꝛdan/ vñ die <choice>
+              <orig>heyd</orig>
+              <reg>heyd-</reg>
+            </choice><lb/> niſch Gallilea/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,16">Matthäus
+              4,16</ref></note>das volck <choice>
+              <abbr>dz</abbr>
+              <expan>das</expan>
+            </choice> ym finſterniſz ſaſſz/ hatt eyn
+            groſſes <choice>
+              <orig>lie</orig>
+              <reg>lie-</reg>
+            </choice><lb/> cht geſehen/ vnd die da ſaſſen ynn dem
+            oꝛtt vnnd ſchatten des tods/ <lb/> den iſt eyn liecht
+            auffgangen.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,17">Matthäus
+              4,17</ref></note>Von der zeytt an/ fieng an Jheſus zu pꝛedigen/ vnd
+            ſagen Beſſert <lb/> euch/ das hymel reych iſt nah erbey
+            komen.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,18">Matthäus
+              4,18</ref></note>Als nu Jheſus an dem Gallileyſchenn meer gieng/
+            ſahe er zween <lb/> bꝛudere/ Simon/ der do heyſt Petrus/ vnnd
+            Andreas ſeynen bꝛu-<lb/>
+            <note place="left">Marci. 1.</note>der/ die wurffen yhꝛe netze ynſz meer/
+            denn ſie waren fiſcher/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,19">Matthäus
+              4,19</ref></note>vnnd er <lb/> ſpꝛach zu yhn/ folgett myr nach/ ich will
+            euch zu menſchẽfiſcher ma-<lb/> chen/ <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,20">Matthäus 4,20</ref></note>Bald lieſzen ſie yhꝛe netze/ vnnd
+            folgeten yhm.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,21">Matthäus
+              4,21</ref></note>Vnnd da er von dannen furbaſz gieng/ ſahe er zween
+            andere bꝛu-<lb/> dere/ Jacob den ſzon Zebedei vnnd Johannem ſeynen
+            bꝛuder/ ym <lb/> ſchiff mit yhꝛem vater Zebedeo/ das ſie
+            yhꝛe netze flickten/ vñ er rieff <lb/> yhn. <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,22">Matthäus 4,22</ref></note>Bald lieſſen ſie <choice>
+              <abbr>dz</abbr>
+              <expan>das</expan>
+            </choice> ſchiff vñ yhꝛen vatter/ vñ folgeten yhm
+            nach.</p>
+          <lb/>
+          <p><note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,23">Matthäus
+              4,23</ref></note>Vnnd Jheſus gieng vmb her ym gantzen Gallileyſchen
+            land/ le-<lb/> ret ynn yhꝛen ſchulen/ vnnd pꝛediget das Euangelion
+            võ dem reych/ <lb/> vnnd heylet allerley ſeuche vnnd kranckeyt ym volck/
+              <note resp="#AH" type="editorial"><ref target="https://www.bibleserver.com/text/LUT/Matthäus4,24">Matthäus
+              4,24</ref></note>vnnd ſeyn <fw type="catch" place="bottom">gerucht</fw><lb/>
+            <fw type="sig" place="bottom">a iij</fw><lb/>
+            </p></div></div></body></text></TEI>
