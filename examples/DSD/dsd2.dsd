@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?dsd href="http://www.brics.dk/DSD/dsd2.dsd"?>
+
+<dsd xmlns="http://www.brics.dk/DSD/2.0"
+     xmlns:m="http://www.brics.dk/DSD/2.0/meta"
+     xmlns:c="http://www.brics.dk/DSD/character-classes"
+     root="dsd">
+
+  <m:doc>
+    A DSD 2.0 description of DSD 2.0, by Anders Møller (amoeller@brics.dk).
+  </m:doc>
+
+  <!-- common definitions -->
+
+  <import href="character-classes.dsd"/>
+
+  <stringtype id="NCNAME">
+    <sequence>
+      <union><stringtype ref="c:LETTER"/><char set="_"/></union>
+      <repeat><stringtype ref="c:NAMECHAR"/></repeat>
+    </sequence>
+  </stringtype>
+
+  <stringtype id="QNAME">
+    <sequence>
+      <optional>
+        <sequence><stringtype ref="NCNAME"/><char set=":"/></sequence>
+      </optional>
+      <stringtype ref="NCNAME"/>
+    </sequence>
+  </stringtype>
+
+  <stringtype id="PNAME">
+    <union>
+      <stringtype ref="QNAME"/>
+      <sequence><stringtype ref="NCNAME"/><char set=":"/></sequence>
+    </union>
+  </stringtype>
+
+  <stringtype id="NUMERAL">
+    <repeat min="1"><char min="0" max="9"/></repeat>
+  </stringtype>
+
+  <boolexp id="RULE">
+    <or>
+      <element name="declare"/>
+      <element name="require"/>
+      <element name="if"/>
+      <element name="unique"/>
+      <element name="pointer"/>
+      <and><element name="rule"/><attribute name="ref"/></and>
+    </or>
+  </boolexp>
+
+  <boolexp id="BOOLEXP">
+    <or>
+      <element name="and"/>
+      <element name="or"/>
+      <element name="not"/>
+      <element name="imply"/>
+      <element name="equiv"/>
+      <element name="one"/>
+      <element name="parent"/>
+      <element name="ancestor"/>
+      <element name="child"/>
+      <element name="descendant"/>
+      <element name="this"/>
+      <element name="element"/>
+      <element name="attribute"/>
+      <element name="contents"/>
+      <and><element name="boolexp"/><attribute name="ref"/></and>
+    </or>
+  </boolexp>
+
+  <boolexp id="REGEXP">
+    <or>
+      <element name="sequence"/>
+      <element name="optional"/>
+      <element name="complement"/>
+      <element name="union"/>
+      <element name="intersection"/>
+      <element name="minus"/>
+      <element name="repeat"/>
+      <element name="string"/>
+      <element name="char"/>
+      <and><element name="stringtype"/><attribute name="ref"/></and>
+      <and><element name="contenttype"/><attribute name="ref"/></and>
+      <boolexp ref="BOOLEXP"/>
+    </or>
+  </boolexp>
+
+  <boolexp id="DEFREF">
+    <or>
+      <element name="rule"/>
+      <element name="contenttype"/>
+      <element name="stringtype"/>
+      <element name="boolexp"/>
+    </or>
+  </boolexp>
+
+  <boolexp id="DEFINITION">
+    <and>
+      <boolexp ref="DEFREF"/>
+      <attribute name="id"/>
+    </and>
+  </boolexp>
+
+  <boolexp id="REFERENCE">
+    <and>
+      <boolexp ref="DEFREF"/>
+      <attribute name="ref"/>
+    </and>
+  </boolexp>
+
+  <rule id="ATTRTYPE">
+    <declare>
+      <attribute name="type">
+        <union>
+          <string value="string"/>
+          <string value="qname"/>
+          <string value="qaname"/>
+        </union>
+      </attribute>
+    </declare>
+  </rule>
+
+  <!-- schemas -->
+
+  <if>
+    <not><or>
+      <element name="default"/>
+      <ancestor><element name="default"/></ancestor>
+    </or></not>
+
+    <declare>
+      <attribute name="m:"/>
+      <contents><repeat><element name="m:"/></repeat></contents>
+    </declare>
+  
+    <if><element name="dsd"/>
+      <declare>
+        <attribute name="root" type="qname"><stringtype ref="PNAME"/></attribute>
+        <contents>
+          <repeat><union>
+            <boolexp ref="RULE"/>
+            <boolexp ref="DEFINITION"/>
+            <element name="dsd"/>
+          </union></repeat>
+        </contents>
+      </declare>
+    </if>
+  
+    <!-- rules -->
+  
+    <if><element name="declare"/>
+      <declare><contents>
+        <repeat><union>
+          <element name="attribute"/>
+          <element name="required"/>
+          <element name="contents"/>
+        </union></repeat>
+      </contents></declare>
+    </if>
+  
+    <if><element name="required"/>
+      <declare><contents>
+        <repeat><element name="attribute"/></repeat>
+      </contents></declare>
+    </if>
+  
+    <if><element name="require"/>
+      <declare><contents>
+        <repeat><boolexp ref="BOOLEXP"/></repeat>
+      </contents></declare>
+    </if>
+  
+    <if><element name="if"/>
+      <declare><contents>
+        <sequence>
+          <boolexp ref="BOOLEXP"/>
+          <repeat><boolexp ref="RULE"/></repeat>
+        </sequence>
+      </contents></declare>
+    </if>
+  
+    <!-- boolean expressions -->
+  
+    <if>
+      <or>
+        <element name="and"/>
+        <element name="or"/>
+        <element name="equiv"/>
+        <element name="one"/>
+      </or>
+      <declare><contents>
+        <repeat><boolexp ref="BOOLEXP"/></repeat>
+      </contents></declare>
+    </if>
+  
+    <if>
+      <or>
+        <element name="not"/>
+        <element name="parent"/>
+        <element name="ancestor"/>
+        <element name="child"/>
+        <element name="descendant"/>
+      </or>
+      <declare><contents><boolexp ref="BOOLEXP"/></contents></declare>
+    </if>
+  
+    <if><element name="imply"/>
+      <declare><contents>
+        <repeat number="2"><boolexp ref="BOOLEXP"/></repeat>
+      </contents></declare>
+    </if>
+  
+    <if><element name="element"/>
+      <declare>
+        <attribute name="name" type="qname"><stringtype ref="PNAME"/></attribute>
+      </declare>
+    </if>
+  
+    <if><element name="attribute"/>
+      <declare>
+        <attribute name="name" type="qaname"><stringtype ref="PNAME"/></attribute>
+        <contents><optional><boolexp ref="REGEXP"/></optional></contents>
+      </declare>
+      <if>
+        <parent>
+          <or><element name="declare"/><element name="required"/></or>
+        </parent>
+        <rule ref="ATTRTYPE"/>
+      </if>
+    </if>
+  
+    <if><element name="contents"/>
+      <declare><contents>
+        <repeat><boolexp ref="REGEXP"/></repeat>
+      </contents></declare>
+    </if>
+  
+    <if>
+      <and>
+        <or><element name="contents"/><element name="attribute"/></or>
+        <parent>
+          <or><element name="declare"/><element name="required"/></or>
+        </parent>
+      </and>
+      <declare><contents>
+        <optional><element name="default"/></optional>
+        <optional><element name="normalize"/></optional>
+      </contents></declare>
+    </if>
+  
+    <if><element name="this"/>
+      <require>
+        <ancestor><or>
+          <element name="unique"/>
+          <element name="pointer"/>
+        </or></ancestor>
+      </require>
+    </if>
+  
+    <!-- regular expressions -->
+  
+    <if>
+      <or>
+        <element name="sequence"/>
+        <element name="union"/>
+        <element name="intersection"/>
+      </or>
+      <declare><contents>
+        <repeat><boolexp ref="REGEXP"/></repeat>
+      </contents></declare>
+    </if>
+  
+    <if><element name="minus"/>
+      <declare><contents>
+        <repeat number="2"><boolexp ref="REGEXP"/></repeat>
+      </contents></declare>
+    </if>
+  
+    <if>
+      <or>
+        <element name="optional"/>
+        <element name="complement"/>
+        <element name="repeat"/>
+      </or>
+      <declare><contents><boolexp ref="REGEXP"/></contents></declare>
+      <if><element name="repeat"/>
+        <declare>
+          <attribute name="number"><stringtype ref="NUMERAL"/></attribute>
+          <attribute name="min"><stringtype ref="NUMERAL"/></attribute>
+          <attribute name="max"><stringtype ref="NUMERAL"/></attribute>
+        </declare>
+        <require>
+          <not><and>
+            <attribute name="number"/>
+            <or><attribute name="min"/><attribute name="max"/></or>
+          </and></not>
+        </require>
+      </if>
+    </if>
+     
+    <if><element name="string"/>
+      <declare><attribute name="value"/></declare>
+    </if>
+  
+    <if><element name="char"/>
+      <declare>
+        <attribute name="set"/>
+        <attribute name="min"><char/></attribute>
+        <attribute name="max"><char/></attribute>
+      </declare>
+      <require>
+        <not><and>
+          <attribute name="set"/>
+          <or><attribute name="min"/><attribute name="max"/></or>
+        </and></not>
+      </require>
+    </if>
+
+    <if>
+      <ancestor>
+        <or><element name="attribute"/><element name="stringtype"/></or>
+      </ancestor>
+      <require>
+        <not><or><boolexp ref="BOOLEXP"/><element name="contenttype"/></or></not>
+      </require>
+    </if>
+  
+    <!-- definitions and references -->
+  
+    <if><boolexp ref="DEFREF"/>
+      <declare>
+        <attribute name="id" type="qname"><stringtype ref="QNAME"/></attribute>
+        <attribute name="ref" type="qname"><stringtype ref="QNAME"/></attribute>
+      </declare>
+      <require>
+        <one><attribute name="id"/><attribute name="ref"/></one>
+      </require>
+    </if>
+  
+    <if><attribute name="id"/>
+      <if><element name="rule"/>
+        <declare><contents>
+          <repeat><boolexp ref="RULE"/></repeat>
+        </contents></declare>
+      </if>
+      <if><or><element name="contenttype"/><element name="stringtype"/></or>
+        <declare><contents><boolexp ref="REGEXP"/></contents></declare>
+      </if>
+      <if><element name="boolexp"/>
+        <declare><contents><boolexp ref="BOOLEXP"/></contents></declare>
+      </if>
+    </if>
+  
+    <unique>
+      <boolexp ref="DEFINITION"/>
+      <attributefield name="id" type="qname"/>
+    </unique>
+    
+    <if><boolexp ref="REFERENCE"/>
+      <if><element name="rule"/>
+        <pointer>
+          <and><element name="rule"/><attribute name="id"/></and>
+          <attributefield name="ref" type="qname"/>
+        </pointer>
+      </if>
+      <if><element name="contenttype"/>
+        <pointer>
+          <and><element name="contenttype"/><attribute name="id"/></and>
+          <attributefield name="ref" type="qname"/>
+        </pointer>
+      </if>
+      <if><element name="stringtype"/>
+        <pointer>
+          <and><element name="stringtype"/><attribute name="id"/></and>
+          <attributefield name="ref" type="qname"/>
+        </pointer>
+      </if>
+      <if><element name="boolexp"/>
+        <pointer>
+          <and><element name="boolexp"/><attribute name="id"/></and>
+          <attributefield name="ref" type="qname"/>
+        </pointer>
+      </if>
+    </if>
+  
+    <!-- normalization -->
+  
+    <if><element name="normalize"/>
+      <declare>
+        <attribute name="whitespace">
+          <union>
+            <string value="preserve"/>
+            <string value="compress"/>
+            <string value="trim"/>
+          </union>
+        </attribute>
+        <attribute name="case">
+          <union>
+            <string value="preserve"/>
+            <string value="upper"/>
+            <string value="lower"/>
+          </union>
+        </attribute>
+      </declare>
+      <require>
+        <or><attribute name="whitespace"/><attribute name="case"/></or>
+      </require>
+    </if>
+  
+    <if>
+      <and>
+        <element name="attribute"/>
+        <child><or>
+          <element name="normalize"/>
+          <element name="default"/>
+          <boolexp ref="REGEXP"/>
+        </or></child>
+      </and>
+      <require>
+        <attribute name="name"><stringtype ref="QNAME"/></attribute>
+      </require>
+    </if>
+  
+    <!-- uniqueness and pointers -->
+  
+    <if><element name="unique"/>
+      <declare>
+        <contents>
+          <union>
+            <sequence>
+              <boolexp ref="BOOLEXP"/>
+              <repeat min="1"><union>
+                <element name="attributefield"/>
+                <element name="chardatafield"/>
+              </union></repeat>
+            </sequence>
+            <repeat min="1"><element name="select"/></repeat>
+          </union>
+        </contents>
+      </declare>
+    </if>
+
+    <if><or><element name="select"/><element name="pointer"/></or>
+      <declare>
+        <contents>
+          <sequence>
+            <optional><boolexp ref="BOOLEXP"/></optional>
+            <repeat min="1"><union>
+              <element name="attributefield"/>
+              <element name="chardatafield"/>
+            </union></repeat>
+          </sequence>
+        </contents>
+      </declare>
+      <if><element name="select"/>
+        <require><contents><boolexp ref="BOOLEXP"/></contents></require>
+      </if>
+    </if>
+  
+    <if><or><element name="unique"/><element name="pointer"/></or>
+      <declare><attribute name="key"/></declare>
+    </if>
+
+    <if>
+      <or>
+        <element name="attributefield"/>
+        <element name="chardatafield"/>
+      </or>
+      <rule ref="ATTRTYPE"/>
+      <declare>
+        <contents><optional><boolexp ref="BOOLEXP"/></optional></contents>
+      </declare>
+      <if><element name="attributefield"/>
+        <declare><required>
+          <attribute name="name" type="qaname"><stringtype ref="PNAME"/></attribute>
+        </required></declare>
+      </if>
+    </if>
+
+    <if><or><element name="normalize"/><element name="default"/></or>
+      <require><not>
+        <ancestor><and>
+          <element name="if"/>
+          <descendant>
+            <and>
+              <or>
+                <element name="parent"/>
+                <element name="ancestor"/>
+                <element name="child"/>
+                <element name="descendant"/>
+                <element name="contents"/>
+                <element name="boolexp"/>
+              </or>
+              <not><ancestor>
+                <or>
+                  <element name="declare"/>
+                  <element name="require"/>
+                  <element name="unique"/>
+                  <element name="pointer"/>
+                </or>
+              </ancestor></not>
+            </and>
+          </descendant>   
+        </and></ancestor>
+      </not></require>
+    </if>
+  
+  </if>
+
+  <!-- defaults -->
+
+  <if>
+    <and>
+      <element name="default"/>
+      <parent><and>
+        <element name="attribute"/>
+        <parent><or>
+          <element name="declare"/><element name="required"/>
+        </or></parent>
+      </and></parent>
+    </and>
+    <declare><required><attribute name="value"/></required></declare>
+  </if>
+  
+  <if><and><element name="default"/><not><attribute name="value"/></not></and>
+    <declare><contents>
+      <repeat><union><element/><string/></union></repeat>
+    </contents></declare>
+  </if>
+  
+  <if>
+    <ancestor>
+      <and><element name="default"/><not><attribute name="value"/></not></and>
+    </ancestor>
+    <declare>
+      <contents>
+        <repeat><union><element/><string/></union></repeat>
+      </contents>
+      <attribute/>
+    </declare>
+  </if>
+
+</dsd>
