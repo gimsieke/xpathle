@@ -421,6 +421,7 @@
         <xsl:value-of select=". => replace('[ ]([ ]{4,})', '&#xa;$1') (: attribute values were probably multiline :)
                                 => replace('&amp;', '&amp;amp;')
                                 => replace('&lt;', '&amp;lt;')
+                                => replace('&gt;', '&amp;gt;')
                                 => replace('&#x22;', '&amp;quot;')"/>
         <xsl:text>"</xsl:text>
       </span>
