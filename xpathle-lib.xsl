@@ -446,6 +446,7 @@
   
   <xsl:template match="text()" mode="serialize" priority="1">
     <xsl:value-of select=". => replace('&amp;', '&amp;amp;')
+                            => replace('&gt;', '&amp;gt;')
                             => replace('&lt;', '&amp;lt;')"/>
   </xsl:template>
 
