@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<chessgame event="IBM Kasparov vs. Deep Blue Rematch" site="New York, NY USA" date="1997.05.03" round="1" white="Kasparov, Garry" black="Deep Blue" opening="Reti - King's Indian attack, Keres variation" result="1-0">
+
+<move> <white>N g1-f3</white>   <black>P d7-d5</black></move> 
+<move> <white>P g2-g3</white>   <black>B c8-g4</black></move>  
+<move> <white>P b2-b3</white>   <black>N b8-d7</black></move>  
+<move> <white>B c1-b2</white>   <black>P e7-e6</black></move>  
+<move> <white>B f1-g2</white>   <black>N g8-f6</black></move>  
+<move> <white>O-O</white>       <black>P c7-c6</black></move>  
+<move> <white>P d2-d3</white>   <black>B f8-d6</black></move> 
+<move> <white>N b1-d2</white>   <black>O-O</black></move>  
+<move> <white>P h2-h3</white>   <black>B g4-h5</black></move>  
+<move> <white>P e2-e3</white>   <black>P h7-h6</black></move>  
+<move> <white>Q d1-e1</white>   <black>Q d8-a5</black></move>  
+<move> <white>P a2-a3</white>   <black>B d6-c7</black></move>  
+<move> <white>N f3-h4</white>   <black>P g7-g5</black></move> 
+<move> <white>N h4-f3</white>   <black>P e6-e5</black></move>  
+<move> <white>P e3-e4</white>   <black>R f8-e8</black></move>  
+<move> <white>N f3-h2</white>   <black>Q a5-b6</black></move>  
+<move> <white>Q e1-c1</white>   <black>P a7-a5</black></move>  
+<move> <white>R f1-e1</white>   <black>B c7-d6</black></move>  
+<move> <white>N d2-f1</white>   <black>P d5-e4 x</black></move> 
+<move> <white>P d3-e4 x</white> <black>B d6-c5</black></move>  
+<move> <white>N f1-e3</white>   <black>R a8-d8</black></move>  
+<move> <white>N h2-f1</white>   <black>P g5-g4</black></move>  
+<move> <white>P h3-g4 x</white> <black>N f6-g4 x</black></move>  
+<move> <white>P f2-f3</white>   <black>N g4-e3 x</black></move> 
+<move> <white>N f1-e3 x</white> <black>B c5-e7</black></move>  
+<move> <white>K g1-h1</white>   <black>B e7-g5</black></move>  
+<move> <white>R e1-e2</white>   <black>P a5-a4</black></move>  
+<move> <white>P b3-b4</white>   <black>P f7-f5</black></move>
+<move> <white>P e4-f5 x</white> <black>P e5-e4</black></move>  
+<move> <white>P f3-f4</white>   <black>B h5-e2 x</black></move> 
+<move> <white>P f4-g5 x</white> <black>N d7-e5</black></move>  
+<move> <white>P g5-g6</white>   <black>B e2-f3</black></move>  
+<move> <white>B b2-c3</white>   <black>Q b6-b5</black></move>  
+<move> <white>Q c1-f1</white>   <black>Q b5-f1 x+</black></move>  
+<move> <white>R a1-f1 x</white> <black>P h6-h5</black></move>  
+<move> <white>K h1-g1</white>   <black>K g8-f8</black></move> 
+<move> <white>B g2-h3</white>   <black>P b7-b5</black></move>  
+<move> <white>K g1-f2</white>   <black>K f8-g7</black></move>  
+<move> <white>P g3-g4</white>   <black>K g7-h6</black></move>  
+<move> <white>R f1-g1</white>   <black>P h5-g4 x</black></move>  
+<move> <white>B h3-g4 x</white> <black>B f3-g4 x</black></move> 
+<move> <white>N e3-g4 x+</white><black>N e5-g4 x+</black></move>  
+<move> <white>R g1-g4 x</white> <black>R d8-d5</black></move>  
+<move> <white>P f5-f6</white>   <black>R d5-d1</black></move>  
+<move> <white>P g6-g7</white></move>  
+</chessgame>
