@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:choose xmlns:p="http://www.w3.org/ns/xproc" name="version">
+  <p:when test="/*[@version = 2]">
+    <p:validate-with-xml-schema>
+      <p:with-input port="schema" href="v2schema.xsd"/>
+    </p:validate-with-xml-schema>
+  </p:when>
+
+  <p:when test="/*[@version = 1]">
+    <p:validate-with-xml-schema>
+      <p:with-input port="schema" href="v1schema.xsd"/>
+    </p:validate-with-xml-schema>
+  </p:when>
+
+  <p:when test="/*[@version]">
+    <p:identity/>
+  </p:when>
+
+  <p:otherwise>
+    <p:error code="NOVERSION">
+      <p:with-input port="source">
+	<p:inline>
+	  <message>Required version attribute missing.</message>
+	</p:inline>
+      </p:with-input>
+    </p:error>
+  </p:otherwise>
+</p:choose>
